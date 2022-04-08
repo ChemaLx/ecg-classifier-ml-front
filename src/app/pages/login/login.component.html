@@ -1,0 +1,40 @@
+<div class="mt-9">
+    <div class="main">
+
+
+        <div class="container">
+            <div class="middle">
+                <div id="login">
+
+                    <form [formGroup]="formGroupLogin">
+
+                            <p><span class="fa fa-user"></span> <input type="text" name="username"
+                                    Placeholder="Nombre de usuario" formControlName="username"> </p>
+                            
+                            <!-- JS because of IE support; better: placeholder="Username" -->
+                            <p><span class="fa fa-lock"></span> <input type="password" name="password"
+                                    Placeholder="Contraseña" formControlName="password"> </p>
+                            <!-- JS because of IE support; better: placeholder="Password" -->
+
+                            <div class="d-flex justify-content-center">
+                                <span style="width:48%; text-align:left;  display: inline-block;"><a class="small-text"
+                                        href="#">Olvide mi contraseña</a></span>
+                                <button type="button" class="btn btn-dark" (click)="signIn()">Entrar</button>
+                            </div>
+
+                        
+                    </form>
+
+                    <div class="clearfix"></div>
+
+                </div> <!-- end login -->
+                <div class="logo"><p>Iniciar sesión</p> <div class="clearfix"></div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+    
+

@@ -1,0 +1,61 @@
+
+#welcome-section{
+    padding-top: 10vh;
+    width: 100%;
+    min-height: 84vh;
+    background-image: linear-gradient(rgba(16,16,16,0.5), rgba(16,16,16,0.8)), url("/assets/img/main.jpg");
+    background-position: center;
+    background-size: cover;
+    
+}
+#about-me{
+    padding-top: 10vh;
+    width: 100%;
+    min-height: 84vh;
+    background-color: hsla(220, 100%, 10%, 0.9);
+}
+.introducing{
+    height: auto;
+    width: 100%;
+    flex-wrap: wrap;
+    
+}
+.presentation{
+    max-width: 50%;
+    height: auto;
+}
+
+#about-me section img{
+    max-width: 380px;
+    height: 200px;
+} 
+
+#contact{
+    width: 100%;
+    height: auto;
+    
+}
+
+.cafe{
+    background-color: hsla(220, 100%, 20%, 0.9);
+}
+.azul-footer{
+    background-color: hsla(220, 100%, 30%, 0.9);
+}
+.grid-son2{
+    margin: 2em;
+    border-radius: 15px;
+    background-color: hsla(220, 100%, 10%, 0.9);;
+}
+.container2{
+    width: 100%;
+    height: auto;
+    margin: 10%;
+}
+.grid-son2 i{
+    font-size: 5rem;
+}
+
+.grid-son2:hover {
+    box-shadow: 0 14px 28px rgba(255, 255, 255, 0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
