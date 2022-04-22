@@ -1,48 +1,60 @@
-
-    <div class="main animated fadeIn">
-
-
-      <div class="container">
-          <div class="middle">
-              <div id="login">
-
-                  <form>
-
-                          <p><input type="text" name="Nombre"
-                                  Placeholder="Nombre" formControlName="username"> </p>
-                          
-                          <p><input type="password" name="password"
-                                  Placeholder="Apellido" formControlName="password"> </p>
-
-                          <p><input type="password" name="password"
-                                  Placeholder="Nombre de usuario" formControlName="password"> </p>
-
-                          <p><input type="password" name="password"
-                                  Placeholder="Fecha de nacimiento" formControlName="password"> </p>
-                                  
-                          <p><input type="password" name="password"
-                                  Placeholder="Password" formControlName="password"> </p>
-
-                          <p><input type="password" name="password"
-                                  Placeholder="Sexo" formControlName="password"> </p>
-                          
-
-                          <div class="">
-                              <button type="button" class="btn btn-dark" (click)="signIn()">Registrarte</button>
-                          </div>
-
+<div class="d-flex justify-content-center align-items-center h-100-cu flex-wrap" >
+        <div class="container-card" style="margin: 4.5rem 0rem 5rem 0rem;">
+            <div class="card container-login text-center">
+                <div class="d-flex justify-content-center mb-3">
+                    <img src="assets\img\logo-ecg.png" style="height: 100px; width: 100px;">
+                </div>
+                <h1 class="heading-primary">Registrate<span class="span-blue">.</span></h1>
+                <p>Es facil y rapido</p>
+            
+                <div class="d-flex justify-content-center w-100">
+                    <form class="signup-form">
+                      <label class="inp">
+                        <input type="email" class="input-text" placeholder="Nombre de usuario">
+                        <span class="label">Nombre</span>
+    
+                      </label>
+                      <label class="inp">
+                        <input type="email" class="input-text" placeholder="Apellido paterno">
+                        <span class="label">Apellido paterno</span>
+    
+                      </label>
+                      <label class="inp">
+                        <input type="email" class="input-text" placeholder="Apellido materno">
+                        <span class="label">Apellido materno</span>
+    
+                      </label>
                       
-                  </form>
+                      <label class="inp">
+                        <input type="email" class="input-text" placeholder="Correo electronico">
+                        <span class="label">Correo electronico</span>
+    
+                      </label>
 
-                  <div class="clearfix"></div>
+                      <label class="inp">
+                        <input type="password" class="input-text" placeholder="Contraseña" id="password">
+                        <span class="label">Contraseña</span>
+                      </label>
+                      
+                      
+                      <label class="inp">
+                        <input type="date" class="input-text" placeholder="Fecha de nacimiento">
+                        <span class="label">Fecha de nacimiento</span>
+    
+                      </label>
 
-              </div> <!-- end login -->
-              <div class="logo">Registrarte<div class="clearfix"></div>
-              </div>
-
-          </div>
+                      <label class="inp">
+                        <input type="email" class="input-text" placeholder="Sexo">
+                        <span class="label">Sexo</span>
+    
+                      </label>
+                      
+                      <button class="btn btn-login">Continuar</button>
+                      <p class="text-mute">Ya tienes una cuenta? <a routerLink="/login">Inicia sesion</a></p>
+                    </form>
+        
+                </div>
+            </div>
+    
+        </div>
       </div>
-
-  </div>
-
- 
