@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,9 @@ import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { FooterComponent } from './pages/layout/footer/footer.component';
 import { EditComponent } from './pages/edit/edit.component';
+import { PerfilSinteticoComponent } from './pages/layout/perfil-sintetico/perfil-sintetico.component';
+import { NavbarComercialComponent } from './pages/layout/navbar-comercial/navbar-comercial.component';
+import { fakeApiPerfilSinteticoInterceptor } from './shared/fake-api/fake-api-perfil-sintetico.interceptor';
 
 
 const routes: Routes = [
@@ -52,7 +56,9 @@ const routes: Routes = [
     NavbarComponent,
     RegistryComponent,
     FooterComponent,
-    EditComponent
+    EditComponent,
+    PerfilSinteticoComponent,
+    NavbarComercialComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +69,9 @@ const routes: Routes = [
     HttpClientModule,
     NgxChartsModule
   ],
-  providers: [],
+  providers: [
+	  environment.isMockApiPerfilSintetico ? [fakeApiPerfilSinteticoInterceptor] : []
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
