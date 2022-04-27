@@ -2,9 +2,8 @@ body {
     font-family: "Poppins", sans-serif;
 }
 .container-fix{
-    min-height: 84vh;
+    min-height: 60vh;
     width: 100%;
-
 }
 .mb-9{
     margin-bottom: 8vh;
@@ -22,7 +21,12 @@ body {
 .azul-main{
     background-color: hsla(220, 100%, 90%, 0.9);
 }
-
+.navbar-fixed{
+    position: fixed;
+    width: 100%;
+    z-index: 9999999999999999999999999999999999999999;
+    top: 0;
+}
 .grid-dad{
     width: 100%;
     height: 100%;
@@ -92,3 +96,7 @@ a:link, a:visited, a:active {
     position: relative;
     z-index: 999;
 }
+
+
+
+
