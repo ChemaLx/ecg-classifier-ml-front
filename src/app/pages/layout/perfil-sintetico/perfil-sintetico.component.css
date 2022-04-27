@@ -1,0 +1,298 @@
+a {
+    color: #2196f3;
+    text-decoration: none;
+  }
+  .h-100-cu{
+    min-height: 100vh;
+  }
+  .container-card {
+    width: 500px;
+  }
+  
+  .container-login {
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+  }
+  
+  .heading-secondary {
+    font-size: 1.5rem;
+  }
+  
+  .heading-primary {
+    font-size: 1.5rem;
+  }
+  
+  .span-blue {
+    color: #2196f3;
+  }
+  
+  .signup-container,
+  .signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .signup-form {
+    width: 100%;
+  }
+  
+  .text-mute {
+    color: #aaa;
+  }
+  
+  .btn {
+    padding: 1rem;
+    border: none;
+    background: #2196f3;
+    color: #fff;
+    border-radius: 1rem;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: inherit;
+  }
+  
+  .btn-login {
+    align-self: flex-end;
+    width: 100%;
+    margin-top: 0rem;
+    box-shadow: 0 5px 5px #00000020;
+  }
+  
+  .btn-login:active {
+    box-shadow: none;
+  }
+  
+  .btn-login:hover {
+    background: #2180f9;
+  }
+  
+  .inp {
+    position: relative;
+  }
+  
+  
+  
+  
+  .label {
+    pointer-events: none;
+  
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 0.9rem;
+    opacity: 0;
+    color: #00000070;
+    font-weight: 500;
+    transition: all 0.2s;
+    transform-origin: left;
+  }
+  
+  .input-text {
+    font-family: inherit;
+    padding: 1rem 1rem 1rem 1rem;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 2rem;
+    background: #eee;
+    width: 100%;
+  }
+  
+  .input-text:focus {
+    outline-color: #2196f3;
+  }
+  .blue-text{
+    color: #2196f3
+  }
+  
+  .input-text:not(:placeholder-shown)+.label,
+  .input-text:focus+.label {
+    top: -1.5rem;
+    transform: scale(0.75);
+    opacity: 1;
+  }
+  
+  .input-text:focus+.label {
+    color: #2196f3;
+  }
+  
+  .input-icon {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 2rem;
+    color: #00000070;
+  }
+  
+  .input-icon-password {
+    cursor: pointer;
+  }
+  
+  
+  @media only screen and (max-width: 938px) {
+  
+    .input-text:not(:placeholder-shown)+.label,
+  
+    .input-text:focus+.label {
+      top: -1.5rem;
+      transform: scale(0.75);
+      opacity: 1;
+    }
+  
+    .input-text:focus+.label {
+      color: #2196f3;
+    }
+  
+  
+  }
+  
+  @media only screen and (max-width: 574px) {
+  
+    .container-card {
+      width: 90%;
+    }
+  
+  }
+  
+  .container-1 {
+    position: relative;
+    overflow: hidden;
+    width: 160px;
+  }
+  .hidden {
+    display: none;
+  }
+  .entry {
+    height: 25px;
+    position: absolute;
+    width: 160px;
+  }
+  .entry:nth-child(2) {
+    left: 8px;
+    top: 8px;
+  }
+  .entry:nth-child(4) {
+    left: 8px;
+    top: 58px;
+  }
+  .entry:nth-child(6) {
+    left: 8px;
+    top: 108px;
+  }
+  .circle {
+    border: 2px solid #545556;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 20px;
+    position: absolute;
+    transition: border-color 300ms;
+    width: 20px;
+    box-sizing: content-box;
+  }
+  .entry-label {
+    cursor: pointer;
+    margin-top: -3px;
+    padding-left: 40px;
+    user-select: none;
+    -moz-user-select: none;
+  }
+  .overlay {
+    background: #fff;
+    mask: url(#holes);
+    
+    height: 90px;
+    pointer-events: none;
+    transition: background 300ms;
+    width: 40px;
+  }
+  .highlight {
+    background: #2196f3;
+    border-radius: 50%;
+    height: 12px;
+    left: 14px;
+    pointer-events: none;
+    position: absolute;
+    top: 14px;
+    transition: transform 400ms cubic-bezier(0.175, 0.885, 0.32, 1.2);
+    transform: translateY(-50px);
+    width: 12px;
+  }
+  .hidden:nth-child(1):checked ~ .highlight {
+    transform: translateY(0);
+  }
+  .hidden:nth-child(3):checked ~ .highlight {
+    transform: translateY(50px);
+  }
+  .hidden:nth-child(5):checked ~ .highlight {
+    transform: translateY(100px);
+  }
+  .hidden:nth-child(1):checked + .entry .circle {
+    border-color: #2196f3;
+  }
+  .hidden:nth-child(3):checked + .entry .circle {
+    border-color: #2196f3;
+  }
+  .hidden:nth-child(5):checked + .entry .circle {
+    border-color: #2196f3;
+  }
+  .check:checked ~ .containerOuter .overlay {
+    background: #ecf0f4;
+  }
+
+
+  /* -------------------- silder */
+  .slidecontainer {
+    width: 90%; /* Width of the outside container */
+  }
+  
+  /* The slider itself */
+  .slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 100%; /* Full-width */
+    height: 25px; /* Specified height */
+    background: #eee; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: 1; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+    border-radius: 60px 60px 60px 60px;
+  }
+  
+ 
+  
+  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #2196f3; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+    border-radius: 50%;
+    
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #2196f3; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+    border-radius: 50%;
+  }
+  /* -------------------- silder */
+
+
+  /* -------------------- date picker */
+  .datecontainer {
+    width: 40%; /* Width of the outside container */
+  }
+  
+  /* The slider itself */
+  .date {
+    width: 100%; /* Full-width */
+    padding: 0.15rem 0.5rem 0.15rem 0.5rem;
+    background: #eee; /* Grey background */
+    border: 0;
+    border-radius: 60px 60px 60px 60px;
+  }
