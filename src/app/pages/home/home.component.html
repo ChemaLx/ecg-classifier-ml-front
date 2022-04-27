@@ -1,3 +1,4 @@
+<app-navbar-comercial></app-navbar-comercial>
 <main class="mt-5 mb-9 animated fadeIn">
   <section class="container-fix d-flex flex-column">
     <section id="welcome-section" class="d-flex flex-column justify-content-center align-items-center">
@@ -14,7 +15,7 @@
     </section>
   </section>
 
-  <section class="container-fix">
+  <section class="container-fix" id="about-me-1">
     <section id="about-me" class="d-flex flex-column justify-content-center align-items-center">
       <section class="introducing d-flex justify-content-center align-items-center">
         <article class="presentation d-flex flex-column justify-content-center align-items-center mr-3">
@@ -23,7 +24,7 @@
             desde cualquier lugar y tiene como objetivo detectar episodios de taquicardia, bradicardia o descartar ambas
             categorías.</p>
           <div class="button">
-            <button type="button text-center" class="btn btn-light" routerLink="/login">Iniciar</button>
+            <button type="button text-center" class="btn btn-light" routerLink="/login">Probar ahora</button>
           </div>
         </article>
         <img src="\assets\img\CloudComputing.jpg" alt="" loading="lazy">
@@ -31,11 +32,11 @@
     </section>
   </section>
 
-  <section class="container-fix">
+  <section class="container-fix cafe" id="services">
 
-    <section class="d-flex flex-column justify-content-center align-items-center text-white cafe">
+    <section class="d-flex flex-column justify-content-center align-items-center text-white">
 
-      <h1 class="mt-5"> Servicios disponibles </h1>
+      <h1 class="mt-11"> Servicios disponibles </h1>
       <section class="grid-dad">
 
         <article class="grid-son2 d-flex justify-content-center align-items-center">
@@ -84,6 +85,9 @@
       </section>
     </section>
   </section>
+  <section class="container-fix azul-25" id="perfil">
+    <app-perfil-sintetico></app-perfil-sintetico>
+  </section>
 
   <div class="container-fixed azul-footer text-white">
     <section class="contact d-flex flex-column align-items-center">
@@ -92,7 +96,7 @@
     </section>
     <section class="grid-dad">
 
-      <article class="grid-son3 d-flex justify-content-center">
+      <article id="contacto" class="grid-son3 d-flex justify-content-center">
 
         <div class="cont">
           <h1>Síguenos</h1>
