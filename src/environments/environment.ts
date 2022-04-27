@@ -3,7 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  isMockEnabled: true,
+  
+	api: 'http://jbs.habil.mx:8080/gateway-api-1.0.0',
+	apiAutorizacion: 'http://jbs.habil.mx:8080/gateway-api-1.0.0/sec',
+
+	isMockApiPerfilSintetico: true,
 };
 
 /*
