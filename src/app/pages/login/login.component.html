@@ -1,11 +1,11 @@
 <app-navbar-comercial></app-navbar-comercial>
-<div class="d-flex justify-content-center align-items-center flex-wrap pt-custom-login">
+<div class="d-flex justify-content-center align-items-center flex-wrap pt-custom-login" style="background-color: #c3d7ec; height: 100vh;">
     <div class="container-card text-white">
-        <h3>Clasificador de ECG</h3>
-        <p class="m-0">Clasificador de ECG te ayuda a realizar clasificaciones de taquicardias y bradicardias a cualquier hora del dia.</p>
+        <h3 class="text-black">Clasificador de ECG</h3>
+        <p class="m-0 text-black">Clasificador de ECG te ayuda a realizar clasificaciones de taquicardias y bradicardias a cualquier hora del dia.</p>
     </div>
     <div class="container-card mt-5">
-        <div class="card container-login text-center" style="margin: 0rem 0rem 5rem 0rem;">
+        <div class="card container-login text-center sombra" style="margin: 0rem 0rem 5rem 0rem;">
             <div class="d-flex justify-content-center mb-3">
                 <img src="assets\img\logo-ecg.png" style="height: 100px; width: 100px;">
             </div>
@@ -28,7 +28,7 @@
                     [disabled]="formGroupLogin.invalid">Enviar</button>
                   <button *ngIf="isCargando" class="btn btn-login" disabled
                     [disabled]="formGroupLogin.invalid">
-                    <i class="fas fa-sync fa-spin fa-2x"></i>
+                    <i class="fas fa-spinner fa-spin fa-2x"></i>
                   </button>
                   <p class="text-danger mb-3" *ngIf="isLoginError">El usuario o contraseña que ingresaste son incorrectos.</p>
                   <p class="text-mute">Aun no eres miembro? <a routerLink="/registry">Registrate</a></p>
