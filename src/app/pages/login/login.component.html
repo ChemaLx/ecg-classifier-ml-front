@@ -1,32 +1,39 @@
 <app-navbar-comercial></app-navbar-comercial>
-<div class="d-flex justify-content-center align-items-center h-100-cu flex-wrap">
-    <!-- <div class="container-card text-white">
+<div class="d-flex justify-content-center align-items-center flex-wrap pt-custom-login">
+    <div class="container-card text-white">
         <h3>Clasificador de ECG</h3>
-        <p>Clasificador de ECG te ayuda a realizar clasificaciones de taquicardias y bradicardias a cualquier hora del dia.</p>
-    </div> -->
-    <div class="container-card">
-        <div class="card container-login text-center" style="margin: 4.5rem 0rem 5rem 0rem;">
+        <p class="m-0">Clasificador de ECG te ayuda a realizar clasificaciones de taquicardias y bradicardias a cualquier hora del dia.</p>
+    </div>
+    <div class="container-card mt-5">
+        <div class="card container-login text-center" style="margin: 0rem 0rem 5rem 0rem;">
             <div class="d-flex justify-content-center mb-3">
                 <img src="assets\img\logo-ecg.png" style="height: 100px; width: 100px;">
             </div>
             <h1 class="heading-primary mb-3">Iniciar sesion<span class="span-blue">.</span></h1>
             
-        
+            
             <div class="d-flex justify-content-center w-100">
-                <form class="signup-form">
+                <form class="signup-form" [formGroup]="formGroupLogin">
                   <label class="inp">
-                    <input type="email" class="input-text" placeholder="Nombre de usuario">
+                    <input type="text" class="input-text" placeholder="Nombre de usuario" formControlName="usuario">
                     <span class="label">Nombre de usuario</span>
 
                   </label>
                   <label class="inp">
-                    <input type="password" class="input-text" placeholder="Contraseña" id="password">
+                    <input type="password" class="input-text" placeholder="Contraseña" id="password" formControlName="contrasena">
                     <span class="label">Contraseña</span>
                   </label>
-                  <button class="btn btn-login" routerLink="/dashboard">Entrar</button>
+               
+                  <button *ngIf="!isCargando" class="btn btn-login" (click)="iniciarSesion()"
+                    [disabled]="formGroupLogin.invalid">Enviar</button>
+                  <button *ngIf="isCargando" class="btn btn-login" disabled
+                    [disabled]="formGroupLogin.invalid">
+                    <i class="fas fa-sync fa-spin fa-2x"></i>
+                  </button>
+                  <p class="text-danger mb-3" *ngIf="isLoginError">El usuario o contraseña que ingresaste son incorrectos.</p>
                   <p class="text-mute">Aun no eres miembro? <a routerLink="/registry">Registrate</a></p>
                 </form>
-    
+                
             </div>
         </div>
 
