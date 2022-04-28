@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HistorialService } from './shared/historial.service';
 
 @Component({
   selector: 'app-historial',
@@ -7,16 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistorialComponent implements OnInit {
 
+  datosHistorial = []
   isCargando = false
-  constructor() { }
+  constructor(private readonly historialService: HistorialService) { }
 
   ngOnInit(): void {
+    this.recuperarHistorial()
   }
   recuperarHistorial(){
     this.isCargando = true
-    setTimeout(() => {
+    this.historialService.recuperarHistorial('ueoaueao').subscribe(res => {
+      this.datosHistorial = res.body.historial
+      console.log(this.datosHistorial)
       this.isCargando = false
-    }, 3000);
+    })
   }
 
 }

@@ -1,19 +1,51 @@
 <app-navbar></app-navbar>
-<section class="blanco" id="services">
+<section class="blanco animated fadeIn" id="services">
         <div class="container-box">
                 <div class="hero hero-is-primary d-flex justify-content-start align-items-center"
                         style="box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);">
                         <h3 class="p-3 m-0 text-white">Historial de clasificaciones</h3>
                 </div>
                 <div class="card"
-                        style="box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); min-height: 70vh;">
+                        style="box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); min-height: 50vh;">
                         <div class="d-flex justify-content-center align-items-center" *ngIf="isCargando"
-                                style="min-height: 70vh;">
+                                style="min-height: 50vh;">
                                 <i class="fas fa-spinner fa-spin fa-5x"></i>
                         </div>
                         <div class="card-body" *ngIf="!isCargando">
+                                <table class="table table-striped table-hover text-center">
+                                        <thead>
+                                                <tr>
+                                                        <th>Duracion (minutos)</th>
+                                                        <th>Resultado</th>
+                                                        <th>Fecha</th>
+                                                        <th>Ver</th>
+                                                </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr *ngFor="let informacion of datosHistorial">
+                                                        <td>
+                                                                <p class="m-0 mt-2" >{{informacion['duracion']}}</p>
+                                                        </td>
+                                                        <td>
+                                                                <p class="m-0 mt-2" *ngIf="informacion['resultado'] == 0">Ritmo normal</p>
+                                                                <p class="m-0 mt-2" *ngIf="informacion['resultado'] == 1">Taquicardia</p>
+                                                                <p class="m-0 mt-2" *ngIf="informacion['resultado'] == 2">Bradicardia</p>
+                                                        </td>
+                                                        <td>
+                                                                <p class="m-0 mt-2" >{{informacion['fecha'] | date : 'mediumDate'}}</p>
+                                                        </td>
+                                                        <td>
+                                                                <p class="m-0" >
+                                                                        <a routerLink="/dashboard" class="btn" type="button">
 
-                                
+                                                                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                                                        </a>        
+                                                                </p>
+                                                                
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                </table>
                         </div>
                 </div>
 
