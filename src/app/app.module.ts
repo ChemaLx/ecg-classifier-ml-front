@@ -24,6 +24,7 @@ import { fakeApiLoginInterceptor } from './shared/fake-api/fake-api-login.interc
 import { PanelControlComponent } from './pages/panel-control/panel-control.component';
 import { fakeApiEditarDatosInterceptor } from './shared/fake-api/fake-api-editar-datos.interceptor';
 import { HistorialComponent } from './pages/historial/historial.component';
+import { fakeApiHistorialInterceptor } from './shared/fake-api/fake-api-historial.interceptor';
 
 
 const routes: Routes = [
@@ -90,6 +91,7 @@ const routes: Routes = [
 	  environment.isMockApiPerfilSintetico ? [fakeApiPerfilSinteticoInterceptor] : [],
 	  environment.isMockApiIniciarSesion ? [fakeApiLoginInterceptor] : [],
 	  environment.isMockApiEditarDatosInterceptor ? [fakeApiEditarDatosInterceptor] : [],
+	  environment.isMockApiHistorialInterceptor ? [fakeApiHistorialInterceptor] : [],
   ],
   bootstrap: [AppComponent]
 })

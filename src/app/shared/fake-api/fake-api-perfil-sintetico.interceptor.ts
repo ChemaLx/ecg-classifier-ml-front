@@ -27,7 +27,7 @@ export class FakeApiPerfilSinteticoInterceptor implements HttpInterceptor {
     }
 
 
-    function recuperarAclaracionesPorFiltros(resp = 1) {
+    function recuperarAclaracionesPorFiltros(resp = 0) {
       if (resp === 0) {
         return of(new HttpResponse({
           status: 200,

@@ -11,6 +11,7 @@ export const environment = {
 	isMockApiPerfilSintetico: true,
 	isMockApiIniciarSesion: true,
 	isMockApiEditarDatosInterceptor: true,
+	isMockApiHistorialInterceptor: true,
 };
 
 /*
