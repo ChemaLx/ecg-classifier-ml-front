@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -21,37 +22,43 @@ import { NavbarComercialComponent } from './pages/layout/navbar-comercial/navbar
 import { fakeApiPerfilSinteticoInterceptor } from './shared/fake-api/fake-api-perfil-sintetico.interceptor';
 import { fakeApiLoginInterceptor } from './shared/fake-api/fake-api-login.interceptor';
 import { PanelControlComponent } from './pages/panel-control/panel-control.component';
+import { fakeApiEditarDatosInterceptor } from './shared/fake-api/fake-api-editar-datos.interceptor';
+import { HistorialComponent } from './pages/historial/historial.component';
 
 
 const routes: Routes = [
 	{
-		path: 'login',
-		component: LoginComponent,
-	},
-	{
-		path: 'dashboard',
-		component: DashboardComponent,
-	},
-	{
-		path: 'panel',
-		component: PanelControlComponent,
-	},
-	{
 		path: '',
 		component: HomeComponent,
+	},
+	{
+		path: 'inicio',
+		component: HomeComponent,
+	},
+	{
+		path: 'login',
+		component: LoginComponent,
 	},
 	{
 		path: 'registry',
 		component: RegistryComponent,
 	},
 	{
+		path: 'panel',
+		component: PanelControlComponent,
+	},
+	{
+		path: 'historial',
+		component: HistorialComponent,
+	},
+	{
+		path: 'dashboard',
+		component: DashboardComponent,
+	},
+	{
 		path: 'editar',
 		component: EditComponent,
 	},
-	{
-		path: 'inicio',
-		component: HomeComponent,
-	}
 ]
 
 @NgModule({
@@ -66,7 +73,8 @@ const routes: Routes = [
     EditComponent,
     PerfilSinteticoComponent,
     NavbarComercialComponent,
-    PanelControlComponent
+    PanelControlComponent,
+    HistorialComponent
   ],
   imports: [
     BrowserModule,
@@ -81,6 +89,7 @@ const routes: Routes = [
   providers: [
 	  environment.isMockApiPerfilSintetico ? [fakeApiPerfilSinteticoInterceptor] : [],
 	  environment.isMockApiIniciarSesion ? [fakeApiLoginInterceptor] : [],
+	  environment.isMockApiEditarDatosInterceptor ? [fakeApiEditarDatosInterceptor] : [],
   ],
   bootstrap: [AppComponent]
 })
