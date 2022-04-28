@@ -1,0 +1,14 @@
+.blanco {
+    background-color: #c3d7ec;
+    min-height: 100vh;
+}
+
+.hero {
+    width: 100%;
+    height: 10vh;
+}
+
+.hero-is-primary {
+    background: rgb(120,203,232);
+    background: linear-gradient(131deg, rgb(120, 219, 232) 0%, rgba(23,119,191,1) 43%, rgba(7,48,112,1) 82%, rgba(0,20,98,1) 100%); 
+}
