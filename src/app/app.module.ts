@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -18,6 +19,8 @@ import { EditComponent } from './pages/edit/edit.component';
 import { PerfilSinteticoComponent } from './pages/layout/perfil-sintetico/perfil-sintetico.component';
 import { NavbarComercialComponent } from './pages/layout/navbar-comercial/navbar-comercial.component';
 import { fakeApiPerfilSinteticoInterceptor } from './shared/fake-api/fake-api-perfil-sintetico.interceptor';
+import { fakeApiLoginInterceptor } from './shared/fake-api/fake-api-login.interceptor';
+import { PanelControlComponent } from './pages/panel-control/panel-control.component';
 
 
 const routes: Routes = [
@@ -28,6 +31,10 @@ const routes: Routes = [
 	{
 		path: 'dashboard',
 		component: DashboardComponent,
+	},
+	{
+		path: 'panel',
+		component: PanelControlComponent,
 	},
 	{
 		path: '',
@@ -58,19 +65,22 @@ const routes: Routes = [
     FooterComponent,
     EditComponent,
     PerfilSinteticoComponent,
-    NavbarComercialComponent
+    NavbarComercialComponent,
+    PanelControlComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forChild(routes),
     FormsModule,
-		ReactiveFormsModule,
+	ReactiveFormsModule,
     HttpClientModule,
-    NgxChartsModule
+    NgxChartsModule,
+	BrowserAnimationsModule
   ],
   providers: [
-	  environment.isMockApiPerfilSintetico ? [fakeApiPerfilSinteticoInterceptor] : []
+	  environment.isMockApiPerfilSintetico ? [fakeApiPerfilSinteticoInterceptor] : [],
+	  environment.isMockApiIniciarSesion ? [fakeApiLoginInterceptor] : [],
   ],
   bootstrap: [AppComponent]
 })
