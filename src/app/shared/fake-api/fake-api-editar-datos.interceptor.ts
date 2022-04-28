@@ -3,11 +3,10 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpResponse, HTT
 import { Observable, of, throwError, timer } from 'rxjs';
 import { delay, switchMap } from 'rxjs/operators';
 
-
 @Injectable()
-export class FakeApiLoginInterceptor implements HttpInterceptor {
+export class FakeApiEditarDatosInterceptor implements HttpInterceptor {
 
-  constructor() {}
+  constructor() { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const { method, url, params, body } = request
@@ -16,22 +15,28 @@ export class FakeApiLoginInterceptor implements HttpInterceptor {
 
     switch (true) {
       // lista
-      case url.endsWith('/iniciar-sesion') && method === 'GET':
-        return iniciarSesion()
+      case url.endsWith('/usuario/recuperar/info/') && method === 'GET':
+        return recuperarInfoUsuario()
 
       default:
         return next.handle(request);
     }
 
 
-    function iniciarSesion(resp = 0) {
+    function recuperarInfoUsuario(resp = 0) {
       if (resp === 0) {
         return of(new HttpResponse({
           status: 200,
           body: {
-            acess_token : "ueauaoeueueueueiiid",
-            refresh_token : "ieoioeioeieo432134"
-          } 
+            nombre: "Ricardo",
+            apellido_paterno: "Flores",
+            apellido_materno: "Lima",
+            edad: 25,
+            sexo: 1,
+            pais: "Mexico",
+            contraseña: "richardo69cool",
+            correo_electronico: "ricardocool@gmail.com",
+          }
         })).pipe(delay(2000))
       } else if (resp === 1) {
         return timer(2000).pipe(
@@ -48,11 +53,10 @@ export class FakeApiLoginInterceptor implements HttpInterceptor {
 
 
   }
-
 }
 
-export const fakeApiLoginInterceptor = {
+export const fakeApiEditarDatosInterceptor = {
   provide: HTTP_INTERCEPTORS,
-  useClass: FakeApiLoginInterceptor,
+  useClass: FakeApiEditarDatosInterceptor,
   multi: true
 }
