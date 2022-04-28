@@ -4,11 +4,10 @@ import { Observable, of, throwError, timer } from 'rxjs';
 import { delay, switchMap } from 'rxjs/operators';
 
 
-
 @Injectable()
-export class FakeApiPerfilSinteticoInterceptor implements HttpInterceptor {
+export class FakeApiLoginInterceptor implements HttpInterceptor {
 
-  constructor() { }
+  constructor() {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const { method, url, params, body } = request
@@ -17,8 +16,8 @@ export class FakeApiPerfilSinteticoInterceptor implements HttpInterceptor {
 
     switch (true) {
       // lista
-      case url.endsWith('/usuario/procesamiento/clasificar/json/') && method === 'POST':
-        return recuperarAclaracionesPorFiltros()
+      case url.endsWith('/iniciar-sesion') && method === 'GET':
+        return iniciarSesion()
 
 
 
@@ -27,11 +26,14 @@ export class FakeApiPerfilSinteticoInterceptor implements HttpInterceptor {
     }
 
 
-    function recuperarAclaracionesPorFiltros(resp = 1) {
+    function iniciarSesion(resp = 0) {
       if (resp === 0) {
         return of(new HttpResponse({
           status: 200,
-          body: { clasificacion_arritmia: '0' }
+          body: {
+            acess_token : "ueauaoeueueueueiiid",
+            refresh_token : "ieoioeioeieo432134"
+          } 
         })).pipe(delay(2000))
       } else if (resp === 1) {
         return timer(2000).pipe(
@@ -48,11 +50,11 @@ export class FakeApiPerfilSinteticoInterceptor implements HttpInterceptor {
 
 
   }
+
 }
 
-
-export const fakeApiPerfilSinteticoInterceptor = {
+export const fakeApiLoginInterceptor = {
   provide: HTTP_INTERCEPTORS,
-  useClass: FakeApiPerfilSinteticoInterceptor,
+  useClass: FakeApiLoginInterceptor,
   multi: true
 }

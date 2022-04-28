@@ -6,10 +6,10 @@ export const environment = {
   production: false,
   isMockEnabled: true,
   
-	api: 'http://jbs.habil.mx:8080/gateway-api-1.0.0',
-	apiAutorizacion: 'http://jbs.habil.mx:8080/gateway-api-1.0.0/sec',
+	api: 'http://mausanch:3000/api-ecg',
 
 	isMockApiPerfilSintetico: true,
+	isMockApiIniciarSesion: true,
 };
 
 /*
