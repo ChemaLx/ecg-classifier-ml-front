@@ -1,46 +1,80 @@
 <div class="d-flex justify-content-center align-items-center flex-column">
   <h1 class="text-white mt-11"> Prueba con perfiles sinteticos </h1>
 
-  <div class="container-card">
-    <div class="card container-login" style="margin: 1.5rem 0rem 5rem 0rem;">
+  <div class="container-card" >
+    <div class="card container-login" style="margin: 1.5rem 0rem 5rem 0rem; box-shadow: 0 19px 38px rgba(0,0,0,3), 0 15px 12px rgba(0,0,0,0.3); padding: 2rem;">
+
+      <div class="alert alert-danger d-flex align-items-center justify-content-between" *ngIf="isClasificacionFailed">
+        <div>
+          <strong>Ups... ocurrio un error inesperado</strong>
+          <p class="m-0"> Descripcion del error: Error interno 503 <!-- {{error}} --> </p>
+        </div>
+        <div>
+          <button type="button" class="btn-close" (click)="isClasificacionFailed=false"></button>
+        </div>
+      </div>
+
       <div class="d-flex justify-content-center mb-3">
-        <i class="fas fa-hospital-user" style="font-size: 4.5rem;"></i>
+        <i class="fas fa-hospital-user" style="font-size: 4.5rem; color: hsla(220, 100%, 25%, 0.9);"></i>
       </div>
       <h1 class="heading-primary mb-3 text-center">Ingresa los datos necesarios<span class="span-blue">.</span></h1>
 
 
       <div class="d-flex justify-content-center w-100 flex-column">
-        <form class="signup-form">
+        <form class="signup-form" [formGroup]="formGroupPerfilSintetico" novalidate>
           <div class="datecontainer justify-content-start">
             <label for="start" class="mb-1 ms-3 text-start">Fecha de nacimiento</label>
-            <input class="date ms-4" type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31">
+            <input class="date ms-4" type="date" id="start" name="trip-start" value="" min="1922-01-01"
+              max="{{ultimoDia}}" formControlName="edad">
+
+            <div *ngIf=" f.edad.touched && f.edad.errors">
+              <p *ngIf="f.edad.hasError('required')" class="text-danger ms-3 mb-0">Campo requerido</p>
+            </div>
           </div>
+          <!-- <p>{{f.edad.value}}</p> -->
 
           <div class="slidecontainer">
             <p class="mb-1 ms-3 text-start">Ritmo cardiaco</p>
-            <input class="slider ms-4" type="range" #time (input)="ingresarRitmoCardiaco(time.value)" id="time" min="40" max="200">
-            <p class="mb-1 ms-4 text-start">{{ritmoCardiacoSlider}} LPM</p>
-          </div>
-          <div class="d-flex align-self-start flex-column ms-3">
-            <p class="mb-0 text-start">Sexo</p>
-            
-              <div class="container-1">
-                <input type="radio" class="hidden" id="input1" name="inputs">
-                <label class="entry" for="input1"><div class="circle"></div><div class="entry-label">Masculino</div></label>
-                <input type="radio" class="hidden" id="input2" name="inputs">
-                <label class="entry" for="input2"><div class="circle"></div><div class="entry-label">Femenino</div></label>
-                <div class="highlight"></div>
-                <div class="overlay"></div>
-              </div>
-            
+            <input class="slider ms-4" type="range" min="40" max="200" formControlName="ritmoCardiaco">
+            <p class="mb-1 ms-4 text-start">{{f.ritmoCardiaco.value}} LPM</p>
           </div>
 
-          
-          <button class="btn btn-login" (click)="probarPerfil()">Enviar</button>
+          <div class="d-flex align-self-start flex-column ms-3">
+            <p class="mb-0 text-start">Sexo</p>
+
+            <div class="container-1">
+              <input type="radio" class="hidden" id="input1" name="inputs" value="0" formControlName="inputs">
+              <label class="entry" for="input1">
+                <div class="circle"></div>
+                <div class="entry-label">Masculino</div>
+              </label>
+
+              <input type="radio" class="hidden" id="input2" name="inputs" value="1" formControlName="inputs">
+              <label class="entry" for="input2">
+                <div class="circle"></div>
+                <div class="entry-label">Femenino</div>
+              </label>
+
+
+
+              <div class="highlight"></div>
+              <div class="overlay"></div>
+            </div>
+
+          </div>
+
+
+          <button *ngIf="!isCargando" class="btn btn-login" (click)="probarPerfil()"
+            [disabled]="formGroupPerfilSintetico.invalid">Enviar</button>
+          <button *ngIf="isCargando" class="btn btn-login" (click)="probarPerfil()"
+            [disabled]="formGroupPerfilSintetico.invalid">
+            <i class="fas fa-sync fa-spin fa-2x"></i>
+          </button>
 
         </form>
 
-        <h3 class="mt-5 text-center">Resultado de la clasificación: <p class="text-danger">Taquicardia</p>
+        <h3 class="mt-5 text-center" *ngIf="isClasificacionLista">Resultado de la clasificación: <p class="text-danger">
+            {{resultado}}</p>
         </h3>
 
 
