@@ -9,6 +9,11 @@
 }
 
 .hero-is-primary {
-    background: rgb(120,203,232);
-    background: linear-gradient(131deg, rgb(120, 219, 232) 0%, rgba(23,119,191,1) 43%, rgba(7,48,112,1) 82%, rgba(0,20,98,1) 100%); 
+    /* background: #6190E8;
+    background: -webkit-linear-gradient(to left, #A7BFE8, #6190E8);
+    background: linear-gradient(to left, #A7BFE8, #6190E8); */
+    background: #1c92d2;
+    background: -webkit-linear-gradient(to left, #bdf4ff, #1c92d2);
+    background: linear-gradient(to left, #bdf4ff, #1c92d2);
+
 }
