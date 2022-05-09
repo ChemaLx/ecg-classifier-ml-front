@@ -28,7 +28,7 @@ export class DashboardComponent implements OnInit {
 
   constructor() {
     Object.assign(this, { multi });
-    this.view = [innerWidth / 1.6, 350];
+    this.view = [innerWidth / 1.4, 350];
   }
 
   onSelect(data: any): void {
