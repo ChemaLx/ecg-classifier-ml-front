@@ -7,25 +7,28 @@ import { environment } from 'src/environments/environment';
 
 
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { RegistryComponent } from './pages/registry/registry.component';
 import { NavbarComponent } from './pages/layout/navbar/navbar.component';
-import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { FooterComponent } from './pages/layout/footer/footer.component';
 import { EditComponent } from './pages/edit/edit.component';
+import { NuevoEcgComponent } from './pages/nuevo-ecg/nuevo-ecg.component';
 import { PerfilSinteticoComponent } from './pages/layout/perfil-sintetico/perfil-sintetico.component';
 import { NavbarComercialComponent } from './pages/layout/navbar-comercial/navbar-comercial.component';
-import { fakeApiPerfilSinteticoInterceptor } from './shared/fake-api/fake-api-perfil-sintetico.interceptor';
-import { fakeApiLoginInterceptor } from './shared/fake-api/fake-api-login.interceptor';
 import { PanelControlComponent } from './pages/panel-control/panel-control.component';
-import { fakeApiEditarDatosInterceptor } from './shared/fake-api/fake-api-editar-datos.interceptor';
 import { HistorialComponent } from './pages/historial/historial.component';
+
+import { fakeApiLoginInterceptor } from './shared/fake-api/fake-api-login.interceptor';
+import { fakeApiEditarDatosInterceptor } from './shared/fake-api/fake-api-editar-datos.interceptor';
 import { fakeApiHistorialInterceptor } from './shared/fake-api/fake-api-historial.interceptor';
-import { NuevoEcgComponent } from './pages/nuevo-ecg/nuevo-ecg.component';
+import { fakeApiNuevoEcgInterceptor } from './shared/fake-api/fake-api-nuevo-ecg.interceptor';
+import { fakeApiPerfilSinteticoInterceptor } from './shared/fake-api/fake-api-perfil-sintetico.interceptor';
 
 
 const routes: Routes = [
@@ -98,6 +101,7 @@ const routes: Routes = [
 	  environment.isMockApiIniciarSesion ? [fakeApiLoginInterceptor] : [],
 	  environment.isMockApiEditarDatosInterceptor ? [fakeApiEditarDatosInterceptor] : [],
 	  environment.isMockApiHistorialInterceptor ? [fakeApiHistorialInterceptor] : [],
+	  environment.isMockApiNuevoEcgInterceptor ? [fakeApiNuevoEcgInterceptor] : [],
   ],
   bootstrap: [AppComponent]
 })
