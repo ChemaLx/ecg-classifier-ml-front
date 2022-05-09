@@ -41,7 +41,7 @@ body {
 }
 
 .container-box {
-    padding: 11vh 8vh 11vh 8vh;
+    padding: 11vh 8vw 11vh 8vw;
 }
 
 .azul-main {
@@ -176,4 +176,111 @@ a:active {
   
   .fadeIn {
     animation-name: fadeIn;
+  }
+  
+  .signup-container,
+  .signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .signup-form {
+    width: 100%;
+  }
+  
+  .text-mute {
+    color: #aaa;
+  }
+  
+ 
+  
+  .inp {
+    position: relative;
+  }
+  
+  
+  
+  
+  .label {
+    pointer-events: none;
+  
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 0.9rem;
+    opacity: 0;
+    color: #00000070;
+    font-weight: 500;
+    transition: all 0.2s;
+    transform-origin: left;
+  }
+  
+  .input-text {
+    font-family: inherit;
+    padding: 1rem 1rem 1rem 1rem;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 2rem;
+    background: #eee;
+    width: 100%;
+  }
+  
+  .input-text:focus {
+    outline-color: #2196f3;
+  }
+  
+  .input-text:not(:placeholder-shown)+.label,
+  .input-text:focus+.label {
+    top: -1.5rem;
+    transform: scale(0.75);
+    opacity: 1;
+  }
+  
+  .input-text:focus+.label {
+    color: #2196f3;
+  }
+  
+  .input-icon {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 2rem;
+    color: #00000070;
+  }
+  
+  .input-icon-password {
+    cursor: pointer;
+  }
+  
+  .pt-custom-login{
+    padding-top: 5vh;
+  }
+  
+  
+  @media only screen and (max-width: 938px) {
+  
+    .input-text:not(:placeholder-shown)+.label,
+  
+    .input-text:focus+.label {
+      top: -1.5rem;
+      transform: scale(0.75);
+      opacity: 1;
+    }
+  
+    .input-text:focus+.label {
+      color: #2196f3;
+    }
+  
+  
+  }
+  
+  @media only screen and (max-width: 574px) {
+    .pt-custom-login{
+      padding-top: 10vh;
+    }
+    .container-card {
+      width: 90%;
+    }
+  
   }

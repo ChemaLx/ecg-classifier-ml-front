@@ -25,6 +25,7 @@ import { PanelControlComponent } from './pages/panel-control/panel-control.compo
 import { fakeApiEditarDatosInterceptor } from './shared/fake-api/fake-api-editar-datos.interceptor';
 import { HistorialComponent } from './pages/historial/historial.component';
 import { fakeApiHistorialInterceptor } from './shared/fake-api/fake-api-historial.interceptor';
+import { NuevoEcgComponent } from './pages/nuevo-ecg/nuevo-ecg.component';
 
 
 const routes: Routes = [
@@ -60,6 +61,10 @@ const routes: Routes = [
 		path: 'editar',
 		component: EditComponent,
 	},
+	{
+		path: 'nueva-clasificacion',
+		component: NuevoEcgComponent,
+	},
 ]
 
 @NgModule({
@@ -75,7 +80,8 @@ const routes: Routes = [
     PerfilSinteticoComponent,
     NavbarComercialComponent,
     PanelControlComponent,
-    HistorialComponent
+    HistorialComponent,
+    NuevoEcgComponent
   ],
   imports: [
     BrowserModule,
