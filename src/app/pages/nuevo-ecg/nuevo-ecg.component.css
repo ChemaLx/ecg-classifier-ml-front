@@ -9,10 +9,39 @@
 }
 
 .hero-is-primary {
-    background: rgb(238, 174, 202);
-    background: linear-gradient(90deg, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+  background: #d9a7c7;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #fffcdc, #d9a7c7);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #fffcdc, #d9a7c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
 }
 
+.btn {
+    padding: 0.5rem;
+    border: none;
+    background: #2196f3;
+    color: rgb(241, 241, 241);
+    border-radius: 1rem;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: inherit;
+  }
+
+  .btn-login {
+    align-self: flex-end;
+    width: 8rem;
+    margin-top: 2rem;
+    box-shadow: 0 5px 5px #00000020;
+  }
+  
+  .btn-login:active {
+    box-shadow: none;
+  }
+  
+  .btn-login:hover {
+    background: #2180f9;
+  }
 /* .input-text {
     width: 30%;
   } */

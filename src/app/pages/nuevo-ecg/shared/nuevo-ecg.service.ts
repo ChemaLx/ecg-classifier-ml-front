@@ -19,12 +19,25 @@ export class NuevoEcgService {
 
   nuevoRegistroEcg(parametros: any[]): Observable<HttpResponse<any>> {
 	  console.log(this._utilService.prepararObjeto(parametros))
-		return this._httpClient.post(`${environment.api}/usuario/procesamiento/clasificar/json/`, this._utilService.prepararObjeto(parametros),
+		return this._httpClient.post(`${environment.api}/usuario/procesamiento/procesar/json/`, this._utilService.prepararObjeto(parametros),
 			{
 				headers: this.httpHeaders,
 				observe: 'response',
 			}
 		).pipe(map(resp => this._utilService.handleResponse(resp), this)
 		).pipe(catchError(error => this._utilService.handleError(error)))
+	}
+
+
+	recuperarDatosUsuario(){
+		/* uri: /recuperar/datos/usuario/${idUsuario} */
+		return this._httpClient.get(`${environment.api}/recuperar/datos/usuario/`,
+			{
+				headers: this.httpHeaders,
+				observe: 'response',
+			}
+		).pipe(map(resp => this._utilService.handleResponse(resp), this)
+		).pipe(catchError(error => this._utilService.handleError(error)))
+
 	}
 }

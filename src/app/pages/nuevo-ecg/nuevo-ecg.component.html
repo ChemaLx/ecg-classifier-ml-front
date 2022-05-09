@@ -6,73 +6,48 @@
             <h3 class="p-3 m-0 text-white">Ingresar nueva clasificación</h3>
         </div>
         <div class="card"
-            style="box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); min-height: 70vh;">
+            style="box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); min-height: auto;">
             <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
 
-                <form class="signup-form" [formGroup]="">
-                    <div class="row">
-
-                        <div class="col-12">
-
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                                    value="option1">
-                                <label class="form-check-label" for="inlineRadio1">Clasificacion propia</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                                    value="option2">
-                                <label class="form-check-label" for="inlineRadio2">El ECG pertenece a otra
-                                    persona</label>
-
-                            </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                                value="true" (click)="cambiarForm(true)">
+                            <label class="form-check-label" for="inlineRadio1">Clasificacion propia</label>
                         </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                                value="true" (click)="cambiarForm(false)">
+                            <label class="form-check-label" for="inlineRadio2">El ECG pertenece a otra
+                                persona</label>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="signup-form" [formGroup]="formGroupNuevoEcg" *ngIf="isEcgPropio">
+                    <div class="d-flex justify-content-center align-items-center mt-3"
+                        *ngIf="!isCargandoIngformacionUsuarioSuccess" style="min-height: 10vh;">
+                        <i class="fas fa-spinner fa-spin fa-5x"></i>
+                    </div>
+                    <div class="row" *ngIf="isCargandoIngformacionUsuarioSuccess">
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3"
+                            *ngIf="!isCargandoIngformacionUsuarioSuccess">
                             <div class="signup-form mt-3">
                                 <label class="inp">
-                                    <input type="text" class="input-text" placeholder="Nombre de usuario"
-                                        formControlName="usuario">
+                                    <input type="text" class="input-text" placeholder="Edad" formControlName="edad"
+                                        disabled>
                                     <span class="label">Edad</span>
-
                                 </label>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3"
+                            *ngIf="isCargandoIngformacionUsuarioSuccess">
                             <div class="signup-form mt-3">
                                 <label class="inp">
-                                    <input type="text" class="input-text" placeholder="Nombre de usuario"
-                                        formControlName="usuario">
+                                    <input type="text" class="input-text" placeholder="Sexo" formControlName="sexo"
+                                        disabled>
                                     <span class="label">Sexo</span>
-
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
-                            <div class="signup-form mt-3">
-                                <label class="inp">
-                                    <input type="text" class="input-text" placeholder="Nombre de usuario"
-                                        formControlName="usuario">
-                                    <span class="label">Inicio de analisis</span>
-
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
-                            <div class="signup-form mt-3">
-                                <label class="inp">
-                                    <input type="text" class="input-text" placeholder="Nombre de usuario"
-                                        formControlName="usuario">
-                                    <span class="label">Fin de analisis</span>
-
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
-                            <div class="signup-form mt-3">
-                                <label class="inp">
-                                    <input type="text" class="input-text" placeholder="Nombre de usuario"
-                                        formControlName="usuario">
-                                    <span class="label">Intervalo de analisis</span>
 
                                 </label>
                             </div>
@@ -85,25 +60,166 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
+                            <div class="signup-form mt-3">
+                                <label class="inp">
+                                    <input type="text" class="input-text" placeholder="Inicio de analisis"
+                                        formControlName="inicioAnalisis">
+                                    <span class="label">Inicio de analisis</span>
 
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
+                            <div class="signup-form mt-3">
+                                <label class="inp">
+                                    <input type="text" class="input-text" placeholder="Fin de analisis"
+                                        formControlName="finAnalisis">
+                                    <span class="label">Fin de analisis</span>
 
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
+                            <div class="signup-form mt-3">
+                                <label class="inp">
+                                    <input type="text" class="input-text" placeholder="Intervalo de analisis"
+                                        formControlName="intervaloAnalisis">
+                                    <span class="label">Intervalo de analisis</span>
 
-
-
-
-
-                        <!-- <button *ngIf="!isCargando" class="btn btn-login" (click)="iniciarSesion()"
-                            [disabled]="formGroupLogin.invalid">Enviar</button>
-                          <button *ngIf="isCargando" class="btn btn-login" disabled
-                            [disabled]="formGroupLogin.invalid">
-                            <i class="fas fa-spinner fa-spin fa-2x"></i>
-                          </button>
-                          <p class="text-danger mb-3" *ngIf="isLoginError">El usuario o contraseña que ingresaste son incorrectos.</p>
-                          <p class="text-mute">Aun no eres miembro? <a routerLink="/registry">Registrate</a></p> -->
-
+                                </label>
+                            </div>
+                        </div>
 
 
                     </div>
+                    
+                    <div class="row">
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex flex-column">
+                            <div class="d-flex align-items-center">
+                                <button class="btn-sec btn-cancel me-1 mt-1" routerLink="/panel">Cancelar</button>
+                                <button *ngIf="!isCargando" class="btn btn-login mt-1" (click)="cargarNuevoEcg()"
+                                    [disabled]="formGroupNuevoEcg.invalid">Enviar</button>
+                                <button *ngIf="isCargando" class="btn btn-login mt-1" disabled
+                                    [disabled]="formGroupNuevoEcg.invalid">
+                                    <i class="fas fa-spinner fa-spin fa-1x"></i>
+                                </button>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </form>
+
+                <!-- ? inicio form de prosesamiento por lotes  -->
+                <form class="signup-form" [formGroup]="formGroupNuevoEcgPorLotes" *ngIf="isNotEcgPropio">
+                    <div class="row">
+
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
+                            <div class="signup-form mt-3">
+                                <label class="inp">
+                                    <input type="text" class="input-text" placeholder="Nombre" formControlName="nombre">
+                                    <span class="label">Nombre</span>
+
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
+                            <div class="signup-form mt-3">
+                                <label class="inp">
+                                    <input type="text" class="input-text" placeholder="Apellido paterno"
+                                        formControlName="apellidoPaterno">
+                                    <span class="label">Apellido paterno</span>
+
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
+                            <div class="signup-form mt-3">
+                                <label class="inp">
+                                    <input type="text" class="input-text" placeholder="Apellido materno"
+                                        formControlName="apellidoMaterno">
+                                    <span class="label">Apellido materno</span>
+
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
+                            <div class="signup-form mt-3">
+                                <label class="inp">
+                                    <input type="text" class="input-text" placeholder="Edad" formControlName="edad">
+                                    <span class="label">Edad</span>
+
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
+                            <div class="signup-form mt-3">
+                                <label class="inp">
+                                    <input type="text" class="input-text" placeholder="Sexo" formControlName="sexo">
+                                    <span class="label">Sexo</span>
+
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3 d-flex flex-column">
+                            <label for="formFile" class="form-label mb-0">Subir ECG</label>
+                            <div class="d-flex align-items-center justify-content-center">
+                                <div class="me-3">
+                                    <input class="form-control" type="file" id="formFile">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
+                            <div class="signup-form mt-3">
+                                <label class="inp">
+                                    <input type="text" class="input-text" placeholder="Inicio de analisis"
+                                        formControlName="inicioAnalisis">
+                                    <span class="label">Inicio de analisis</span>
+
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
+                            <div class="signup-form mt-3">
+                                <label class="inp">
+                                    <input type="text" class="input-text" placeholder="Fin de analisis"
+                                        formControlName="finAnalisis">
+                                    <span class="label">Fin de analisis</span>
+
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
+                            <div class="signup-form mt-3">
+                                <label class="inp">
+                                    <input type="text" class="input-text" placeholder="Intervalo de analisis"
+                                        formControlName="intervaloAnalisis">
+                                    <span class="label">Intervalo de analisis</span>
+
+                                </label>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex flex-column">
+                            <div class="d-flex align-items-center">
+                                <button class="btn-sec btn-cancel me-1 mt-1" routerLink="/panel">Cancelar</button>
+                                <button *ngIf="!isCargando" class="btn btn-login mt-1" (click)="cargarNuevoEcg()"
+                                    [disabled]="formGroupNuevoEcgPorLotes.invalid">Enviar</button>
+                                <button *ngIf="isCargando" class="btn btn-login mt-1" disabled
+                                    [disabled]="formGroupNuevoEcgPorLotes.invalid">
+                                    <i class="fas fa-spinner fa-spin fa-1x"></i>
+                                </button>
+
+                            </div>
+                        </div>
+
+                    </div>
+
                 </form>
 
             </div>
