@@ -9,6 +9,6 @@
   }
   
   .hero-is-primary {
-    background: rgb(255,226,147);
-    background: linear-gradient(131deg, rgba(255,226,147,1) 0%, rgba(227,179,45,1) 19%, rgba(196,149,16,1) 48%, rgba(106,70,0,1) 100%);    
+    background: rgb(238,215,174);
+    background: linear-gradient(90deg, rgba(238,215,174,1) 0%, rgba(255,173,56,1) 100%);   
   }
