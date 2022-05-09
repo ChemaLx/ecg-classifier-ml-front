@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   isMockEnabled: true,
   
-	api: 'http://mausanch:3000/api-ecg',
+	api: 'http://9.86.174.141:8090',
 
 	isMockApiPerfilSintetico: true,
 	isMockApiIniciarSesion: true,
