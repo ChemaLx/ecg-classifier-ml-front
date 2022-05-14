@@ -6,13 +6,13 @@ export const environment = {
   production: false,
   isMockEnabled: true,
   
-	api: 'http://9.86.174.141:8090',
+	api: 'http://acbb-189-208-208-239.ngrok.io',
 
-	isMockApiPerfilSintetico: true,
-	isMockApiIniciarSesion: true,
-	isMockApiEditarDatosInterceptor: true,
-	isMockApiHistorialInterceptor: true,
-	isMockApiNuevoEcgInterceptor: true,
+	isMockApiPerfilSintetico: false,
+	isMockApiIniciarSesion: false,
+	isMockApiEditarDatosInterceptor: false,
+	isMockApiHistorialInterceptor: false,
+	isMockApiNuevoEcgInterceptor: false,
 };
 
 /*
