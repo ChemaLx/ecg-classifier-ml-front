@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -94,7 +95,8 @@ const routes: Routes = [
 	ReactiveFormsModule,
     HttpClientModule,
     NgxChartsModule,
-	BrowserAnimationsModule
+	BrowserAnimationsModule,
+	NgxSliderModule
   ],
   providers: [
 	  environment.isMockApiPerfilSintetico ? [fakeApiPerfilSinteticoInterceptor] : [],
@@ -103,6 +105,7 @@ const routes: Routes = [
 	  environment.isMockApiHistorialInterceptor ? [fakeApiHistorialInterceptor] : [],
 	  environment.isMockApiNuevoEcgInterceptor ? [fakeApiNuevoEcgInterceptor] : [],
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
