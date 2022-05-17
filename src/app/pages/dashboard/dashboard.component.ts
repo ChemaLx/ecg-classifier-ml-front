@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
-import { multi } from 'src/app/shared/data';
+//import { multi } from 'src/app/shared/data';
+import { DashboardService } from './shared/dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -26,8 +27,9 @@ export class DashboardComponent implements OnInit {
     domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
   };
 
-  constructor() {
-    Object.assign(this, { multi });
+  constructor(private readonly _dashboardService: DashboardService) {
+    this.multi = this._dashboardService.ecg['ecg']
+    Object.assign(this, { multi: this.multi });
     this.view = [innerWidth / 1.4, 350];
   }
 
