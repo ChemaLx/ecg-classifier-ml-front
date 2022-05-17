@@ -31,8 +31,7 @@
                         <i class="fas fa-spinner fa-spin fa-5x"></i>
                     </div>
                     <div class="row" *ngIf="isCargandoIngformacionUsuarioSuccess">
-                        <div class="col-12 col-sm-6 col-md-4 col-lg-3"
-                            *ngIf="!isCargandoIngformacionUsuarioSuccess">
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3" *ngIf="isCargandoIngformacionUsuarioSuccess">
                             <div class="signup-form mt-3">
                                 <label class="inp">
                                     <input type="text" class="input-text" placeholder="Edad" formControlName="edad"
@@ -53,53 +52,27 @@
                             </div>
                         </div>
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3 d-flex flex-column">
-                            <label for="formFile" class="form-label mb-0">Subir ECG</label>
+                            <label for="formFile" class="form-label mb-0">Subir ECG (.csv)</label>
                             <div class="d-flex align-items-center justify-content-center">
-                                <div class="me-3">
-                                    <input class="form-control" type="file" id="formFile">
-                                </div>
+                                <input type="file" (change)="onFileSelect($event)" />
                             </div>
+                            <p class="text-danger" *ngIf="isCorrectExt"> formato no valido </p>
+                            <span *ngIf="f.electrocardiograma.touched && f.electrocardiograma.invalid">Ingresa un archivo</span>
                         </div>
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
-                            <div class="signup-form mt-3">
-                                <label class="inp">
-                                    <input type="text" class="input-text" placeholder="Inicio de analisis"
-                                        formControlName="inicioAnalisis">
-                                    <span class="label">Inicio de analisis</span>
-
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
-                            <div class="signup-form mt-3">
-                                <label class="inp">
-                                    <input type="text" class="input-text" placeholder="Fin de analisis"
-                                        formControlName="finAnalisis">
-                                    <span class="label">Fin de analisis</span>
-
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
-                            <div class="signup-form mt-3">
-                                <label class="inp">
-                                    <input type="text" class="input-text" placeholder="Intervalo de analisis"
-                                        formControlName="intervaloAnalisis">
-                                    <span class="label">Intervalo de analisis</span>
-
-                                </label>
-                            </div>
+                            <label class="form-label mb-0">Intervalo de analisis (minutos)</label>
+                            <ngx-slider [(value)]="value" [(highValue)]="highValue" [options]="options" style="background-color: #2196f3;"></ngx-slider>
                         </div>
 
 
                     </div>
-                    
+
                     <div class="row">
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex flex-column">
                             <div class="d-flex align-items-center">
                                 <button class="btn-sec btn-cancel me-1 mt-1" routerLink="/panel">Cancelar</button>
                                 <button *ngIf="!isCargando" class="btn btn-login mt-1" (click)="cargarNuevoEcg()"
-                                    [disabled]="formGroupNuevoEcg.invalid">Enviar</button>
+                                    [disabled]="formGroupNuevoEcg.invalid || isCorrectExt==true">Enviar</button>
                                 <button *ngIf="isCargando" class="btn btn-login mt-1" disabled
                                     [disabled]="formGroupNuevoEcg.invalid">
                                     <i class="fas fa-spinner fa-spin fa-1x"></i>
@@ -155,51 +128,31 @@
                             </div>
                         </div>
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
-                            <div class="signup-form mt-3">
-                                <label class="inp">
-                                    <input type="text" class="input-text" placeholder="Sexo" formControlName="sexo">
-                                    <span class="label">Sexo</span>
-
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3 d-flex flex-column">
-                            <label for="formFile" class="form-label mb-0">Subir ECG</label>
-                            <div class="d-flex align-items-center justify-content-center">
-                                <div class="me-3">
-                                    <input class="form-control" type="file" id="formFile">
+                            <label class="form-label mb-0">Sexo</label>
+                            <div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="sexo" id="inlineRadio3"
+                                        value="0" formControlName="sexo">
+                                    <label class="form-check-label" for="inlineRadio3">Masculino</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="sexo" id="inlineRadio4"
+                                        value="1" formControlName="sexo">
+                                    <label class="form-check-label" for="inlineRadio4">Femenino</label>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
-                            <div class="signup-form mt-3">
-                                <label class="inp">
-                                    <input type="text" class="input-text" placeholder="Inicio de analisis"
-                                        formControlName="inicioAnalisis">
-                                    <span class="label">Inicio de analisis</span>
-
-                                </label>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3 d-flex flex-column">
+                            <label for="formFile" class="form-label mb-0">Subir ECG (.csv)</label>
+                            <div class="d-flex align-items-center justify-content-center">
+                                <input type="file" (change)="onFileSelect($event)" />
                             </div>
+                            <p class="text-danger" *ngIf="isCorrectExt"> formato no valido </p>
+                            <span *ngIf="f.electrocardiograma.touched && f.electrocardiograma.invalid">Ingresa un archivo</span>
                         </div>
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
-                            <div class="signup-form mt-3">
-                                <label class="inp">
-                                    <input type="text" class="input-text" placeholder="Fin de analisis"
-                                        formControlName="finAnalisis">
-                                    <span class="label">Fin de analisis</span>
-
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
-                            <div class="signup-form mt-3">
-                                <label class="inp">
-                                    <input type="text" class="input-text" placeholder="Intervalo de analisis"
-                                        formControlName="intervaloAnalisis">
-                                    <span class="label">Intervalo de analisis</span>
-
-                                </label>
-                            </div>
+                            <label class="form-label mb-0">Intervalo de analisis (minutos)</label>
+                            <ngx-slider [(value)]="value" [(highValue)]="highValue" [options]="options" style="background-color: #2196f3;"></ngx-slider>
                         </div>
 
 

@@ -22,7 +22,7 @@ export class LoginService {
 		}
     console.log(httpParams)
     
-		return this._httpClient.get('/inicio',
+		return this._httpClient.get('/iniciar-sesion',
 			{
 				headers: this.httpHeaders,
 				observe: 'response',
