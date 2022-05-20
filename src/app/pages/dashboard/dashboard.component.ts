@@ -9,7 +9,9 @@ import { DashboardService } from './shared/dashboard.service';
 })
 export class DashboardComponent implements OnInit {
   multi: any[];
-  view: [number, number] = [700, 350];;
+  datos = {}
+  view: [number, number] = [700, 350];
+  isDatosVacios = false
 
   // options
   legend: boolean = true;
@@ -28,8 +30,11 @@ export class DashboardComponent implements OnInit {
   };
 
   constructor(private readonly _dashboardService: DashboardService) {
-    this.multi = this._dashboardService.ecg['ecg']
-    Object.assign(this, { multi: this.multi });
+    this.datos = this._dashboardService.ecg
+    if(!Boolean(this.datos['ecg'])){
+      this.isDatosVacios = true
+    }
+    Object.assign(this, { multi: this.datos['ecg'] });
     this.view = [innerWidth / 1.4, 350];
   }
 
