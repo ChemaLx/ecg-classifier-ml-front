@@ -27,4 +27,15 @@ export class EditService {
 		).pipe(map(resp => this._utilService.handleResponse(resp), this)
 		).pipe(catchError(error => this._utilService.handleError(error)))
 	}
+
+
+  guardarNuevosDatos(parametros): Observable<HttpResponse<any>> {
+		return this._httpClient.post(`${environment.api}/usuario/actualizar/info/`, this._utilService.prepararObjeto(parametros) , 
+			{
+				headers: this.httpHeaders,
+				observe: 'response',
+			}
+		).pipe(map(resp => this._utilService.handleResponse(resp), this)
+		).pipe(catchError(error => this._utilService.handleError(error)))
+	}
 }

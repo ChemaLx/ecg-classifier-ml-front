@@ -1,6 +1,22 @@
 <app-navbar></app-navbar>
 <section class="blanco animated fadeIn" id="services">
         <div class="container-box">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert"
+                        *ngIf="isErrorContacto || isError">
+                        <div>
+                                <h5><strong>Ups...!</strong> sucedio algo inesperado.</h5>
+                                <p class="m-0">Descripción del error: 501 internal server error</p>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <div class="alert alert-success alert-dismissible fade show"
+                        *ngIf="isInfoActualizada">
+                        <div>
+                                <h5>Todos los cambios se han guardado con exito.</h5>
+                                
+                        </div>
+                        <button type="button" class="btn-close" (click)="isInfoActualizada = !isInfoActualizada"></button>
+                </div>
                 <div class="hero hero-is-primary d-flex justify-content-start align-items-center"
                         style="box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);">
                         <h3 class="p-3 m-0 text-white">Editar perfil</h3>
@@ -14,185 +30,238 @@
                         <div class="card-body" *ngIf="!isCargando">
 
                                 <div class="row">
-                                        <div class="col-12 mt-3">
-                                                <div class="card" style="border: 1px solid rgb(224, 224, 224);">
-                                                        <div class="card-body d-flex flex-column align-items-start">
-                                                                <div class="d-flex flex-wrap justify-content-between w-100 my-3">
-                                                                        <h5 class="card-title m-0">Informacion basica
-                                                                        </h5>
-                                                                        <div>
-                                                                                <button type="button"
-                                                                                        class="btn btn-success"
-                                                                                        (click)="isEditarActive=true"
-                                                                                        [disabled]="isEditarActive">
-                                                                                        <i class="fa fa-pencil"
-                                                                                                aria-hidden="true"></i>
-                                                                                </button>
-                                                                                <button type="button"
-                                                                                        class="ms-1 btn btn-success"
-                                                                                        *ngIf="isEditarActive"
-                                                                                        (click)="guardarNuevaInfo()">
-                                                                                        <i class="fa fa-floppy-o"
-                                                                                                aria-hidden="true"></i>
-                                                                                </button>
+                                        <form [formGroup]="formGroupEditarDatosUser" novalidate>
 
+                                                <div class="col-12 mt-3">
+                                                        <div class="card" style="border: 1px solid rgb(224, 224, 224);">
+                                                                <div
+                                                                        class="card-body d-flex flex-column align-items-start">
+                                                                        <div
+                                                                                class="d-flex flex-wrap justify-content-between w-100 my-3">
+                                                                                <h5 class="card-title m-0">Información
+                                                                                        basica
+                                                                                </h5>
+                                                                                <div>
+                                                                                        <button type="button"
+                                                                                                class="me-1 btn btn-success"
+                                                                                                *ngIf="isEditarActive"
+                                                                                                (click)="guardarNuevaInfo()"
+                                                                                                [disabled]="isEdadMal">
+                                                                                                <i class="fa fa-floppy-o"
+                                                                                                        aria-hidden="true"></i>
+                                                                                        </button>
+                                                                                        <button type="button"
+                                                                                                class="btn btn-success"
+                                                                                                (click)="isEditarActive=true"
+                                                                                                [disabled]="isEditarActive">
+                                                                                                <i class="fa fa-pencil"
+                                                                                                        aria-hidden="true"></i>
+                                                                                        </button>
+
+                                                                                </div>
                                                                         </div>
+                                                                        <div class="row w-100">
+                                                                                <div
+                                                                                        class="col-12 col-sm-3 col-md-3 col-lg-3">
+                                                                                        <p class="m-0">Nombre</p>
+                                                                                </div>
+                                                                                <div
+                                                                                        class="col-12 col-sm-9 col-md-9 col-lg-9">
+                                                                                        <p class="m-0"
+                                                                                                *ngIf="!isEditarActive">
+                                                                                                {{informacionPersonal['nombre']}}
+                                                                                        </p>
+                                                                                        <input *ngIf="isEditarActive"
+                                                                                                type="text" name=""
+                                                                                                id=""
+                                                                                                value="{{informacionPersonal['nombre']}}"
+                                                                                                formControlName="nombre"
+                                                                                                trim="blur">
+                                                                                </div>
+                                                                        </div>
+                                                                        <hr class="my-2"
+                                                                                style="width: 100%; color: rgb(143, 143, 143);">
+                                                                        <div class="row w-100">
+                                                                                <div
+                                                                                        class="col-12 col-sm-3 col-md-3 col-lg-3">
+                                                                                        <p class="m-0">Apellido paterno
+                                                                                        </p>
+                                                                                </div>
+                                                                                <div
+                                                                                        class="col-12 col-sm-9 col-md-9 col-lg-9">
+                                                                                        <p class="m-0"
+                                                                                                *ngIf="!isEditarActive">
+                                                                                                {{informacionPersonal['apellidoPaterno']}}
+                                                                                        </p>
+                                                                                        <input *ngIf="isEditarActive"
+                                                                                                type="text" name=""
+                                                                                                id=""
+                                                                                                value="{{informacionPersonal['apellidoPaterno']}}"
+                                                                                                formControlName="apellidoPaterno"
+                                                                                                trim="blur">
+                                                                                </div>
+                                                                        </div>
+                                                                        <hr class="my-2"
+                                                                                style="width: 100%; color: rgb(143, 143, 143);">
+                                                                        <div class="row w-100">
+                                                                                <div
+                                                                                        class="col-12 col-sm-3 col-md-3 col-lg-3">
+                                                                                        <p class="m-0">Apellido materno
+                                                                                        </p>
+                                                                                </div>
+                                                                                <div
+                                                                                        class="col-12 col-sm-9 col-md-9 col-lg-9">
+                                                                                        <p class="m-0"
+                                                                                                *ngIf="!isEditarActive">
+                                                                                                {{informacionPersonal['apellidoMaterno']}}
+                                                                                        </p>
+                                                                                        <input *ngIf="isEditarActive"
+                                                                                                type="text" name=""
+                                                                                                id=""
+                                                                                                [value]="informacionPersonal['apellidoMaterno']"
+                                                                                                formControlName="apellidoMaterno"
+                                                                                                trim="blur">
+                                                                                </div>
+                                                                        </div>
+                                                                        <hr class="my-2"
+                                                                                style="width: 100%; color: rgb(143, 143, 143);">
+                                                                        <div class="row w-100">
+                                                                                <div
+                                                                                        class="col-12 col-sm-3 col-md-3 col-lg-3">
+                                                                                        <p class="m-0">Edad</p>
+                                                                                </div>
+                                                                                <div
+                                                                                        class="col-12 col-sm-9 col-md-9 col-lg-9">
+                                                                                        <p class="m-0"
+                                                                                                *ngIf="!isEditarActive">
+                                                                                                {{informacionPersonal['edad']}}
+                                                                                        </p>
+                                                                                        <input *ngIf="isEditarActive"
+                                                                                                type="text" name=""
+                                                                                                id=""
+                                                                                                value="{{informacionPersonal['edad']}}"
+                                                                                                formControlName="fechaNacimiento"
+                                                                                                trim="blur"
+                                                                                                digitOnly>
+                                                                                        <p *ngIf="isEdadMal">La edad se
+                                                                                                sale del rango (1-100
+                                                                                                años)</p>
+                                                                                </div>
+                                                                        </div>
+                                                                        <hr class="my-2"
+                                                                                style="width: 100%; color: rgb(143, 143, 143);">
+                                                                        <div class="row w-100">
+                                                                                <div
+                                                                                        class="col-12 col-sm-3 col-md-3 col-lg-3">
+                                                                                        <p class="m-0">Sexo</p>
+                                                                                </div>
+                                                                                <div
+                                                                                        class="col-12 col-sm-9 col-md-9 col-lg-9">
+                                                                                        <p class="m-0">
+                                                                                                {{this.f.sexo.value}}
+                                                                                        </p>
+                                                                                        <!-- <input *ngIf="isEditarActive"
+                                                                                                type="text" name="" id=""
+                                                                                                value="{{informacionPersonal['sexo']}}" formControlName="sexo"> -->
+                                                                                </div>
+                                                                        </div>
+
                                                                 </div>
-                                                                <div class="row w-100">
-                                                                        <div class="col-12 col-sm-3 col-md-3 col-lg-3">
-                                                                                <p class="m-0">Nombre</p>
-                                                                        </div>
-                                                                        <div class="col-12 col-sm-9 col-md-9 col-lg-9">
-                                                                                <p class="m-0" *ngIf="!isEditarActive">
-                                                                                        {{informacionPersonal['nombre']}}
-                                                                                </p>
-                                                                                <input *ngIf="isEditarActive"
-                                                                                        type="text" name="" id=""
-                                                                                        value="{{informacionPersonal['nombre']}}">
-                                                                        </div>
-                                                                </div>
-                                                                <hr class="my-2"
-                                                                        style="width: 100%; color: rgb(143, 143, 143);">
-                                                                <div class="row w-100">
-                                                                        <div class="col-12 col-sm-3 col-md-3 col-lg-3">
-                                                                                <p class="m-0">Apellido paterno</p>
-                                                                        </div>
-                                                                        <div class="col-12 col-sm-9 col-md-9 col-lg-9">
-                                                                                <p class="m-0" *ngIf="!isEditarActive">
-                                                                                        {{informacionPersonal['apellidoPaterno']}}
-                                                                                </p>
-                                                                                <input *ngIf="isEditarActive"
-                                                                                        type="text" name="" id=""
-                                                                                        value="{{informacionPersonal['apellidoPaterno']}}">
-                                                                        </div>
-                                                                </div>
-                                                                <hr class="my-2"
-                                                                        style="width: 100%; color: rgb(143, 143, 143);">
-                                                                <div class="row w-100">
-                                                                        <div class="col-12 col-sm-3 col-md-3 col-lg-3">
-                                                                                <p class="m-0">Apellido materno</p>
-                                                                        </div>
-                                                                        <div class="col-12 col-sm-9 col-md-9 col-lg-9">
-                                                                                <p class="m-0" *ngIf="!isEditarActive">
-                                                                                        {{informacionPersonal['apellidoMaterno']}}
-                                                                                </p>
-                                                                                <input *ngIf="isEditarActive"
-                                                                                        type="text" name="" id=""
-                                                                                        value="{{informacionPersonal['apellidoMaterno']}}">
-                                                                        </div>
-                                                                </div>
-                                                                <hr class="my-2"
-                                                                        style="width: 100%; color: rgb(143, 143, 143);">
-                                                                <div class="row w-100">
-                                                                        <div class="col-12 col-sm-3 col-md-3 col-lg-3">
-                                                                                <p class="m-0">Edad</p>
-                                                                        </div>
-                                                                        <div class="col-12 col-sm-9 col-md-9 col-lg-9">
-                                                                                <p class="m-0" *ngIf="!isEditarActive">
-                                                                                        {{informacionPersonal['edad']}}
-                                                                                </p>
-                                                                                <input *ngIf="isEditarActive"
-                                                                                        type="text" name="" id=""
-                                                                                        value="{{informacionPersonal['edad']}}">
-                                                                        </div>
-                                                                </div>
-                                                                <hr class="my-2"
-                                                                        style="width: 100%; color: rgb(143, 143, 143);">
-                                                                <div class="row w-100">
-                                                                        <div class="col-12 col-sm-3 col-md-3 col-lg-3">
-                                                                                <p class="m-0">Sexo</p>
-                                                                        </div>
-                                                                        <div class="col-12 col-sm-9 col-md-9 col-lg-9">
-                                                                                <p class="m-0" *ngIf="!isEditarActive">
-                                                                                        {{informacionPersonal['sexo']}}
-                                                                                </p>
-                                                                                <input *ngIf="isEditarActive"
-                                                                                        type="text" name="" id=""
-                                                                                        value="{{informacionPersonal['sexo']}}">
-                                                                        </div>
-                                                                </div>
-                                                                <hr class="my-2"
-                                                                        style="width: 100%; color: rgb(143, 143, 143);">
-                                                                <div class="row w-100">
-                                                                        <div class="col-12 col-sm-3 col-md-3 col-lg-3">
-                                                                                <p class="m-0">Pais</p>
-                                                                        </div>
-                                                                        <div class="col-12 col-sm-9 col-md-9 col-lg-9">
-                                                                                <p class="m-0" *ngIf="!isEditarActive">
-                                                                                        {{informacionPersonal['pais']}}
-                                                                                </p>
-                                                                                <input *ngIf="isEditarActive"
-                                                                                        type="text" name="" id=""
-                                                                                        value="{{informacionPersonal['pais']}}">
-                                                                        </div>
-                                                                </div>
-                                                                
                                                         </div>
                                                 </div>
-                                        </div>
-                                        <div class="col-12 my-3">
-                                                <div class="card" style="border: 1px solid rgb(224, 224, 224);">
-                                                        <div class="card-body d-flex flex-column align-items-start">
-                                                                <div class="d-flex justify-content-between flex-wrap w-100 my-3">
-                                                                        <h5 class="card-title m-0">Informacion de
-                                                                                contacto</h5>
-                                                                        <div>
-                                                                                <button type="button"
-                                                                                        class="btn btn-success"
-                                                                                        (click)="isEditarContactoActive=true"
-                                                                                        [disabled]="isEditarContactoActive">
-                                                                                        <i class="fa fa-pencil"
-                                                                                                aria-hidden="true"></i>
-                                                                                </button>
-                                                                                <button type="button"
-                                                                                        class="ms-1 btn btn-success"
-                                                                                        *ngIf="isEditarContactoActive"
-                                                                                        (click)="guardarNuevaInfoContacto()">
-                                                                                        <i class="fa fa-floppy-o"
-                                                                                                aria-hidden="true"></i>
-                                                                                </button>
+                                                <div class="col-12 my-3">
+                                                        <div class="card" style="border: 1px solid rgb(224, 224, 224);">
+                                                                <div
+                                                                        class="card-body d-flex flex-column align-items-start">
+                                                                        <div
+                                                                                class="d-flex justify-content-between flex-wrap w-100 my-3">
+                                                                                <h5 class="card-title m-0">Informacion
+                                                                                        de
+                                                                                        contacto</h5>
+                                                                                <div>
+                                                                                        <button type="button"
+                                                                                                class="me-1 btn btn-success"
+                                                                                                *ngIf="isEditarContactoActive"
+                                                                                                (click)="guardarNuevaInfo()"
+                                                                                                [disabled]="isEdadMal">
+                                                                                                <i class="fa fa-floppy-o"
+                                                                                                        aria-hidden="true"></i>
+                                                                                        </button>
+                                                                                        <button type="button"
+                                                                                                class="btn btn-success"
+                                                                                                (click)="isEditarContactoActive=true"
+                                                                                                [disabled]="isEditarContactoActive">
+                                                                                                <i class="fa fa-pencil"
+                                                                                                        aria-hidden="true"></i>
+                                                                                        </button>
 
+
+                                                                                </div>
                                                                         </div>
-                                                                </div>
-                                                                <div class="row w-100">
-                                                                        <div class="col-12 col-sm-3 col-md-3 col-lg-3">
-                                                                                <p>Correo electronico</p>
+                                                                        <div class="row w-100">
+                                                                                <div
+                                                                                        class="col-12 col-sm-3 col-md-3 col-lg-3">
+                                                                                        <p>Correo electronico</p>
+                                                                                </div>
+                                                                                <div
+                                                                                        class="col-12 col-sm-9 col-md-9 col-lg-9">
+                                                                                        <p
+                                                                                                *ngIf="!isEditarContactoActive">
+                                                                                                {{informacionPersonal['correoElectronico']}}
+                                                                                        </p>
+                                                                                        <input *ngIf="isEditarContactoActive"
+                                                                                                type="text" name=""
+                                                                                                id=""
+                                                                                                value="{{informacionPersonal['correoElectronico']}}"
+                                                                                                formControlName="correoElectronico"
+                                                                                                trim="blur">
+                                                                                </div>
                                                                         </div>
-                                                                        <div class="col-12 col-sm-9 col-md-9 col-lg-9">
-                                                                                <p *ngIf="!isEditarContactoActive">
-                                                                                        {{informacionPersonal['correoElectronico']}}
-                                                                                </p>
-                                                                                <input *ngIf="isEditarContactoActive"
-                                                                                        type="text" name="" id=""
-                                                                                        value="{{informacionPersonal['correoElectronico']}}">
+                                                                        <hr class="my-2"
+                                                                                style="width: 100%; color: rgb(143, 143, 143);">
+                                                                        <div class="row w-100">
+                                                                                <div
+                                                                                        class="col-12 col-sm-3 col-md-3 col-lg-3">
+                                                                                        <p class="m-0">Contraseña</p>
+                                                                                </div>
+                                                                                <div
+                                                                                        class="col-12 col-sm-9 col-md-9 col-lg-9">
+                                                                                        <p class="m-0"
+                                                                                                *ngIf="!isEditarContactoActive">
+                                                                                                *********
+                                                                                        </p>
+                                                                                        <div class="input-group"
+                                                                                                *ngIf="isEditarContactoActive">
+                                                                                                <input [type]="isContrasenaVisible ? 'text' : 'password'"
+                                                                                                        value="{{informacionPersonal['contrasena']}}"
+                                                                                                        formControlName="contrasena"
+                                                                                                        trim="blur">
+                                                                                                <div
+                                                                                                        class="input-group-append">
+                                                                                                        <button id="boton-cadena-add-amb"
+                                                                                                                class="btn btn-secondary"
+                                                                                                                type="button"
+                                                                                                                ngbTooltip="Ver contraseña"
+                                                                                                                placement="top"
+                                                                                                                (click)="this.isContrasenaVisible = !this.isContrasenaVisible"><i
+                                                                                                                        class="far fa-eye"></i></button>
+                                                                                                </div>
+                                                                                        </div>
+                                                                                </div>
                                                                         </div>
-                                                                </div>
-                                                                <hr class="my-2"
-                                                                        style="width: 100%; color: rgb(143, 143, 143);">
-                                                                <div class="row w-100">
-                                                                        <div class="col-12 col-sm-3 col-md-3 col-lg-3">
-                                                                                <p class="m-0">Contraseña</p>
-                                                                        </div>
-                                                                        <div class="col-12 col-sm-9 col-md-9 col-lg-9">
-                                                                                <p class="m-0" *ngIf="!isEditarContactoActive">
-                                                                                        {{informacionPersonal['contrasena']}}
-                                                                                </p>
-                                                                                <input *ngIf="isEditarContactoActive"
-                                                                                        type="text" name="" id=""
-                                                                                        value="{{informacionPersonal['contrasena']}}">
-                                                                        </div>
+
                                                                 </div>
 
                                                         </div>
-
                                                 </div>
-                                        </div>
+                                        </form>
 
                                 </div>
                                 <div class="row">
                                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3 d-flex flex-column">
                                                 <div class="d-flex align-items-center">
-                                                        <button class="btn-sec btn-cancel me-1 mb-3" style="margin-top: 0;"
+                                                        <button class="btn-sec btn-cancel me-1 mb-3"
+                                                                style="margin-top: 0;"
                                                                 routerLink="/panel">Volver</button>
                                                 </div>
                                         </div>
