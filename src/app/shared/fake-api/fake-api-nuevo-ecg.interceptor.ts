@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpResponse, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Observable, of, throwError, timer } from 'rxjs';
 import { delay, switchMap } from 'rxjs/operators';
+import datos_ECG from './data/fa-ecg-class.json'
 
 @Injectable()
 export class FakeApiNuevoEcgInterceptor implements HttpInterceptor {
@@ -15,7 +16,7 @@ export class FakeApiNuevoEcgInterceptor implements HttpInterceptor {
 
     switch (true) {
       // lista
-      case url.endsWith('/usuario/procesamiento/procesar/json/') && method === 'POST':
+      case url.endsWith('/procesar') && method === 'POST':
         return procesarNuevoEcg()
       case url.endsWith('/recuperar/datos/usuario/') && method === 'GET':
         return recuperarDatosUsuario()
@@ -31,7 +32,7 @@ export class FakeApiNuevoEcgInterceptor implements HttpInterceptor {
       if (resp === 0) {
         return of(new HttpResponse({
           status: 200,
-          body: { clasificacion_arritmia: '0' }
+          body: datos_ECG
         })).pipe(delay(2000))
       } else if (resp === 1) {
         return timer(2000).pipe(

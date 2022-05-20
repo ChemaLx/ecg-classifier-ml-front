@@ -17,6 +17,8 @@ export class FakeApiEditarDatosInterceptor implements HttpInterceptor {
       // lista
       case url.endsWith('/usuario/recuperar/info/') && method === 'GET':
         return recuperarInfoUsuario()
+      case url.endsWith('/usuario/actualizar/info/') && method === 'POST':
+        return actualizarInfoUsuario()
 
       default:
         return next.handle(request);
@@ -32,10 +34,30 @@ export class FakeApiEditarDatosInterceptor implements HttpInterceptor {
             apellido_paterno: "Flores",
             apellido_materno: "Lima",
             edad: 25,
-            sexo: 1,
+            sexo: 0,
             pais: "Mexico",
             contraseña: "richardo69cool",
             correo_electronico: "ricardocool@gmail.com",
+          }
+        })).pipe(delay(2000))
+      } else if (resp === 1) {
+        return timer(2000).pipe(
+          switchMap(() => throwError({
+            status: 500,
+            error: {
+              mensaje: 'Ocurrió un error inesperado al recuperar las aclaraciones.'
+            }
+          }))
+        )
+      }
+    }
+
+    function actualizarInfoUsuario(resp = 0) {
+      if (resp === 0) {
+        return of(new HttpResponse({
+          status: 200,
+          body: {
+            ok: 'informacion actualizada'
           }
         })).pipe(delay(2000))
       } else if (resp === 1) {

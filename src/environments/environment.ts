@@ -12,7 +12,7 @@ export const environment = {
 	isMockApiIniciarSesion: true,
 	isMockApiEditarDatosInterceptor: true,
 	isMockApiHistorialInterceptor: true,
-	isMockApiNuevoEcgInterceptor: false,
+	isMockApiNuevoEcgInterceptor: true,
 };
 
 /*
