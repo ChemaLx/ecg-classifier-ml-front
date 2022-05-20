@@ -10,6 +10,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { NgxTrimDirectiveModule } from 'ngx-trim-directive';
+import { DigitOnlyModule } from '@uiowa/digit-only';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -96,7 +98,9 @@ const routes: Routes = [
     HttpClientModule,
     NgxChartsModule,
 	BrowserAnimationsModule,
-	NgxSliderModule
+	NgxSliderModule,
+	NgxTrimDirectiveModule,
+	DigitOnlyModule
   ],
   providers: [
 	  environment.isMockApiPerfilSintetico ? [fakeApiPerfilSinteticoInterceptor] : [],
