@@ -1,61 +1,151 @@
 <app-navbar-comercial></app-navbar-comercial>
-<div class="d-flex justify-content-center align-items-center h-100-cu flex-wrap" style="background-color: #c3d7ec; min-height: 100vh;">
-        <div class="container-card" style="margin: 4.5rem 0rem 5rem 0rem;">
-            <div class="card container-login text-center sombra">
-                <div class="d-flex justify-content-center mb-3">
-                    <img src="assets\img\logo-ecg.png" style="height: 100px; width: 100px;">
-                </div>
-                <h1 class="heading-primary">Registrate<span class="span-blue">.</span></h1>
-                <p>Es facil y rapido</p>
-            
-                <div class="d-flex justify-content-center w-100">
-                    <form class="signup-form">
-                      <label class="inp">
-                        <input type="email" class="input-text" placeholder="Nombre de usuario">
-                        <span class="label">Nombre</span>
-    
-                      </label>
-                      <label class="inp">
-                        <input type="email" class="input-text" placeholder="Apellido paterno">
-                        <span class="label">Apellido paterno</span>
-    
-                      </label>
-                      <label class="inp">
-                        <input type="email" class="input-text" placeholder="Apellido materno">
-                        <span class="label">Apellido materno</span>
-    
-                      </label>
-                      
-                      <label class="inp">
-                        <input type="email" class="input-text" placeholder="Correo electronico">
-                        <span class="label">Correo electronico</span>
-    
-                      </label>
 
-                      <label class="inp">
-                        <input type="password" class="input-text" placeholder="Contraseña" id="password">
-                        <span class="label">Contraseña</span>
-                      </label>
-                      
-                      
-                      <label class="inp">
-                        <input type="date" class="input-text" placeholder="Fecha de nacimiento">
-                        <span class="label">Fecha de nacimiento</span>
-    
-                      </label>
 
-                      <label class="inp">
-                        <input type="email" class="input-text" placeholder="Sexo">
-                        <span class="label">Sexo</span>
-    
-                      </label>
-                      
-                      <button class="btn btn-login">Continuar</button>
-                      <p class="text-mute">Ya tienes una cuenta? <a routerLink="/login">Inicia sesion</a></p>
-                    </form>
-        
-                </div>
-            </div>
-    
-        </div>
+<app-navbar-comercial></app-navbar-comercial>
+
+<div class="d-flex justify-content-center align-items-center h-100-cu flex-wrap"
+  style="background-color: #c3d7ec; min-height: 100vh;">
+  <div class="container-card">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="">
+      <div>
+        <h5><strong>Ups...!</strong> sucedio algo inesperado.</h5>
+        <p class="m-0">Descripción del error: 501 internal server error</p>
       </div>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <div class="card"
+      style="box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); min-height: auto;">
+      <div class="d-flex flex-column mt-3">
+        <div class="d-flex justify-content-center mb-3">
+          <img src="assets\img\logo-ecg.png" style="height: 100px; width: 100px;">
+        </div>
+        <h1 class="heading-primary text-center">Registrate<span class="span-blue">.</span></h1>
+        <p class=" text-center m-0">Es facil y rapido</p>
+      </div>
+      <div class="card-body">
+
+        <!-- ? inicio form de prosesamiento por lotes  -->
+        <form class="signup-form" [formGroup]="formGroupSignIn">
+          <div class="row">
+
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
+              <div class="signup-form mt-3">
+                <label class="inp">
+                  <input type="text" class="input-text" placeholder="Nombre de usuario" formControlName="username" trim="blur">
+                  <span class="label">Nombre de usuario</span>
+
+                </label>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
+              <div class="signup-form mt-3">
+                <label class="inp">
+                  <input type="text" class="input-text" placeholder="Correo electronico" formControlName="email" trim="blur">
+                  <span class="label">Correo electronico</span>
+
+                </label>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
+              <div class="signup-form mt-3">
+                <label class="inp">
+                  <input type="text" class="input-text" placeholder="Contraseña" formControlName="contrasena" trim="blur">
+                  <span class="label">Contraseña</span>
+
+                </label>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
+              <div class="signup-form mt-3">
+                <label class="inp">
+                  <input type="text" class="input-text" placeholder="Nombre" formControlName="nombre" trim="blur">
+                  <span class="label">Nombre</span>
+
+                </label>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
+              <div class="signup-form mt-3">
+                <label class="inp">
+                  <input type="text" class="input-text" placeholder="Apellido paterno" formControlName="apellidoPaterno"
+                    trim="blur">
+                  <span class="label">Apellido paterno</span>
+
+                </label>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
+              <div class="signup-form mt-3">
+                <label class="inp">
+                  <input type="text" class="input-text" placeholder="Apellido materno" formControlName="apellidoMaterno"
+                    trim="blur">
+                  <span class="label">Apellido materno</span>
+
+                </label>
+              </div>
+            </div>
+            <!-- TODO: falta la validacion de la edad con el ngdocheck -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
+              <div class="signup-form mt-3">
+                <label class="inp">
+                  <input class="input-text" type="date" id="start" name="trip-start" value="" min="1922-01-01"
+              max="{{ultimoDia}}" formControlName="edad">
+                  <span class="label">Edad</span>
+
+                </label>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
+              <label class="form-label mb-0">Sexo</label>
+              <div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="sexo" id="inlineRadio3" value="0"
+                    formControlName="sexo">
+                  <label class="form-check-label" for="inlineRadio3">Masculino</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="sexo" id="inlineRadio4" value="1"
+                    formControlName="sexo">
+                  <label class="form-check-label" for="inlineRadio4">Femenino</label>
+                </div>
+              </div>
+            </div>
+
+
+
+
+          </div>
+          <!-- <div class="row">
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex flex-column">
+                            <div class="d-flex align-items-center">
+                                <button class="btn-sec btn-cancel me-1 mt-1" routerLink="/panel">Cancelar</button>
+                                <button *ngIf="!isCargando" class="btn btn-login mt-1" (click)="cargarNuevoEcg()"
+                                    [disabled]="formGroupNuevoEcgPorLotes.invalid">Enviar</button>
+                                <button *ngIf="isCargando" class="btn btn-login mt-1" disabled
+                                    [disabled]="formGroupNuevoEcgPorLotes.invalid">
+                                    <i class="fas fa-spinner fa-spin fa-1x"></i>
+                                </button>
+
+                            </div>
+                        </div>
+
+                    </div> -->
+          <div class="row justify-content-center">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex flex-column">
+              <button class="btn btn-login mt-1" (click)="signIn()">Continuar</button>
+            </div>
+            <p class="text-mute mt-3 text-center">Ya tienes una cuenta? <a routerLink="/login" class="text-blue">Inicia sesion</a></p>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+
+
+
+
+
+  </div>
+</div>
