@@ -1,6 +1,13 @@
 <app-navbar></app-navbar>
 <section class="blanco animated fadeIn" id="services">
     <div class="container-box">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="isCargaError">
+            <div>
+                <h5><strong>Ups...!</strong> sucedio algo inesperado.</h5>
+                <p class="m-0">Descripción del error: 501 internal server error</p>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
         <div class="hero hero-is-primary d-flex justify-content-start align-items-center"
             style="box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);">
             <h3 class="p-3 m-0 text-white">Ingresar nueva clasificación</h3>
@@ -31,7 +38,8 @@
                         <i class="fas fa-spinner fa-spin fa-5x"></i>
                     </div>
                     <div class="row" *ngIf="isCargandoIngformacionUsuarioSuccess">
-                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3" *ngIf="isCargandoIngformacionUsuarioSuccess">
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3"
+                            *ngIf="isCargandoIngformacionUsuarioSuccess">
                             <div class="signup-form mt-3">
                                 <label class="inp">
                                     <input type="text" class="input-text" placeholder="Edad" formControlName="edad"
@@ -54,14 +62,16 @@
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3 d-flex flex-column">
                             <label for="formFile" class="form-label mb-0">Subir ECG (.csv)</label>
                             <div class="d-flex align-items-center justify-content-center">
-                                <input type="file" (change)="onFileSelect($event)" />
+                                <input id="input-1" type="file" (change)="onFileSelect($event)" />
                             </div>
                             <p class="text-danger" *ngIf="isCorrectExt"> formato no valido </p>
-                            <span *ngIf="f.electrocardiograma.touched && f.electrocardiograma.invalid">Ingresa un archivo</span>
+                            <span *ngIf="f.electrocardiograma.touched && f.electrocardiograma.invalid">Ingresa un
+                                archivo</span>
                         </div>
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
                             <label class="form-label mb-0">Intervalo de analisis (minutos)</label>
-                            <ngx-slider [(value)]="value" [(highValue)]="highValue" [options]="options" style="background-color: #2196f3;"></ngx-slider>
+                            <ngx-slider [(value)]="value" [(highValue)]="highValue" [options]="options"
+                                style="background-color: #2196f3;"></ngx-slider>
                         </div>
 
 
@@ -92,7 +102,7 @@
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
                             <div class="signup-form mt-3">
                                 <label class="inp">
-                                    <input type="text" class="input-text" placeholder="Nombre" formControlName="nombre">
+                                    <input type="text" class="input-text" placeholder="Nombre" formControlName="nombre" trim="blur">
                                     <span class="label">Nombre</span>
 
                                 </label>
@@ -102,7 +112,7 @@
                             <div class="signup-form mt-3">
                                 <label class="inp">
                                     <input type="text" class="input-text" placeholder="Apellido paterno"
-                                        formControlName="apellidoPaterno">
+                                        formControlName="apellidoPaterno" trim="blur">
                                     <span class="label">Apellido paterno</span>
 
                                 </label>
@@ -112,16 +122,17 @@
                             <div class="signup-form mt-3">
                                 <label class="inp">
                                     <input type="text" class="input-text" placeholder="Apellido materno"
-                                        formControlName="apellidoMaterno">
+                                        formControlName="apellidoMaterno" trim="blur">
                                     <span class="label">Apellido materno</span>
 
                                 </label>
                             </div>
                         </div>
+                        <!-- TODO: falta la validacion de la edad con el ngdocheck -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
                             <div class="signup-form mt-3">
                                 <label class="inp">
-                                    <input type="text" class="input-text" placeholder="Edad" formControlName="edad">
+                                    <input type="text" class="input-text" placeholder="Edad" formControlName="edad" trim="blur" digitOnly>
                                     <span class="label">Edad</span>
 
                                 </label>
@@ -131,13 +142,13 @@
                             <label class="form-label mb-0">Sexo</label>
                             <div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="sexo" id="inlineRadio3"
-                                        value="0" formControlName="sexo">
+                                    <input class="form-check-input" type="radio" name="sexo" id="inlineRadio3" value="0"
+                                        formControlName="sexo">
                                     <label class="form-check-label" for="inlineRadio3">Masculino</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="sexo" id="inlineRadio4"
-                                        value="1" formControlName="sexo">
+                                    <input class="form-check-input" type="radio" name="sexo" id="inlineRadio4" value="1"
+                                        formControlName="sexo">
                                     <label class="form-check-label" for="inlineRadio4">Femenino</label>
                                 </div>
                             </div>
@@ -145,14 +156,16 @@
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3 d-flex flex-column">
                             <label for="formFile" class="form-label mb-0">Subir ECG (.csv)</label>
                             <div class="d-flex align-items-center justify-content-center">
-                                <input type="file" (change)="onFileSelect($event)" />
+                                <input id="input-2" type="file" (change)="onFileSelect($event)" />
                             </div>
                             <p class="text-danger" *ngIf="isCorrectExt"> formato no valido </p>
-                            <span *ngIf="f.electrocardiograma.touched && f.electrocardiograma.invalid">Ingresa un archivo</span>
+                            <span *ngIf="f.electrocardiograma.touched && f.electrocardiograma.invalid">Ingresa un
+                                archivo</span>
                         </div>
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
                             <label class="form-label mb-0">Intervalo de analisis (minutos)</label>
-                            <ngx-slider [(value)]="value" [(highValue)]="highValue" [options]="options" style="background-color: #2196f3;"></ngx-slider>
+                            <ngx-slider [(value)]="value" [(highValue)]="highValue" [options]="options"
+                                style="background-color: #2196f3;"></ngx-slider>
                         </div>
 
 

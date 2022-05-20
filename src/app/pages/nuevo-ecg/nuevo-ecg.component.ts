@@ -56,21 +56,26 @@ export class NuevoEcgComponent implements OnInit {
     console.log(this.ultimoDia)
   }
 
+  recuperarDatosUsuario(){
+    this.isCargandoIngformacionUsuarioSuccess = false
+    this._nuevoEcgService.recuperarDatosUsuario('43214324').subscribe(res => {
+      this.isCargandoIngformacionUsuarioSuccess = true
+      this.datosUsuario = res.body/* ['body'] */
+      if (this.datosUsuario['sexo'] == 0) {
+        this.formGroupNuevoEcg.controls['sexo'].setValue('Masculino');
+      }
+      else {
+        this.formGroupNuevoEcg.controls['sexo'].setValue('Femenino');
+      }
+      this.formGroupNuevoEcg.controls['edad'].setValue(this.datosUsuario['edad']);
+    })
+  }
+
   cambiarForm(estado: boolean) {
     if (estado) {
       this.isEcgPropio = true
       this.isNotEcgPropio = false
-      this._nuevoEcgService.recuperarDatosUsuario('43214324').subscribe(res => {
-        this.isCargandoIngformacionUsuarioSuccess = true
-        this.datosUsuario = res.body['body']
-        if (this.datosUsuario['sexo'] == 0) {
-          this.formGroupNuevoEcg.controls['sexo'].setValue('Masculino');
-        }
-        else {
-          this.formGroupNuevoEcg.controls['sexo'].setValue('Femenino');
-        }
-        this.formGroupNuevoEcg.controls['edad'].setValue(this.datosUsuario['edad']);
-      })
+      this.recuperarDatosUsuario()
 
     }
     if (!estado) {
@@ -115,6 +120,13 @@ export class NuevoEcgComponent implements OnInit {
 
   limpiarFormulario() {
     this.formGroupNuevoEcg.reset()
+    this.formGroupNuevoEcgPorLotes.reset()
+    if(this.isEcgPropio){
+      const newLocal = (<HTMLInputElement>document.getElementById(`input-1`)).value = ""
+    }
+    if(this.isNotEcgPropio){
+      const newLocal = (<HTMLInputElement>document.getElementById(`input-2`)).value = ""
+    }
   }
 
   cargarNuevoEcg() {
@@ -172,12 +184,14 @@ export class NuevoEcgComponent implements OnInit {
       console.log(res)
       this._dashboardService.ecg = res.body
       this._router.navigate(['/dashboard'])
-
-
+      this.recuperarDatosUsuario()
+      
     }, err => {
       //this.error = err.error.details
+      this.limpiarFormulario()
       this.isCargaError = true
       this.isCargando = false
+      this.recuperarDatosUsuario()
 
     })
   }
@@ -191,9 +205,9 @@ export class NuevoEcgComponent implements OnInit {
     if (this.validateFile(this.archivoTxt.name)) {
       this.isCorrectExt = false
       fileReader.onload = (e) => {
-        const ArrregloCuentasSinFormato = (e.target.result as string).split('\n');
+        const ArrregloMuestrasSenial = (e.target.result as string).split('\r\n');
   
-        ArrregloCuentasSinFormato.forEach(element => {
+        ArrregloMuestrasSenial.forEach(element => {
           parametros.push(element)
         });
       }
