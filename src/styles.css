@@ -3,7 +3,7 @@ body {
   background-color: white;
 }
 
-
+a:hover { cursor: pointer; } 
 
 .container-fix {
   min-height: 60vh;
@@ -64,7 +64,7 @@ body {
 .grid-dad {
   width: 100%;
   height: 100%;
-  padding: 3em;
+  /* padding: 3em; */
   display: grid;
   grid-auto-rows: auto;
   grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
@@ -145,7 +145,7 @@ a:active {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
-@media only screen and (max-width: 938px) {}
+/* @media only screen and (max-width: 938px) {} */
 
 @media only screen and (max-width: 574px) {
   .container-box {
