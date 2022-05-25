@@ -45,15 +45,8 @@ export class RegistryComponent implements OnInit {
         }
         
       }
-      /* if (key === 'sexo') {
-        if (Boolean(this.f[key].value == 'Femenino')) {
-          params.push({ parametro: 'sexo', valor: '1' })
-        }
-        else if (Boolean(this.f[key].value == 'Masculino')) {
-          params.push({ parametro: 'sexo', valor: '0' })
-        }
-      } */
     })
+    
     console.log(params)
 
     /* mandas llamar tu service
