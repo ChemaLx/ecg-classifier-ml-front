@@ -24,7 +24,7 @@ export class PerfilSinteticoService {
 
   probarPerfilSintetico(parametros: any[]): Observable<HttpResponse<any>> {
 	  console.log(this._utilService.prepararObjeto(parametros))
-		return this._httpClient.post(`${environment.api}/`, this._utilService.prepararObjeto(parametros),
+		return this._httpClient.post(`${environment.api}/procesamiento/perfil-sintetico`, this._utilService.prepararObjeto(parametros),
 			{
 				headers: this.httpHeaders,
 				observe: 'response',

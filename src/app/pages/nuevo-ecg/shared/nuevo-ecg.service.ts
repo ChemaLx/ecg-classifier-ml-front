@@ -32,8 +32,8 @@ export class NuevoEcgService {
 	recuperarDatosUsuario(id: string){
 		let httpParams = new HttpParams()
 		httpParams = httpParams.set('idUsuario', id)
-		/* uri: /recuperar/datos/usuario/${idUsuario} */
-		return this._httpClient.get(`${environment.api}/recuperar/datos/usuario/`,
+		/* uri: /usuario/datos/${idUsuario} */
+		return this._httpClient.get(`${environment.api}/usuario/datos/`,
 			{
 				headers: this.httpHeaders,
 				observe: 'response',
