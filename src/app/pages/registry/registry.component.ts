@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { UtilsService } from 'src/app/shared/utils.service';
 import dayjs from 'dayjs';
+import { RegistryService } from './shared/registry.service';
 
 @Component({
   selector: 'app-registry',
@@ -13,8 +14,14 @@ export class RegistryComponent implements OnInit {
   //formulario
   formGroupSignIn: FormGroup
   ultimoDia = dayjs().format('YYYY-MM-DD')
+  
+  //banderas 
+  isUsuarioCreado = false 
+  isErrorCreacion = false
+  
   constructor(private _formBuilder: FormBuilder,
-    private _util: UtilsService) { }
+              private _util: UtilsService,
+              private _registryService: RegistryService) { }
 
   ngOnInit(): void {
     this.crearFormularioSignIn()
@@ -46,15 +53,13 @@ export class RegistryComponent implements OnInit {
         
       }
     })
-    
-    console.log(params)
 
-    /* mandas llamar tu service
-    this._util.Nombre(params).subscribe(res => {
- 
+    console.log(params)
+    this._registryService.iniciarSesion(params).subscribe(res => {
+        
     }, err => {
- 
-    }) */
+
+    })
   }
 
 
