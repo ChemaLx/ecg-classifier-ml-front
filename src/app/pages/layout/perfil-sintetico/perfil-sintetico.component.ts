@@ -73,9 +73,9 @@ export class PerfilSinteticoComponent implements OnInit {
       //this.limpiarFormulario()
       this.isCargando = false
       this.isClasificacionLista = true
-      this.resultado = res.body.clasificacionArritmia == 0 ? 'Ritmo cardiaco normal' :
-      res.body.clasificacionArritmia == 1 ? 'Taquicardia' :
-      res.body.clasificacionArritmia == 2 ? 'Bradicardia' : ''
+      this.resultado = res.body.clasificacion == 0 ? 'Ritmo cardiaco normal' :
+      res.body.clasificacion == 1 ? 'Taquicardia' :
+      res.body.clasificacion == 2 ? 'Bradicardia' : ''
       
       
     }, err => {
