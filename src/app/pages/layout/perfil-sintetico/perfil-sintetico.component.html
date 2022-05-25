@@ -24,8 +24,9 @@
         <form class="signup-form" [formGroup]="formGroupPerfilSintetico" novalidate>
           <div class="datecontainer justify-content-start">
             <label for="start" class="mb-1 ms-3 text-start">Fecha de nacimiento</label>
-            <input class="date ms-4" type="date" id="start" name="trip-start" value="" min="1922-01-01"
-              max="{{ultimoDia}}" formControlName="edad">
+            <input type="number" id="" formControlName="edad">
+            <!-- <input class="date ms-4" type="date" id="start" name="trip-start" value="" min="1922-01-01"
+              max="{{ultimoDia}}" formControlName="edad"> -->
 
             <div *ngIf=" f.edad.touched && f.edad.errors">
               <p *ngIf="f.edad.hasError('required')" class="text-danger ms-3 mb-0">Campo requerido</p>
