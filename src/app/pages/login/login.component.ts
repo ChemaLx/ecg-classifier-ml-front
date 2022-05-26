@@ -52,6 +52,7 @@ export class LoginComponent implements OnInit {
     }, err => {
       this.isCargando = false
       this.isLoginError = true
+      this.formGroupLogin.reset()
     })
   }
 
