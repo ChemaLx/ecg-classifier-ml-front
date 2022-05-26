@@ -32,6 +32,7 @@ import { fakeApiEditarDatosInterceptor } from './shared/fake-api/fake-api-editar
 import { fakeApiHistorialInterceptor } from './shared/fake-api/fake-api-historial.interceptor';
 import { fakeApiNuevoEcgInterceptor } from './shared/fake-api/fake-api-nuevo-ecg.interceptor';
 import { fakeApiPerfilSinteticoInterceptor } from './shared/fake-api/fake-api-perfil-sintetico.interceptor';
+import { fakeRegistroinInterceptor } from './shared/fake-api/fake-api-registro.interceptor';
 
 
 const routes: Routes = [
@@ -108,6 +109,7 @@ const routes: Routes = [
 	  environment.isMockApiEditarDatosInterceptor ? [fakeApiEditarDatosInterceptor] : [],
 	  environment.isMockApiHistorialInterceptor ? [fakeApiHistorialInterceptor] : [],
 	  environment.isMockApiNuevoEcgInterceptor ? [fakeApiNuevoEcgInterceptor] : [],
+	  environment.isMockApiRegistroInterceptor ? [fakeRegistroinInterceptor] : [],
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

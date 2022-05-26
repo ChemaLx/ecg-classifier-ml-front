@@ -13,6 +13,7 @@ export const environment = {
 	isMockApiEditarDatosInterceptor: true,
 	isMockApiHistorialInterceptor: true,
 	isMockApiNuevoEcgInterceptor: true,
+	isMockApiRegistroInterceptor: true,
 };
 
 /*
