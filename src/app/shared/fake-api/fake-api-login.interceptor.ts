@@ -24,7 +24,7 @@ export class FakeApiLoginInterceptor implements HttpInterceptor {
     }
 
 
-    function iniciarSesion(resp = 0) {
+    function iniciarSesion(resp = 1) {
       if (resp === 0) {
         return of(new HttpResponse({
           status: 200,
