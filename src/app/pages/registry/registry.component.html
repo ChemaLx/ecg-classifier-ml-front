@@ -1,18 +1,18 @@
 <app-navbar-comercial></app-navbar-comercial>
 
-
-<app-navbar-comercial></app-navbar-comercial>
-
 <div class="d-flex justify-content-center align-items-center h-100-cu flex-wrap"
   style="background-color: #c3d7ec; min-height: 100vh;">
   <div class="container-card">
-    <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="">
+
+    <div class="alert alert-danger d-flex align-items-center justify-content-between" *ngIf="isRegistroFailed">
       <div>
-        <h5><strong>Ups...!</strong> sucedio algo inesperado.</h5>
+        <h5><strong>Ups...!</strong> ocurrio un error al crear tu perfil, intenta de nuevo.</h5>
         <p class="m-0">Descripción del error: 501 internal server error</p>
       </div>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+      <div>
+        <button type="button" class="btn-close" (click)="isRegistroFailed=false"></button>
+      </div>
+    </div> 
 
     <div class="card"
       style="box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); min-height: auto;">
@@ -116,24 +116,16 @@
 
 
           </div>
-          <!-- <div class="row">
-                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex flex-column">
-                            <div class="d-flex align-items-center">
-                                <button class="btn-sec btn-cancel me-1 mt-1" routerLink="/panel">Cancelar</button>
-                                <button *ngIf="!isCargando" class="btn btn-login mt-1" (click)="cargarNuevoEcg()"
-                                    [disabled]="formGroupNuevoEcgPorLotes.invalid">Enviar</button>
-                                <button *ngIf="isCargando" class="btn btn-login mt-1" disabled
-                                    [disabled]="formGroupNuevoEcgPorLotes.invalid">
-                                    <i class="fas fa-spinner fa-spin fa-1x"></i>
-                                </button>
-
-                            </div>
-                        </div>
-
-                    </div> -->
+          
           <div class="row justify-content-center">
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex flex-column">
-              <button class="btn btn-login mt-1" (click)="signIn()">Continuar</button>
+              <button class="btn btn-login mt-1" *ngIf="!isCargando && !isRegistroCheck" (click)="signIn()" [disabled]="formGroupSignIn.invalid">Continuar</button>
+              <button *ngIf="isCargando" class="btn btn-login mt-1"  disabled>
+                <i class="fas fa-spinner fa-spin fa-2x"></i>
+              </button>
+              <button *ngIf="isRegistroCheck" class="btn btn-login mt-1"  disabled>
+                <i class="fa fa-check fa-2x" aria-hidden="true"></i>
+              </button>
             </div>
             <p class="text-mute mt-3 text-center">Ya tienes una cuenta? <a routerLink="/login" class="text-blue">Inicia sesion</a></p>
           </div>
