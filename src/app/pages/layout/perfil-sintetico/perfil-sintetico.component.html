@@ -67,8 +67,7 @@
 
           <button *ngIf="!isCargando" class="btn btn-login" (click)="probarPerfil()"
             [disabled]="formGroupPerfilSintetico.invalid">Enviar</button>
-          <button *ngIf="isCargando" class="btn btn-login" (click)="probarPerfil()"
-            [disabled]="formGroupPerfilSintetico.invalid">
+          <button *ngIf="isCargando" class="btn btn-login"  disabled>
             <i class="fas fa-spinner fa-spin fa-2x"></i>
           </button>
 
