@@ -6,8 +6,14 @@ a {
 .h-100-cu{
   min-height: 100vh;
 }
+.container-press {
+  width: 500px;
+
+}
 .container-card {
   width: 500px;
+  margin:  4.5rem 3rem 4.5rem 3rem;
+  height: auto;
 }
 
 .container-login {
@@ -66,4 +72,13 @@ a {
 
 .btn-login:hover {
   background: #2180f9;
+}
+
+@media only screen and (max-width: 574px) {
+
+  .container-card {
+    width: 90%;
+    margin:  4.5rem 1rem 4.5rem 1rem;
+  }
+
 }
