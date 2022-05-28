@@ -360,7 +360,7 @@ export class NuevoEcgComponent implements OnInit, DoCheck {
     parametros.push({parametro: 'id_usuario', valor: localStorage.getItem('idUsuario')})
     
     console.log(parametros)
-    this._nuevoEcgService.nuevoRegistroEcg(parametros).subscribe(res => {
+    this._nuevoEcgService.nuevoRegistroEcg(parametros, this.isEcgPropio).subscribe(res => {
       this.limpiarFormulario()
       this.isCargando = false
       console.log(res)

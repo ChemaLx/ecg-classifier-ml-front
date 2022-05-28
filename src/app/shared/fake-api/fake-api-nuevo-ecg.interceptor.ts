@@ -18,6 +18,8 @@ export class FakeApiNuevoEcgInterceptor implements HttpInterceptor {
       // lista
       case url.endsWith('/procesamiento/clasificacion-personal') && method === 'POST':
         return procesarNuevoEcg()
+      case url.endsWith('/procesamiento/clasificacion-lotes') && method === 'POST':
+        return procesarNuevoEcg()
       case url.match(/([/]usuarios[/]usuario[/]datos-personales-analisis[/])[0-9]+$/) && method === 'GET':
         return recuperarDatosUsuario()
 
