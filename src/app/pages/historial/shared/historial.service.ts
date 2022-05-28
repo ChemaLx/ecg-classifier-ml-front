@@ -18,9 +18,7 @@ export class HistorialService {
   constructor(private readonly _httpClient: HttpClient, private readonly _utilService: UtilsService) { }
 
   recuperarHistorial(idUsuario): Observable<HttpResponse<any>> {
-	  console.log(idUsuario)
-	  /* TODO: la uri cambiara de usuarios a ecg */
-		return this._httpClient.get(`${environment.apiUsuarios}/procesamiento/historial/${localStorage.getItem('idUsuario')}`,
+		return this._httpClient.get(`${environment.apiProcesamiento}/procesamiento/historial/${localStorage.getItem('idUsuario')}`,
 			{
 				headers: this.httpHeaders,
 				observe: 'response',

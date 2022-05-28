@@ -17,10 +17,17 @@ export class NuevoEcgService {
 
   constructor(private readonly _httpClient: HttpClient, private readonly _utilService: UtilsService) { }
 
-  nuevoRegistroEcg(parametros: any[]): Observable<HttpResponse<any>> {
-	  console.log(this._utilService.prepararObjeto(parametros))
-	  /* pasar idusuario en la uri */
-		return this._httpClient.post(`${environment.apiProcesamiento}/procesamiento/clasificacion-personal`, this._utilService.prepararObjeto(parametros),
+  nuevoRegistroEcg(parametros: any[], isClasificacionPersonal: boolean): Observable<HttpResponse<any>> {
+	  if(isClasificacionPersonal){
+		  return this._httpClient.post(`${environment.apiProcesamiento}/procesamiento/clasificacion-personal`, this._utilService.prepararObjeto(parametros),
+			  {
+				  headers: this.httpHeaders,
+				  observe: 'response',
+			  }
+		  ).pipe(map(resp => this._utilService.handleResponse(resp), this)
+		  ).pipe(catchError(error => this._utilService.handleError(error)))
+	  }
+		return this._httpClient.post(`${environment.apiProcesamiento}/procesamiento/clasificacion-lotes`, this._utilService.prepararObjeto(parametros),
 			{
 				headers: this.httpHeaders,
 				observe: 'response',
