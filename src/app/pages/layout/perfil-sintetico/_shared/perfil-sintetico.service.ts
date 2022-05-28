@@ -12,19 +12,13 @@ export class PerfilSinteticoService {
 
   httpHeaders = new HttpHeaders({
 		'Content-Type': 'application/json',
-		'Access-Control-Allow-Origin': '*',
-		'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
-		'Access-Control-Allow-Headers': '*',
-		'Access-Control-Allow-Credentials': 'true'
-
-
 	});
 
   constructor(private readonly _httpClient: HttpClient, private readonly _utilService: UtilsService) { }
 
   probarPerfilSintetico(parametros: any[]): Observable<HttpResponse<any>> {
 	  console.log(this._utilService.prepararObjeto(parametros))
-		return this._httpClient.post(`${environment.api}/procesamiento/perfil-sintetico`, this._utilService.prepararObjeto(parametros),
+		return this._httpClient.post(`${environment.apiProcesamiento}/procesamiento/perfil-sintetico`, this._utilService.prepararObjeto(parametros),
 			{
 				headers: this.httpHeaders,
 				observe: 'response',

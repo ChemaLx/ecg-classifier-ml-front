@@ -17,7 +17,7 @@ export class FakeApiPerfilSinteticoInterceptor implements HttpInterceptor {
 
     switch (true) {
       // lista
-      case url.endsWith('/usuario/procesamiento/clasificar/json/') && method === 'POST':
+      case url.endsWith('/procesamiento/perfil-sintetico') && method === 'POST':
         return recuperarAclaracionesPorFiltros()
 
 
@@ -31,7 +31,7 @@ export class FakeApiPerfilSinteticoInterceptor implements HttpInterceptor {
       if (resp === 0) {
         return of(new HttpResponse({
           status: 200,
-          body: { clasificacion_arritmia: '0' }
+          body: { clasificacion: '1' }
         })).pipe(delay(2000))
       } else if (resp === 1) {
         return timer(2000).pipe(
