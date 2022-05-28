@@ -190,7 +190,7 @@ export class NuevoEcgComponent implements OnInit, DoCheck {
       sexo: new FormControl('', [Validators.required]),
       inicioAnalisis: new FormControl('', []),
       finAnalisis: new FormControl('', []),
-      /* intervaloAnalisis: new FormControl('', [Validators.required]), */
+      intervaloAnalisis: new FormControl('', [Validators.required]),
       electrocardiograma: new FormControl('', []),
 
     })
@@ -342,7 +342,8 @@ export class NuevoEcgComponent implements OnInit, DoCheck {
       parametros.push({parametro: 'is_minutos_intervalo', valor: this.isMinutosIntervalo})
     }
     
-
+    parametros.push({parametro: 'id_usuario', valor: localStorage.getItem('idUsuario')})
+    
     console.log(parametros)
     this._nuevoEcgService.nuevoRegistroEcg(parametros).subscribe(res => {
       this.limpiarFormulario()

@@ -20,7 +20,7 @@ export class NuevoEcgService {
   nuevoRegistroEcg(parametros: any[]): Observable<HttpResponse<any>> {
 	  console.log(this._utilService.prepararObjeto(parametros))
 	  /* pasar idusuario en la uri */
-		return this._httpClient.post(`${environment.apiProcesamiento}/procesar`, this._utilService.prepararObjeto(parametros),
+		return this._httpClient.post(`${environment.apiProcesamiento}/procesamiento/clasificacion-personal`, this._utilService.prepararObjeto(parametros),
 			{
 				headers: this.httpHeaders,
 				observe: 'response',
@@ -32,7 +32,7 @@ export class NuevoEcgService {
 
 	recuperarDatosUsuario(){
 		let httpParams = new HttpParams()
-		return this._httpClient.get(`${environment.apiProcesamiento}/usuarios/usuario/datos-personales-analisis/${localStorage.getItem('idUsuario')}`,
+		return this._httpClient.get(`${environment.apiUsuarios}/usuarios/usuario/datos-personales-analisis/${localStorage.getItem('idUsuario')}`,
 			{
 				headers: this.httpHeaders,
 				observe: 'response',
