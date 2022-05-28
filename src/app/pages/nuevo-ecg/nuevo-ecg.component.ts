@@ -1,13 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import dayjs from 'dayjs';
-import es from 'dayjs/locale/es'
 import ld from 'lodash'
 import { NuevoEcgService } from './shared/nuevo-ecg.service';
 import { Router } from '@angular/router';
 import { Options } from "@angular-slider/ngx-slider";
-import { ɵangular_packages_platform_browser_platform_browser_b } from '@angular/platform-browser';
 import { DashboardService } from '../dashboard/shared/dashboard.service';
 
 @Component({
@@ -15,7 +13,7 @@ import { DashboardService } from '../dashboard/shared/dashboard.service';
   templateUrl: './nuevo-ecg.component.html',
   styleUrls: ['./nuevo-ecg.component.css']
 })
-export class NuevoEcgComponent implements OnInit {
+export class NuevoEcgComponent implements OnInit, DoCheck {
 
   value: number = 0;
   highValue: number = 30;
@@ -25,7 +23,6 @@ export class NuevoEcgComponent implements OnInit {
   };
 
   ultimoDia = dayjs().format('YYYY-MM-DD')
-  ritmoCardiacoSlider = 60
   formGroupNuevoEcg: FormGroup
   formGroupNuevoEcgPorLotes: FormGroup
 
@@ -45,6 +42,12 @@ export class NuevoEcgComponent implements OnInit {
   archivoTxt: any;
   isArchivoIncorrecto: boolean;
 
+  isMinutosIntervalo = true
+  isMinutosInicioFin = true
+  isArchivoCargado = false;
+
+  isIntervaloMayorQueRangoAnalisis = false
+
   constructor(private readonly _nuevoEcgService: NuevoEcgService,
               private readonly _formBuilder: FormBuilder, 
               private _router: Router,
@@ -55,10 +58,46 @@ export class NuevoEcgComponent implements OnInit {
     this.crearFormularioNuevoEcgPorLotes()
     console.log(this.ultimoDia)
   }
+  ngDoCheck(): void {
+    if(this.isMinutosInicioFin){
+      if(this.isMinutosIntervalo){
+        if(this.f.intervaloAnalisis.value > this.highValue || this.f.intervaloAnalisis.value < this.value){
+          this.isIntervaloMayorQueRangoAnalisis = true
+        } else {
+          this.isIntervaloMayorQueRangoAnalisis = false 
+        }
+      }
+      if(!this.isMinutosIntervalo){
+        if(this.f.intervaloAnalisis.value > this.highValue*60 || this.f.intervaloAnalisis.value < this.value*60){
+          this.isIntervaloMayorQueRangoAnalisis = true
+        } else {
+          this.isIntervaloMayorQueRangoAnalisis = false 
+        }
+      }
+    }
+
+
+    if(!this.isMinutosInicioFin){
+      if(this.isMinutosIntervalo){
+        if(this.f.intervaloAnalisis.value*60 > this.highValue || this.f.intervaloAnalisis.value*60 < this.value){
+          this.isIntervaloMayorQueRangoAnalisis = true
+        } else {
+          this.isIntervaloMayorQueRangoAnalisis = false 
+        }
+      }
+      if(!this.isMinutosIntervalo){
+        if(this.f.intervaloAnalisis.value > this.highValue || this.f.intervaloAnalisis.value < this.value){
+          this.isIntervaloMayorQueRangoAnalisis = true
+        } else {
+          this.isIntervaloMayorQueRangoAnalisis = false 
+        }
+      }
+    }
+  }
 
   recuperarDatosUsuario(){
     this.isCargandoIngformacionUsuarioSuccess = false
-    this._nuevoEcgService.recuperarDatosUsuario('43214324').subscribe(res => {
+    this._nuevoEcgService.recuperarDatosUsuario().subscribe(res => {
       this.isCargandoIngformacionUsuarioSuccess = true
       this.datosUsuario = res.body/* ['body'] */
       if (this.datosUsuario['sexo'] == 0) {
@@ -83,20 +122,62 @@ export class NuevoEcgComponent implements OnInit {
       this.isNotEcgPropio = true
     }
   }
+  cambiarMedidaIntervaloMinutos(estado: boolean) {
+    if (estado) {
+      this.isMinutosIntervalo = true
+      return
+    }
+    this.isMinutosIntervalo = false
+  }
+  cambiarMedidaInicioFinMinutos(estado: boolean) {
+    if (estado) {
+      this.isMinutosInicioFin = true
+      if(Boolean(this.f.electrocardiograma.value)){
+        console.log(this.f.electrocardiograma.value.length)
+        this.contarMuestras(this.f.electrocardiograma.value.length)
+      }
+      return
+    }
+    this.isMinutosInicioFin = false
+    if(Boolean(this.f.electrocardiograma.value)){
+      console.log(this.f.electrocardiograma.value.length)
+      this.contarMuestras(this.f.electrocardiograma.value.length)
+    }
+
+  }
+
+
+
+  cambiarMedidaIntervalo(estado: boolean) {
+    if (estado) {
+      this.isMinutosIntervalo = false
+    }
+    if (!estado) {
+      this.isMinutosIntervalo = true
+    }
+  }
+
+
+
   crearFormularioNuevoEcg() {
     this.formGroupNuevoEcg = this._formBuilder.group({
       edad: new FormControl('', [Validators.required]),
       sexo: new FormControl('', [Validators.required]),
       inicioAnalisis: new FormControl('', []),
       finAnalisis: new FormControl('', []),
-      //intervaloAnalisis: new FormControl('', [Validators.required]),
+      intervaloAnalisis: new FormControl('', [Validators.required]),
       electrocardiograma: new FormControl('', []),
 
     })
+    this.formGroupNuevoEcg.controls['intervaloAnalisis'].setValue(1)
 
   }
 
+
+
   get f() { return this.formGroupNuevoEcg.controls }
+
+
 
   crearFormularioNuevoEcgPorLotes() {
     this.formGroupNuevoEcgPorLotes = this._formBuilder.group({
@@ -116,6 +197,8 @@ export class NuevoEcgComponent implements OnInit {
 
   }
 
+
+
   get ff() { return this.formGroupNuevoEcgPorLotes.controls }
 
   limpiarFormulario() {
@@ -129,6 +212,76 @@ export class NuevoEcgComponent implements OnInit {
     }
   }
 
+
+
+  onFileSelect(event) {
+    this.archivoTxt = event.target.files[0];
+    const fileReader = new FileReader();
+    const parametros = []
+    
+    if (this.validateFile(this.archivoTxt.name)) {
+      this.isCorrectExt = false
+      this.isArchivoCargado = true
+      let i = 0
+      fileReader.onload = async (e) => {
+        const ArrregloMuestrasSenial = (e.target.result as string).split('\r\n');
+  
+        ArrregloMuestrasSenial.forEach(element => {
+          parametros.push(element)
+        });
+         
+        await this.contarMuestras(parametros.length)
+
+      
+      }
+      fileReader.readAsText(this.archivoTxt)
+      
+      if(this.isEcgPropio){
+        this.formGroupNuevoEcg.controls['electrocardiograma'].setValue(parametros);
+        this.contarMuestras(this.formGroupNuevoEcg.controls['electrocardiograma'].value)
+      }
+      else if(this.isNotEcgPropio){
+        this.formGroupNuevoEcgPorLotes.controls['electrocardiograma'].setValue(parametros);
+      }
+    }
+    else {
+      this.isCorrectExt = true
+    }
+
+  }
+
+
+
+  contarMuestras(array){
+    let tiempoActualizado = 0
+    if(this.isMinutosInicioFin){
+      tiempoActualizado = Math.floor(array/360/60)
+    }
+    if(!this.isMinutosInicioFin){
+      tiempoActualizado = Math.floor(array/360)
+    }
+    this.highValue = tiempoActualizado
+      this.options = {
+        floor: 0,
+        ceil: tiempoActualizado
+      };
+    console.log(tiempoActualizado)
+  }
+
+
+
+  validateFile(name: String) {
+    var ext = name.substring(name.lastIndexOf('.') + 1);
+    if (ext.toLowerCase() == 'csv') {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+
+ 
   cargarNuevoEcg() {
     this.isClasificacionLista = false
     this.isCargando = true
@@ -136,7 +289,7 @@ export class NuevoEcgComponent implements OnInit {
 
     if (this.isEcgPropio) { }
     Object.keys(this.f).forEach(key => {
-      if (key === 'edad' || key === 'electrocardiograma') {
+      if (key === 'edad' || key === 'electrocardiograma' || key === 'intervaloAnalisis') {
         if (Boolean(this.f[key].value)) {
           parametros.push({ parametro: ld.snakeCase(key), valor: this.f[key].value })
         }
@@ -159,7 +312,7 @@ export class NuevoEcgComponent implements OnInit {
     })
     if (this.isNotEcgPropio) {
       Object.keys(this.ff).forEach(key => {
-        if (key === 'nombre' || key === 'apellidoPaterno' || key === 'apellidoMaterno' || key === 'edad' || key === 'electrocardiograma') {
+        if (key === 'nombre' || key === 'apellidoPaterno' || key === 'apellidoMaterno' || key === 'edad' || key === 'electrocardiograma' || key === 'intervaloAnalisis') {
           if (Boolean(this.ff[key].value)) {
             parametros.push({ parametro: ld.snakeCase(key), valor: this.ff[key].value })
           }
@@ -174,6 +327,19 @@ export class NuevoEcgComponent implements OnInit {
           parametros.push({ parametro: 'sexo', valor: this.ff[key].value })
         }
       })
+    }
+
+    if(this.isMinutosInicioFin){
+      parametros.push({parametro: 'is_minutos_inicio_fin', valor: this.isMinutosInicioFin})
+    }
+    if(!this.isMinutosInicioFin){
+      parametros.push({parametro: 'is_minutos_inicio_fin', valor: this.isMinutosInicioFin})
+    }
+    if(this.isMinutosIntervalo){
+      parametros.push({parametro: 'is_minutos_intervalo', valor: this.isMinutosIntervalo})
+    }
+    if(!this.isMinutosIntervalo){
+      parametros.push({parametro: 'is_minutos_intervalo', valor: this.isMinutosIntervalo})
     }
     
 
@@ -196,45 +362,5 @@ export class NuevoEcgComponent implements OnInit {
     })
   }
 
-
-  onFileSelect(event) {
-    this.archivoTxt = event.target.files[0];
-    const fileReader = new FileReader();
-    const parametros = []
-    
-    if (this.validateFile(this.archivoTxt.name)) {
-      this.isCorrectExt = false
-      fileReader.onload = (e) => {
-        const ArrregloMuestrasSenial = (e.target.result as string).split('\r\n');
-  
-        ArrregloMuestrasSenial.forEach(element => {
-          parametros.push(element)
-        });
-      }
-      console.log(parametros)
-      fileReader.readAsText(this.archivoTxt)
-
-      if(this.isEcgPropio){
-        this.formGroupNuevoEcg.controls['electrocardiograma'].setValue(parametros);
-      }
-      else if(this.isNotEcgPropio){
-        this.formGroupNuevoEcgPorLotes.controls['electrocardiograma'].setValue(parametros);
-      }
-    }
-    else {
-      this.isCorrectExt = true
-    }
-
-  }
-
-  validateFile(name: String) {
-    var ext = name.substring(name.lastIndexOf('.') + 1);
-    if (ext.toLowerCase() == 'csv') {
-      return true;
-    }
-    else {
-      return false;
-    }
-  }
 
 }
