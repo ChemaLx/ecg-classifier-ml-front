@@ -49,6 +49,7 @@ export class LoginComponent implements OnInit {
     this._loginService.iniciarSesion(params).subscribe(res => {
       console.log(res.body)
       localStorage.setItem('idUsuario', res.body.idUsuario);
+      localStorage.setItem('nombre', res.body.nombre);
       this.isCargando = false
       this._router.navigate(['/panel'])
     }, err => {
