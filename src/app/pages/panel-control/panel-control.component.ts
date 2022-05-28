@@ -10,16 +10,18 @@ export class PanelControlComponent implements OnInit {
 
   horaActual = dayjs()
   mensaje = ''
-  constructor() { }
+  nombre = ''
+  constructor() {
+    this.nombre = localStorage.getItem('nombre');
+  }
   ngOnInit(): void {
-    console.log(this.horaActual)
-    if(dayjs().hour(0).minute(0).second(0)['$d'] <= this.horaActual['$d'] && this.horaActual['$d'] < dayjs().hour(12).minute(0).second(0)['$d']){
+    if (dayjs().hour(0).minute(0).second(0)['$d'] <= this.horaActual['$d'] && this.horaActual['$d'] < dayjs().hour(12).minute(0).second(0)['$d']) {
       this.mensaje = 'Buenos dias'
     }
-    if(dayjs().hour(12).minute(0).second(0)['$d'] <= this.horaActual['$d'] && this.horaActual['$d'] < dayjs().hour(18).minute(0).second(0)['$d']){
+    if (dayjs().hour(12).minute(0).second(0)['$d'] <= this.horaActual['$d'] && this.horaActual['$d'] < dayjs().hour(18).minute(0).second(0)['$d']) {
       this.mensaje = 'Buenas tardes'
     }
-    if(dayjs().hour(18).minute(0).second(0)['$d'] <= this.horaActual['$d'] && this.horaActual['$d'] < dayjs().hour(23).minute(59).second(59)['$d']){
+    if (dayjs().hour(18).minute(0).second(0)['$d'] <= this.horaActual['$d'] && this.horaActual['$d'] < dayjs().hour(23).minute(59).second(59)['$d']) {
       this.mensaje = 'Buenas noches'
     }
   }
