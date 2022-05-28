@@ -185,7 +185,6 @@ a:active {
 .signup-form {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
 }
 
 .signup-form {
