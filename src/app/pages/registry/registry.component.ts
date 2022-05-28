@@ -4,6 +4,8 @@ import { UtilsService } from 'src/app/shared/utils.service';
 import dayjs from 'dayjs';
 import { RegistryService } from './shared/registry.service';
 import { Router } from '@angular/router';
+import ld from 'lodash'
+import { snakeCase } from 'lodash';
 
 @Component({
   selector: 'app-registry',
@@ -35,12 +37,11 @@ export class RegistryComponent implements OnInit {
   crearFormularioSignIn() {
     this.formGroupSignIn = this._formBuilder.group({
       nombre: new FormControl('', [Validators.required]),
-      username: new FormControl('', [Validators.required]),
       apellidoPaterno: new FormControl('', [Validators.required]),
       apellidoMaterno: new FormControl('', [Validators.required]),
-      edad: new FormControl('', [Validators.required]),
+      fechaNacimiento: new FormControl('', [Validators.required]),
       sexo: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required]),
+      correoElectronico: new FormControl('', [Validators.required]),
       contrasena: new FormControl('', [Validators.required])
     })
 
@@ -53,9 +54,9 @@ export class RegistryComponent implements OnInit {
     let params: any[] = []
     
     Object.keys(this.f).forEach(key => {
-      if (key === 'nombre' || key === 'apellidoPaterno' || key === 'apellidoMaterno' || key === 'edad' || key === 'username' || key === 'contrasena' || key === 'sexo' || key === 'email') {
+      if (key === 'nombre' || key === 'apellidoPaterno' || key === 'apellidoMaterno' || key === 'fechaNacimiento' || key === 'username' || key === 'contrasena' || key === 'sexo' || key === 'correoElectronico') {
         if (Boolean(this.f[key].value)) {
-          params.push({ parametro: key, valor: this.f[key].value })
+          params.push({ parametro: ld.snakeCase(key), valor: this.f[key].value })
         }
         
       }

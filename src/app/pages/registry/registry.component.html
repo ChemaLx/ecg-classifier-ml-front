@@ -32,33 +32,6 @@
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
               <div class="signup-form mt-3">
                 <label class="inp">
-                  <input type="text" class="input-text" placeholder="Nombre de usuario" formControlName="username" trim="blur">
-                  <span class="label">Nombre de usuario</span>
-
-                </label>
-              </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
-              <div class="signup-form mt-3">
-                <label class="inp">
-                  <input type="text" class="input-text" placeholder="Correo electronico" formControlName="email" trim="blur">
-                  <span class="label">Correo electronico</span>
-
-                </label>
-              </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
-              <div class="signup-form mt-3">
-                <label class="inp">
-                  <input type="text" class="input-text" placeholder="Contraseña" formControlName="contrasena" trim="blur">
-                  <span class="label">Contraseña</span>
-
-                </label>
-              </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
-              <div class="signup-form mt-3">
-                <label class="inp">
                   <input type="text" class="input-text" placeholder="Nombre" formControlName="nombre" trim="blur">
                   <span class="label">Nombre</span>
 
@@ -85,12 +58,32 @@
                 </label>
               </div>
             </div>
+
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
+              <div class="signup-form mt-3">
+                <label class="inp">
+                  <input type="text" class="input-text" placeholder="Correo electronico" formControlName="correoElectronico" trim="blur">
+                  <span class="label">Correo electronico</span>
+
+                </label>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
+              <div class="signup-form mt-3">
+                <label class="inp">
+                  <input type="text" class="input-text" placeholder="Contraseña" formControlName="contrasena" trim="blur">
+                  <span class="label">Contraseña</span>
+
+                </label>
+              </div>
+            </div>
+            
             <!-- TODO: falta la validacion de la edad con el ngdocheck -->
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
               <div class="signup-form mt-3">
                 <label class="inp">
                   <input class="input-text" type="date" id="start" name="trip-start" value="" min="1922-01-01"
-              max="{{ultimoDia}}" formControlName="edad">
+              max="{{ultimoDia}}" formControlName="fechaNacimiento">
                   <span class="label">Edad</span>
 
                 </label>
