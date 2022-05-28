@@ -15,9 +15,10 @@ export class FakeApiEditarDatosInterceptor implements HttpInterceptor {
 
     switch (true) {
       // lista
-      case url.endsWith('/usuario/recuperar/info/') && method === 'GET':
+      case url.match(/([/]usuarios[/]usuario[/]recuperar[/]info[/])[0-9]+$/) && method === 'GET':
         return recuperarInfoUsuario()
-      case url.endsWith('/usuario/actualizar/info/') && method === 'POST':
+
+      case url.match(/([/]usuarios[/]usuario[/]actualizar[/])[0-9]+$/) && method === 'PUT':
         return actualizarInfoUsuario()
 
       default:

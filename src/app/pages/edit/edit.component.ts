@@ -37,9 +37,7 @@ export class EditComponent implements OnInit, DoCheck {
   }
   ngDoCheck(): void {
     var y: number = +this.f.fechaNacimiento.value;
-    console.log(y)
     if (y < 1 || y > 100) {
-      console.log('si entra')
       this.isEdadMal = true
     } else {
       this.isEdadMal = false
@@ -121,9 +119,14 @@ export class EditComponent implements OnInit, DoCheck {
           parametros.push({ parametro: ld.snakeCase(key), valor: this.f[key].value })
         }
       }
+      if(key === 'sexo'){
+          if(this.f[key].value == 'Masculino'){
+            parametros.push({ parametro: ld.snakeCase(key), valor: 0 })
+          } else if (this.f[key].value == 'Femenino'){
+            parametros.push({ parametro: ld.snakeCase(key), valor: 1 })
+          }
+      }
     })
-
-    console.log(parametros)
 
     this.editService.guardarNuevosDatos(parametros).subscribe(res => {
       this.informacionPersonal = res.body

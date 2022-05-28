@@ -18,8 +18,7 @@ export class EditService {
   constructor(private readonly _httpClient: HttpClient, private readonly _utilService: UtilsService) { }
 
   recuperarInformacionPersonal(idUsuario): Observable<HttpResponse<any>> {
-	  console.log(idUsuario)
-		return this._httpClient.get(`${environment.api}/usuario/recuperar/info/`,
+		return this._httpClient.get(`${environment.apiUsuarios}/usuarios/usuario/recuperar/info/${localStorage.getItem('idUsuario')}`,
 			{
 				headers: this.httpHeaders,
 				observe: 'response',
@@ -30,7 +29,8 @@ export class EditService {
 
 
   guardarNuevosDatos(parametros): Observable<HttpResponse<any>> {
-		return this._httpClient.post(`${environment.api}/usuario/actualizar/info/`, this._utilService.prepararObjeto(parametros) , 
+	  console.log(this._utilService.prepararObjeto(parametros))
+		return this._httpClient.put(`${environment.apiUsuarios}/usuarios/usuario/actualizar/${localStorage.getItem('idUsuario')}`, this._utilService.prepararObjeto(parametros), 
 			{
 				headers: this.httpHeaders,
 				observe: 'response',
