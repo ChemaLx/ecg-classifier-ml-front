@@ -24,7 +24,7 @@ export class FakeApiRegistroInterceptor implements HttpInterceptor {
     }
 
 
-    function iniciarSesion(resp = 1) {
+    function iniciarSesion(resp = 0) {
       if (resp === 0) {
         return of(new HttpResponse({
           status: 200,

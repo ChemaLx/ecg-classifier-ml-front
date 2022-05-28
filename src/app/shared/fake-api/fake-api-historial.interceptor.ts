@@ -16,7 +16,7 @@ export class FakeApiHistorialInterceptor implements HttpInterceptor {
 
     switch (true) {
       // lista
-      case url.match(/([/]usuarios[/]historial[/])[0-9]+$/) && method === 'GET':
+      case url.match(/([/]procesamiento[/]historial[/])[0-9]+$/) && method === 'GET':
         return recuperarHistorial()
 
       default:
