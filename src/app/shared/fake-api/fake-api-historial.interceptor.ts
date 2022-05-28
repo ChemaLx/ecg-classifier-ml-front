@@ -16,7 +16,7 @@ export class FakeApiHistorialInterceptor implements HttpInterceptor {
 
     switch (true) {
       // lista
-      case url.endsWith('/recuperar/historial') && method === 'GET':
+      case url.match(/([/]usuarios[/]historial[/])[0-9]+$/) && method === 'GET':
         return recuperarHistorial()
 
       default:
@@ -31,45 +31,38 @@ export class FakeApiHistorialInterceptor implements HttpInterceptor {
           body: {
             historial: [
               {
-                idClasificacion: 'ueoauaouauau',
+                idAnalisis: 'ueoauaouauau',
                 duracion: 30,
-                resultado: '0',
                 fecha: '2020-12-13'
               },
               {
-                idClasificacion: 'ueoauaouauau',
+                idAnalisis: 'ueoauaouauau',
                 duracion: 15,
-                resultado: '1',
                 fecha: '2020-2-25'
               },
               {
-                idClasificacion: 'ueoauaouauau',
+                idAnalisis: 'ueoauaouauau',
                 duracion: 15,
-                resultado: '1',
                 fecha: '2020-4-26'
               },
               {
-                idClasificacion: 'ueoauaouauau',
+                idAnalisis: 'ueoauaouauau',
                 duracion: 30,
-                resultado: '1',
                 fecha: '2020-12-13'
               },
               {
-                idClasificacion: 'ueoauaouauau',
+                idAnalisis: 'ueoauaouauau',
                 duracion: 30,
-                resultado: '1',
                 fecha: '2020-12-13'
               },
               {
-                idClasificacion: 'ueoauaouauau',
+                idAnalisis: 'ueoauaouauau',
                 duracion: 30,
-                resultado: '2',
                 fecha: '2020-12-13'
               },
               {
-                idClasificacion: 'ueoauaouauau',
+                idAnalisis: 'ueoauaouauau',
                 duracion: 30,
-                resultado: '0',
                 fecha: '2020-12-13'
               },
 

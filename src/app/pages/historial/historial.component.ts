@@ -10,6 +10,7 @@ export class HistorialComponent implements OnInit {
 
   datosHistorial = []
   isCargando = false
+  isError = false
   constructor(private readonly historialService: HistorialService) { }
 
   ngOnInit(): void {
@@ -21,6 +22,10 @@ export class HistorialComponent implements OnInit {
       this.datosHistorial = res.body.historial
       console.log(this.datosHistorial)
       this.isCargando = false
+    }, err => {
+      this.isCargando = false
+      this.isError = true
+
     })
   }
 

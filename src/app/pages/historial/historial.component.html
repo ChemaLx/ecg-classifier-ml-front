@@ -1,6 +1,15 @@
 <app-navbar></app-navbar>
 <section class="blanco animated fadeIn" id="services">
         <div class="container-box">
+                <div class="alert alert-danger d-flex align-items-center justify-content-between" *ngIf="isError">
+                        <div>
+                          <strong>Ups... ocurrio un error inesperado</strong>
+                          <p class="m-0"> Descripcion del error: Error interno 503 <!-- {{error}} --> </p>
+                        </div>
+                        <div>
+                          <button type="button" class="btn-close" (click)="isError=false"></button>
+                        </div>
+                      </div>
                 <div class="hero hero-is-primary d-flex justify-content-start align-items-center"
                         style="box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);">
                         <h3 class="p-3 m-0 text-white">Historial de clasificaciones</h3>
@@ -16,7 +25,6 @@
                                         <thead>
                                                 <tr>
                                                         <th>Duracion (minutos)</th>
-                                                        <th>Resultado</th>
                                                         <th>Fecha</th>
                                                         <th>Ver</th>
                                                 </tr>
@@ -25,11 +33,6 @@
                                                 <tr *ngFor="let informacion of datosHistorial">
                                                         <td>
                                                                 <p class="m-0 mt-2" >{{informacion['duracion']}}</p>
-                                                        </td>
-                                                        <td>
-                                                                <p class="m-0 mt-2" *ngIf="informacion['resultado'] == 0">Ritmo normal</p>
-                                                                <p class="m-0 mt-2" *ngIf="informacion['resultado'] == 1">Taquicardia</p>
-                                                                <p class="m-0 mt-2" *ngIf="informacion['resultado'] == 2">Bradicardia</p>
                                                         </td>
                                                         <td>
                                                                 <p class="m-0 mt-2" >{{informacion['fecha'] | date : 'mediumDate'}}</p>
