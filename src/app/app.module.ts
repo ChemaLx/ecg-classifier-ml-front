@@ -52,7 +52,7 @@ const routes: Routes = [
 		canActivate: [AutLoggedGuard],
 	},
 	{
-		path: 'registry',
+		path: 'signup',
 		component: RegistryComponent,
 		canActivate: [AutLoggedGuard],
 	},
