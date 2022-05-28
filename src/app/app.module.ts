@@ -33,6 +33,8 @@ import { fakeApiHistorialInterceptor } from './shared/fake-api/fake-api-historia
 import { fakeApiNuevoEcgInterceptor } from './shared/fake-api/fake-api-nuevo-ecg.interceptor';
 import { fakeApiPerfilSinteticoInterceptor } from './shared/fake-api/fake-api-perfil-sintetico.interceptor';
 import { fakeRegistroinInterceptor } from './shared/fake-api/fake-api-registro.interceptor';
+import { AutGuard } from './shared/guards/aut.guard';
+import { AutLoggedGuard } from './shared/guards/aut-logged.guard';
 
 
 const routes: Routes = [
@@ -47,30 +49,37 @@ const routes: Routes = [
 	{
 		path: 'login',
 		component: LoginComponent,
+		canActivate: [AutLoggedGuard],
 	},
 	{
 		path: 'registry',
 		component: RegistryComponent,
+		canActivate: [AutLoggedGuard],
 	},
 	{
 		path: 'panel',
 		component: PanelControlComponent,
+		canActivate: [AutGuard],
 	},
 	{
 		path: 'historial',
 		component: HistorialComponent,
+		canActivate: [AutGuard],
 	},
 	{
 		path: 'dashboard',
 		component: DashboardComponent,
+		canActivate: [AutGuard],
 	},
 	{
 		path: 'editar',
 		component: EditComponent,
+		canActivate: [AutGuard],
 	},
 	{
 		path: 'nueva-clasificacion',
 		component: NuevoEcgComponent,
+		canActivate: [AutGuard],
 	},
 ]
 
@@ -110,6 +119,8 @@ const routes: Routes = [
 	  environment.isMockApiHistorialInterceptor ? [fakeApiHistorialInterceptor] : [],
 	  environment.isMockApiNuevoEcgInterceptor ? [fakeApiNuevoEcgInterceptor] : [],
 	  environment.isMockApiRegistroInterceptor ? [fakeRegistroinInterceptor] : [],
+	  AutGuard,
+	  AutLoggedGuard
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
