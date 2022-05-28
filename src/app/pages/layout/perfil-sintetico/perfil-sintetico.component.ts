@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { PerfilSinteticoService } from './_shared/perfil-sintetico.service';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import dayjs from 'dayjs';
@@ -10,7 +10,7 @@ import ld from 'lodash'
   templateUrl: './perfil-sintetico.component.html',
   styleUrls: ['./perfil-sintetico.component.css']
 })
-export class PerfilSinteticoComponent implements OnInit {
+export class PerfilSinteticoComponent implements OnInit, DoCheck {
 
   ultimoDia = dayjs().format('YYYY-MM-DD')
   ritmoCardiacoSlider = 60
@@ -22,6 +22,7 @@ export class PerfilSinteticoComponent implements OnInit {
   isClasificacionLista = false
   isClasificacionFailed = false
   isCargando = false
+  isEdadMal: boolean;
 
   constructor(private readonly _perfilSinteticoService: PerfilSinteticoService,
     private readonly _formBuilder: FormBuilder,) { }
@@ -29,6 +30,17 @@ export class PerfilSinteticoComponent implements OnInit {
   ngOnInit(): void {
     this.crearFormularioPerfilSintetico()
     console.log(this.ultimoDia)
+  }
+
+  ngDoCheck(): void {
+    var y: number = +this.f.edad.value;
+    if (y < 1 || y > 100) {
+      this.isEdadMal = true
+    } else {
+      this.isEdadMal = false
+      
+    }
+
   }
 
   crearFormularioPerfilSintetico() {
@@ -41,6 +53,7 @@ export class PerfilSinteticoComponent implements OnInit {
       
     })
     this.formGroupPerfilSintetico.controls['ritmoCardiaco'].setValue(60);
+    this.formGroupPerfilSintetico.controls['edad'].setValue(18)
 
   }
 
