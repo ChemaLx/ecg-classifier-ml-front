@@ -46,6 +46,11 @@ export class EditComponent implements OnInit, DoCheck {
 
   }
 
+  cambiarEstadoBanderas(){
+    this.isErrorContacto = false
+    this.isError = false
+  }
+
   crearFormularioEditarDatosUser() {
     this.formGroupEditarDatosUser = this._formBuilder.group({
 

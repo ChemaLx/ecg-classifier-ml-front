@@ -7,7 +7,7 @@
                                 <h5><strong>Ups...!</strong> sucedio algo inesperado.</h5>
                                 <p class="m-0">Descripción del error: 501 internal server error</p>
                         </div>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <button type="button" class="btn-close" (click)="cambiarEstadoBanderas()"></button>
                 </div>
                 <div class="alert alert-success alert-dismissible fade show"
                         *ngIf="isInfoActualizada">

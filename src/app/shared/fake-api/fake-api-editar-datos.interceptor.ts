@@ -53,7 +53,7 @@ export class FakeApiEditarDatosInterceptor implements HttpInterceptor {
       }
     }
 
-    function actualizarInfoUsuario(resp = 0) {
+    function actualizarInfoUsuario(resp = 1) {
       if (resp === 0) {
         return of(new HttpResponse({
           status: 200,
