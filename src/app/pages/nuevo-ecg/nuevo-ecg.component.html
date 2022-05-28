@@ -37,10 +37,10 @@
                         *ngIf="!isCargandoIngformacionUsuarioSuccess" style="min-height: 10vh;">
                         <i class="fas fa-spinner fa-spin fa-5x"></i>
                     </div>
-                    <div class="row" *ngIf="isCargandoIngformacionUsuarioSuccess">
-                        <div class="row">
+                    <div class="row mb-3" *ngIf="isCargandoIngformacionUsuarioSuccess">
+                        <div class="row" >
                             <!--  ! intervalo analisis -->
-                                <div class="col-12 col-sm-6 col-md-4 col-lg-3 ms-3">
+                                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                                     <p class="form-label mt-3 mb-1">Medidas de intervalo de analisis</p>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="intervalo" id="intervalo1" (click)="cambiarMedidaIntervaloMinutos(true)" [checked]="isMinutosIntervalo">
@@ -54,7 +54,7 @@
     
                             <!--  ! inicio fin analisis -->
                             
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 ms-4">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6">
                                     <p class="form-label mt-3 mb-1">Medidas de inicio y fin de analisis</p>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="iniciofin" id="iniciofin1" (click)="cambiarMedidaInicioFinMinutos(true)" [checked]="isMinutosInicioFin">
@@ -90,7 +90,7 @@
                         </div>
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3 d-flex flex-column">
                             <label for="formFile" class="form-label mb-0">Subir ECG (.csv)</label>
-                            <div class="d-flex align-items-center justify-content-center">
+                            <div class="d-flex align-items-center">
                                 <input id="input-1" type="file" (change)="onFileSelect($event)" />
                             </div>
                             <p class="text-danger" *ngIf="isCorrectExt"> formato no valido </p>
@@ -134,7 +134,6 @@
 
 
                     </div>
-
                     <div class="row">
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex flex-column">
                             <div class="d-flex align-items-center">
@@ -157,10 +156,10 @@
 
                 <!-- ? inicio form de prosesamiento por lotes  -->
                 <form class="signup-form" [formGroup]="formGroupNuevoEcgPorLotes" *ngIf="isNotEcgPropio">
-                    <div class="row">
+                    <div class="row  mt-3">
                         <!--  ! intervalo analisis -->
-                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 ms-3">
-                                <p class="form-label mt-3 mb-1">Medidas de intervalo de analisis</p>
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                                <p class="form-label mb-1">Medidas de intervalo de analisis</p>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="intervalo" id="intervalo1" (click)="cambiarMedidaIntervaloMinutos(true)" [checked]="isMinutosIntervalo">
                                     <label class="form-check-label" for="intervalo1">Minutos</label>
@@ -173,8 +172,8 @@
 
                         <!--  ! inicio fin analisis -->
                         
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 ms-4">
-                                <p class="form-label mt-3 mb-1">Medidas de inicio y fin de analisis</p>
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                                <p class="form-label mb-1">Medidas de inicio y fin de analisis</p>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="iniciofin" id="iniciofin1" (click)="cambiarMedidaInicioFinMinutos(true)" [checked]="isMinutosInicioFin">
                                     <label class="form-check-label" for="iniciofin1">Minutos</label>
@@ -185,10 +184,10 @@
                                 </div>
                             </div>
                     </div>
-                    <div class="row">
+                    <div class="row mb-3">
 
-                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
-                            <div class="signup-form mt-3">
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-4">
+                            <div class="signup-form">
                                 <label class="inp">
                                     <input type="text" class="input-text" placeholder="Nombre" formControlName="nombre" trim="blur">
                                     <span class="label">Nombre</span>
@@ -196,8 +195,8 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
-                            <div class="signup-form mt-3">
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-4">
+                            <div class="signup-form">
                                 <label class="inp">
                                     <input type="text" class="input-text" placeholder="Apellido paterno"
                                         formControlName="apellidoPaterno" trim="blur">
@@ -206,8 +205,8 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
-                            <div class="signup-form mt-3">
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-4">
+                            <div class="signup-form">
                                 <label class="inp">
                                     <input type="text" class="input-text" placeholder="Apellido materno"
                                         formControlName="apellidoMaterno" trim="blur">
@@ -217,12 +216,12 @@
                             </div>
                         </div>
                         <!-- TODO: falta la validacion de la edad con el ngdocheck -->
-                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
-                            <div class="signup-form mt-3">
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-4">
+                            <div class="signup-form">
                                 <label class="inp">
-                                    <input type="text" class="input-text" placeholder="Edad" formControlName="edad" trim="blur" digitOnly>
+                                    <input type="number" class="input-text" placeholder="Edad" formControlName="edad" trim="blur" digitOnly>
                                     <span class="label">Edad</span>
-
+                                    <span class="text-danger" *ngIf="isEdadMal">La edad se excede el rango (1-100 años)</span>
                                 </label>
                             </div>
                         </div>
@@ -243,7 +242,7 @@
                         </div>
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3 d-flex flex-column">
                             <label for="formFile" class="form-label mb-0">Subir ECG (.csv)</label>
-                            <div class="d-flex align-items-center justify-content-center">
+                            <div class="d-flex align-items-center">
                                 <input id="input-2" type="file" (change)="onFileSelect($event)" />
                             </div>
                             <p class="text-danger" *ngIf="isCorrectExt"> formato no valido </p>
@@ -291,8 +290,10 @@
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex flex-column">
                             <div class="d-flex align-items-center">
                                 <button class="btn-sec btn-cancel me-1 mt-1" routerLink="/panel">Cancelar</button>
+
                                 <button *ngIf="!isCargando" class="btn btn-login mt-1" (click)="cargarNuevoEcg()"
-                                    [disabled]="formGroupNuevoEcgPorLotes.invalid">Enviar</button>
+                                [disabled]="formGroupNuevoEcgPorLotes.invalid || isArchivoCargado==false || isIntervaloMayorQueRangoAnalisis == true || isEdadMal == true">Enviar</button>
+
                                 <button *ngIf="isCargando" class="btn btn-login mt-1" disabled
                                     [disabled]="formGroupNuevoEcgPorLotes.invalid">
                                     <i class="fas fa-spinner fa-spin fa-1x"></i>

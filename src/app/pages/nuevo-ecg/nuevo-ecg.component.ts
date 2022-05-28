@@ -47,6 +47,7 @@ export class NuevoEcgComponent implements OnInit, DoCheck {
   isArchivoCargado = false;
 
   isIntervaloMayorQueRangoAnalisis = false
+  isEdadMal: boolean;
 
   constructor(private readonly _nuevoEcgService: NuevoEcgService,
               private readonly _formBuilder: FormBuilder, 
@@ -59,16 +60,25 @@ export class NuevoEcgComponent implements OnInit, DoCheck {
     console.log(this.ultimoDia)
   }
   ngDoCheck(): void {
+    
+    var y: number = +this.ff.edad.value;
+    if (y < 1 || y > 100) {
+      this.isEdadMal = true
+    } else {
+      this.isEdadMal = false
+      
+    }
+
     if(this.isMinutosInicioFin){
       if(this.isMinutosIntervalo){
-        if(this.f.intervaloAnalisis.value > this.highValue || this.f.intervaloAnalisis.value < this.value){
+        if(this.f.intervaloAnalisis.value > this.highValue || this.f.intervaloAnalisis.value < this.value || this.ff.intervaloAnalisis.value > this.highValue || this.ff.intervaloAnalisis.value < this.value){
           this.isIntervaloMayorQueRangoAnalisis = true
         } else {
           this.isIntervaloMayorQueRangoAnalisis = false 
         }
       }
       if(!this.isMinutosIntervalo){
-        if(this.f.intervaloAnalisis.value > this.highValue*60 || this.f.intervaloAnalisis.value < this.value*60){
+        if(this.f.intervaloAnalisis.value > this.highValue*60 || this.f.intervaloAnalisis.value < this.value*60 || this.ff.intervaloAnalisis.value > this.highValue*60 || this.ff.intervaloAnalisis.value < this.value*60){
           this.isIntervaloMayorQueRangoAnalisis = true
         } else {
           this.isIntervaloMayorQueRangoAnalisis = false 
@@ -79,14 +89,14 @@ export class NuevoEcgComponent implements OnInit, DoCheck {
 
     if(!this.isMinutosInicioFin){
       if(this.isMinutosIntervalo){
-        if(this.f.intervaloAnalisis.value*60 > this.highValue || this.f.intervaloAnalisis.value*60 < this.value){
+        if(this.f.intervaloAnalisis.value*60 > this.highValue || this.f.intervaloAnalisis.value*60 < this.value || this.ff.intervaloAnalisis.value*60 > this.highValue || this.ff.intervaloAnalisis.value*60 < this.value){
           this.isIntervaloMayorQueRangoAnalisis = true
         } else {
           this.isIntervaloMayorQueRangoAnalisis = false 
         }
       }
       if(!this.isMinutosIntervalo){
-        if(this.f.intervaloAnalisis.value > this.highValue || this.f.intervaloAnalisis.value < this.value){
+        if(this.f.intervaloAnalisis.value > this.highValue || this.f.intervaloAnalisis.value < this.value || this.ff.intervaloAnalisis.value > this.highValue || this.ff.intervaloAnalisis.value < this.value){
           this.isIntervaloMayorQueRangoAnalisis = true
         } else {
           this.isIntervaloMayorQueRangoAnalisis = false 
@@ -122,6 +132,8 @@ export class NuevoEcgComponent implements OnInit, DoCheck {
       this.isNotEcgPropio = true
     }
   }
+
+
   cambiarMedidaIntervaloMinutos(estado: boolean) {
     if (estado) {
       this.isMinutosIntervalo = true
@@ -129,35 +141,29 @@ export class NuevoEcgComponent implements OnInit, DoCheck {
     }
     this.isMinutosIntervalo = false
   }
+
+
   cambiarMedidaInicioFinMinutos(estado: boolean) {
+    console.log('entro a cambiar medida')
     if (estado) {
       this.isMinutosInicioFin = true
       if(Boolean(this.f.electrocardiograma.value)){
         console.log(this.f.electrocardiograma.value.length)
         this.contarMuestras(this.f.electrocardiograma.value.length)
+        return
       }
+      this.contarMuestras(this.ff.electrocardiograma.value.length)
       return
     }
     this.isMinutosInicioFin = false
     if(Boolean(this.f.electrocardiograma.value)){
       console.log(this.f.electrocardiograma.value.length)
       this.contarMuestras(this.f.electrocardiograma.value.length)
+      return
     }
+    this.contarMuestras(this.ff.electrocardiograma.value.length)
 
   }
-
-
-
-  cambiarMedidaIntervalo(estado: boolean) {
-    if (estado) {
-      this.isMinutosIntervalo = false
-    }
-    if (!estado) {
-      this.isMinutosIntervalo = true
-    }
-  }
-
-
 
   crearFormularioNuevoEcg() {
     this.formGroupNuevoEcg = this._formBuilder.group({
@@ -194,6 +200,8 @@ export class NuevoEcgComponent implements OnInit, DoCheck {
       electrocardiograma: new FormControl('', []),
 
     })
+    this.formGroupNuevoEcgPorLotes.controls['intervaloAnalisis'].setValue(1)
+    this.formGroupNuevoEcgPorLotes.controls['edad'].setValue(18)
 
   }
 
@@ -223,6 +231,7 @@ export class NuevoEcgComponent implements OnInit, DoCheck {
       this.isCorrectExt = false
       this.isArchivoCargado = true
       let i = 0
+      console.log(this.archivoTxt)
       fileReader.onload = async (e) => {
         const ArrregloMuestrasSenial = (e.target.result as string).split('\r\n');
   
@@ -235,13 +244,16 @@ export class NuevoEcgComponent implements OnInit, DoCheck {
       
       }
       fileReader.readAsText(this.archivoTxt)
+
+      console.log(parametros)
       
       if(this.isEcgPropio){
         this.formGroupNuevoEcg.controls['electrocardiograma'].setValue(parametros);
-        this.contarMuestras(this.formGroupNuevoEcg.controls['electrocardiograma'].value)
+        this.contarMuestras(this.formGroupNuevoEcg.controls['electrocardiograma'].value.length)
       }
       else if(this.isNotEcgPropio){
         this.formGroupNuevoEcgPorLotes.controls['electrocardiograma'].setValue(parametros);
+        this.contarMuestras(this.formGroupNuevoEcgPorLotes.controls['electrocardiograma'].value.length)
       }
     }
     else {
@@ -253,6 +265,9 @@ export class NuevoEcgComponent implements OnInit, DoCheck {
 
 
   contarMuestras(array){
+    console.log('ecgpropio'+this.isEcgPropio)
+    console.log('noecgpropio'+this.isNotEcgPropio)
+    console.log('entro al contar muestras')
     let tiempoActualizado = 0
     if(this.isMinutosInicioFin){
       tiempoActualizado = Math.floor(array/360/60)
@@ -265,7 +280,7 @@ export class NuevoEcgComponent implements OnInit, DoCheck {
         floor: 0,
         ceil: tiempoActualizado
       };
-    console.log(tiempoActualizado)
+    console.log('tiempo actualizado: '+tiempoActualizado)
   }
 
 
