@@ -56,7 +56,7 @@ export class FakeApiNuevoEcgInterceptor implements HttpInterceptor {
             edad: 29,
             sexo: 0,
           }
-        })).pipe(delay(2000))
+        })).pipe(delay(500))
       } else if (resp === 1) {
         return timer(2000).pipe(
           switchMap(() => throwError({
