@@ -27,6 +27,7 @@
     "dayjs": "^1.11.1",
     "font-awesome": "^4.7.0",
     "lodash": "^4.17.21",
+    "ng-block-ui": "^3.0.2",
     "ngx-trim-directive": "^2.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
