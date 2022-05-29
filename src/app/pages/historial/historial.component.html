@@ -1,15 +1,19 @@
-<app-navbar></app-navbar>
+<block-ui>
+        <app-navbar></app-navbar>
+</block-ui>
 <section class="blanco animated fadeIn" id="services">
         <div class="container-box">
                 <div class="alert alert-danger d-flex align-items-center justify-content-between" *ngIf="isError">
                         <div>
-                          <strong>Ups... ocurrio un error inesperado</strong>
-                          <p class="m-0"> Descripcion del error: Error interno 503 <!-- {{error}} --> </p>
+                                <strong>Ups... ocurrio un error inesperado</strong>
+                                <p class="m-0"> Descripcion del error: Error interno 503
+                                        <!-- {{error}} -->
+                                </p>
                         </div>
                         <div>
-                          <button type="button" class="btn-close" (click)="isError=false"></button>
+                                <button type="button" class="btn-close" (click)="isError=false"></button>
                         </div>
-                      </div>
+                </div>
                 <div class="hero hero-is-primary d-flex justify-content-start align-items-center"
                         style="box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);">
                         <h3 class="p-3 m-0 text-white">Historial de clasificaciones</h3>
@@ -30,21 +34,21 @@
                                                 </tr>
                                         </thead>
                                         <tbody>
-                                                <tr *ngFor="let informacion of datosHistorial">
+                                                <tr *ngFor="let informacion of datosHistorial ; let i = index">
                                                         <td>
-                                                                <p class="m-0 mt-2" >{{informacion['duracion']}}</p>
+                                                                <p class="m-0 mt-2">{{informacion['duracion']}}</p>
                                                         </td>
                                                         <td>
-                                                                <p class="m-0 mt-2" >{{informacion['fecha'] | date : 'mediumDate'}}</p>
+                                                                <p class="m-0 mt-2">{{informacion['fecha'] | date :
+                                                                        'mediumDate'}}</p>
                                                         </td>
                                                         <td>
-                                                                <p class="m-0" >
-                                                                        <a routerLink="/dashboard" class="btn" type="button">
-
+                                                                <p class="m-0">
+                                                                        <button class="btn" [disabled]="isCargandoClasificacion" (click)="recuperarClasificacion(informacion['idAnalisis'])">
                                                                                 <i class="fa fa-eye" aria-hidden="true"></i>
-                                                                        </a>        
+                                                                        </button>
                                                                 </p>
-                                                                
+
                                                         </td>
                                                 </tr>
                                         </tbody>
@@ -52,7 +56,8 @@
                                 <div class="row">
                                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3 d-flex flex-column">
                                                 <div class="d-flex align-items-center">
-                                                        <button class="btn-sec btn-cancel me-1 mb-3" style="margin-top: 0;"
+                                                        <button class="btn-sec btn-cancel me-1 mb-3"
+                                                                style="margin-top: 0;"
                                                                 routerLink="/panel">Volver</button>
                                                 </div>
                                         </div>

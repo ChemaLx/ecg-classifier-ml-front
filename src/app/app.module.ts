@@ -35,7 +35,7 @@ import { fakeApiPerfilSinteticoInterceptor } from './shared/fake-api/fake-api-pe
 import { fakeRegistroinInterceptor } from './shared/fake-api/fake-api-registro.interceptor';
 import { AutGuard } from './shared/guards/aut.guard';
 import { AutLoggedGuard } from './shared/guards/aut-logged.guard';
-
+import { BlockUIModule } from 'ng-block-ui';
 
 const routes: Routes = [
 	{
@@ -110,7 +110,8 @@ const routes: Routes = [
 	BrowserAnimationsModule,
 	NgxSliderModule,
 	NgxTrimDirectiveModule,
-	DigitOnlyModule
+	DigitOnlyModule,
+	BlockUIModule.forRoot()
   ],
   providers: [
 	  environment.isMockApiPerfilSintetico ? [fakeApiPerfilSinteticoInterceptor] : [],
