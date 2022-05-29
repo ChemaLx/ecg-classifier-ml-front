@@ -12,7 +12,7 @@
       <div>
         <button type="button" class="btn-close" (click)="isRegistroFailed=false"></button>
       </div>
-    </div> 
+    </div>
 
     <div class="card"
       style="box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); min-height: auto;">
@@ -62,28 +62,34 @@
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
               <div class="signup-form mt-3">
                 <label class="inp">
-                  <input type="text" class="input-text" placeholder="Correo electronico" formControlName="correoElectronico" trim="blur">
+                  <input type="text" class="input-text" placeholder="Correo electronico"
+                    formControlName="correoElectronico" trim="blur">
                   <span class="label">Correo electronico</span>
-
+                  <!-- <div *ngIf=" f.correoElectronico.touched && f.correoElectronico.errors">
+                    <p *ngIf="f.correoElectronico.hasError('required')" class="text-danger">
+                      campo requerido</p>
+                    <p *ngIf="f.correoElectronico.hasError('email')" class="text-danger">
+                      formato de correo invalido</p>
+                  </div> -->
                 </label>
               </div>
             </div>
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
               <div class="signup-form mt-3">
                 <label class="inp">
-                  <input type="text" class="input-text" placeholder="Contraseña" formControlName="contrasena" trim="blur">
+                  <input type="text" class="input-text" placeholder="Contraseña" formControlName="contrasena"
+                    trim="blur">
                   <span class="label">Contraseña</span>
 
                 </label>
               </div>
             </div>
-            
-            <!-- TODO: falta la validacion de la edad con el ngdocheck -->
+
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
               <div class="signup-form mt-3">
                 <label class="inp">
                   <input class="input-text" type="date" id="start" name="trip-start" value="" min="1922-01-01"
-              max="{{ultimoDia}}" formControlName="fechaNacimiento">
+                    max="{{ultimoDia}}" formControlName="fechaNacimiento">
                   <span class="label">Edad</span>
 
                 </label>
@@ -109,18 +115,20 @@
 
 
           </div>
-          
+
           <div class="row justify-content-center">
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex flex-column">
-              <button class="btn btn-login mt-1" *ngIf="!isCargando && !isRegistroCheck" (click)="signIn()" [disabled]="formGroupSignIn.invalid">Continuar</button>
-              <button *ngIf="isCargando" class="btn btn-login mt-1"  disabled>
+              <button class="btn btn-login mt-1" *ngIf="!isCargando && !isRegistroCheck" (click)="signIn()"
+                [disabled]="formGroupSignIn.invalid">Continuar</button>
+              <button *ngIf="isCargando" class="btn btn-login mt-1" disabled>
                 <i class="fas fa-spinner fa-spin fa-2x"></i>
               </button>
-              <button *ngIf="isRegistroCheck" class="btn btn-login mt-1"  disabled>
+              <button *ngIf="isRegistroCheck" class="btn btn-login mt-1" disabled>
                 <i class="fa fa-check fa-2x" aria-hidden="true"></i>
               </button>
             </div>
-            <p class="text-mute mt-3 text-center">¿Ya tienes una cuenta? <a routerLink="/login" class="text-blue">Inicia sesion</a></p>
+            <p class="text-mute mt-3 text-center">¿Ya tienes una cuenta? <a routerLink="/login" class="text-blue">Inicia
+                sesion</a></p>
           </div>
 
         </form>

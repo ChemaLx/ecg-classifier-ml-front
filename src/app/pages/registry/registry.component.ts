@@ -41,7 +41,7 @@ export class RegistryComponent implements OnInit {
       apellidoMaterno: new FormControl('', [Validators.required]),
       fechaNacimiento: new FormControl('', [Validators.required]),
       sexo: new FormControl('', [Validators.required]),
-      correoElectronico: new FormControl('', [Validators.required]),
+      correoElectronico: new FormControl('', [Validators.required, Validators.email]),
       contrasena: new FormControl('', [Validators.required])
     })
 
