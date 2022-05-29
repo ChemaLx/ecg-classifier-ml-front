@@ -2,6 +2,7 @@ import { Component, OnInit, DoCheck } from '@angular/core';
 import { EditService } from './shared/edit.service';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import ld from 'lodash'
+import { BlockUI, NgBlockUI } from 'ng-block-ui';
 
 @Component({
   selector: 'app-edit',
@@ -10,6 +11,7 @@ import ld from 'lodash'
 })
 export class EditComponent implements OnInit, DoCheck {
 
+  @BlockUI() blockUI: NgBlockUI;
   informacionPersonal = {}
   keys = []
   values = []
@@ -115,7 +117,7 @@ export class EditComponent implements OnInit, DoCheck {
     })
   }
   guardarNuevaInfo() {
-    this.isCargando = true
+    //this.isCargando = true
     const parametros = []
 
     Object.keys(this.f).forEach(key => {
@@ -132,7 +134,7 @@ export class EditComponent implements OnInit, DoCheck {
           }
       }
     })
-
+    this.blockUI.start('Guardando información...');
     this.editService.guardarNuevosDatos(parametros).subscribe(res => {
       this.informacionPersonal = res.body
       this.isCargando = false
@@ -140,6 +142,7 @@ export class EditComponent implements OnInit, DoCheck {
       this.isEditarContactoActive = false
       this.isInfoActualizada = true
       this.recuperarInformacionPersonal()
+      this.blockUI.stop();
       
     }, err => {
       this.isCargando = false
@@ -147,6 +150,7 @@ export class EditComponent implements OnInit, DoCheck {
       this.isEditarActive = false
       this.isError = true
       this.recuperarInformacionPersonal()
+      this.blockUI.stop();
     })
   }
 

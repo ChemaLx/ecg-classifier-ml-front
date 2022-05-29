@@ -1,4 +1,6 @@
-<app-navbar></app-navbar>
+<block-ui>
+        <app-navbar></app-navbar>
+</block-ui>
 <section class="blanco animated fadeIn" id="services">
         <div class="container-box">
                 <div class="alert alert-danger alert-dismissible fade show" role="alert"
@@ -9,38 +11,39 @@
                         </div>
                         <button type="button" class="btn-close" (click)="cambiarEstadoBanderas()"></button>
                 </div>
-                <div class="alert alert-success alert-dismissible fade show"
-                        *ngIf="isInfoActualizada">
+                <div class="alert alert-success alert-dismissible fade show" *ngIf="isInfoActualizada">
                         <div>
                                 <h5>Todos los cambios se han guardado con exito.</h5>
-                                
                         </div>
-                        <button type="button" class="btn-close" (click)="isInfoActualizada = !isInfoActualizada"></button>
+                        <button type="button" class="btn-close"
+                                (click)="isInfoActualizada = !isInfoActualizada"></button>
                 </div>
-                <div class="hero hero-is-primary d-flex justify-content-start align-items-center"
-                        style="box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);">
+                <div class="hero hero-is-primary d-flex justify-content-start align-items-center" style="
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+          0 10px 10px rgba(0, 0, 0, 0.22);
+      ">
                         <h3 class="p-3 m-0 text-white">Editar perfil</h3>
                 </div>
-                <div class="card"
-                        style="box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); min-height: auto;">
+                <div class="card" style="
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+          0 10px 10px rgba(0, 0, 0, 0.22);
+        min-height: auto;
+      ">
                         <div class="d-flex justify-content-center align-items-center" *ngIf="isCargando"
-                                style="min-height: 70vh;">
+                                style="min-height: 70vh">
                                 <i class="fas fa-spinner fa-spin fa-5x"></i>
                         </div>
                         <div class="card-body" *ngIf="!isCargando">
-
                                 <div class="row">
                                         <form [formGroup]="formGroupEditarDatosUser" novalidate>
-
                                                 <div class="col-12 mt-3">
-                                                        <div class="card" style="border: 1px solid rgb(224, 224, 224);">
+                                                        <div class="card" style="border: 1px solid rgb(224, 224, 224)">
                                                                 <div
                                                                         class="card-body d-flex flex-column align-items-start">
                                                                         <div
                                                                                 class="d-flex flex-wrap justify-content-between w-100 my-3">
                                                                                 <h5 class="card-title m-0">Información
-                                                                                        basica
-                                                                                </h5>
+                                                                                        basica</h5>
                                                                                 <div>
                                                                                         <button type="button"
                                                                                                 class="me-1 btn btn-success"
@@ -52,12 +55,11 @@
                                                                                         </button>
                                                                                         <button type="button"
                                                                                                 class="btn btn-success"
-                                                                                                (click)="isEditarActive=true"
+                                                                                                (click)="isEditarActive = true"
                                                                                                 [disabled]="isEditarActive">
                                                                                                 <i class="fa fa-pencil"
                                                                                                         aria-hidden="true"></i>
                                                                                         </button>
-
                                                                                 </div>
                                                                         </div>
                                                                         <div class="row w-100">
@@ -69,18 +71,20 @@
                                                                                         class="col-12 col-sm-9 col-md-9 col-lg-9">
                                                                                         <p class="m-0"
                                                                                                 *ngIf="!isEditarActive">
-                                                                                                {{informacionPersonal['nombre']}}
+                                                                                                {{
+                                                                                                informacionPersonal["nombre"]
+                                                                                                }}
                                                                                         </p>
                                                                                         <input *ngIf="isEditarActive"
                                                                                                 type="text" name=""
                                                                                                 id=""
-                                                                                                value="{{informacionPersonal['nombre']}}"
+                                                                                                value="{{ informacionPersonal['nombre'] }}"
                                                                                                 formControlName="nombre"
-                                                                                                trim="blur">
+                                                                                                trim="blur" />
                                                                                 </div>
                                                                         </div>
                                                                         <hr class="my-2"
-                                                                                style="width: 100%; color: rgb(143, 143, 143);">
+                                                                                style="width: 100%; color: rgb(143, 143, 143)" />
                                                                         <div class="row w-100">
                                                                                 <div
                                                                                         class="col-12 col-sm-3 col-md-3 col-lg-3">
@@ -91,18 +95,20 @@
                                                                                         class="col-12 col-sm-9 col-md-9 col-lg-9">
                                                                                         <p class="m-0"
                                                                                                 *ngIf="!isEditarActive">
-                                                                                                {{informacionPersonal['apellidoPaterno']}}
+                                                                                                {{
+                                                                                                informacionPersonal["apellidoPaterno"]
+                                                                                                }}
                                                                                         </p>
                                                                                         <input *ngIf="isEditarActive"
                                                                                                 type="text" name=""
                                                                                                 id=""
-                                                                                                value="{{informacionPersonal['apellidoPaterno']}}"
+                                                                                                value="{{ informacionPersonal['apellidoPaterno'] }}"
                                                                                                 formControlName="apellidoPaterno"
-                                                                                                trim="blur">
+                                                                                                trim="blur" />
                                                                                 </div>
                                                                         </div>
                                                                         <hr class="my-2"
-                                                                                style="width: 100%; color: rgb(143, 143, 143);">
+                                                                                style="width: 100%; color: rgb(143, 143, 143)" />
                                                                         <div class="row w-100">
                                                                                 <div
                                                                                         class="col-12 col-sm-3 col-md-3 col-lg-3">
@@ -113,18 +119,20 @@
                                                                                         class="col-12 col-sm-9 col-md-9 col-lg-9">
                                                                                         <p class="m-0"
                                                                                                 *ngIf="!isEditarActive">
-                                                                                                {{informacionPersonal['apellidoMaterno']}}
+                                                                                                {{
+                                                                                                informacionPersonal["apellidoMaterno"]
+                                                                                                }}
                                                                                         </p>
                                                                                         <input *ngIf="isEditarActive"
                                                                                                 type="text" name=""
                                                                                                 id=""
                                                                                                 [value]="informacionPersonal['apellidoMaterno']"
                                                                                                 formControlName="apellidoMaterno"
-                                                                                                trim="blur">
+                                                                                                trim="blur" />
                                                                                 </div>
                                                                         </div>
                                                                         <hr class="my-2"
-                                                                                style="width: 100%; color: rgb(143, 143, 143);">
+                                                                                style="width: 100%; color: rgb(143, 143, 143)" />
                                                                         <div class="row w-100">
                                                                                 <div
                                                                                         class="col-12 col-sm-3 col-md-3 col-lg-3">
@@ -134,22 +142,24 @@
                                                                                         class="col-12 col-sm-9 col-md-9 col-lg-9">
                                                                                         <p class="m-0"
                                                                                                 *ngIf="!isEditarActive">
-                                                                                                {{informacionPersonal['edad']}}
+                                                                                                {{
+                                                                                                informacionPersonal["edad"]
+                                                                                                }}
                                                                                         </p>
                                                                                         <input *ngIf="isEditarActive"
                                                                                                 type="text" name=""
                                                                                                 id=""
-                                                                                                value="{{informacionPersonal['edad']}}"
+                                                                                                value="{{ informacionPersonal['edad'] }}"
                                                                                                 formControlName="fechaNacimiento"
-                                                                                                trim="blur"
-                                                                                                digitOnly>
-                                                                                        <p *ngIf="isEdadMal">La edad se
-                                                                                                sale del rango (1-100
-                                                                                                años)</p>
+                                                                                                trim="blur" digitOnly />
+                                                                                        <p *ngIf="isEdadMal">
+                                                                                                La edad se sale del
+                                                                                                rango (1-100 años)
+                                                                                        </p>
                                                                                 </div>
                                                                         </div>
                                                                         <hr class="my-2"
-                                                                                style="width: 100%; color: rgb(143, 143, 143);">
+                                                                                style="width: 100%; color: rgb(143, 143, 143)" />
                                                                         <div class="row w-100">
                                                                                 <div
                                                                                         class="col-12 col-sm-3 col-md-3 col-lg-3">
@@ -158,26 +168,21 @@
                                                                                 <div
                                                                                         class="col-12 col-sm-9 col-md-9 col-lg-9">
                                                                                         <p class="m-0">
-                                                                                                {{this.f.sexo.value}}
+                                                                                                {{ this.f.sexo.value }}
                                                                                         </p>
-                                                                                        <!-- <input *ngIf="isEditarActive"
-                                                                                                type="text" name="" id=""
-                                                                                                value="{{informacionPersonal['sexo']}}" formControlName="sexo"> -->
                                                                                 </div>
                                                                         </div>
-
                                                                 </div>
                                                         </div>
                                                 </div>
                                                 <div class="col-12 my-3">
-                                                        <div class="card" style="border: 1px solid rgb(224, 224, 224);">
+                                                        <div class="card" style="border: 1px solid rgb(224, 224, 224)">
                                                                 <div
                                                                         class="card-body d-flex flex-column align-items-start">
                                                                         <div
                                                                                 class="d-flex justify-content-between flex-wrap w-100 my-3">
                                                                                 <h5 class="card-title m-0">Informacion
-                                                                                        de
-                                                                                        contacto</h5>
+                                                                                        de contacto</h5>
                                                                                 <div>
                                                                                         <button type="button"
                                                                                                 class="me-1 btn btn-success"
@@ -189,13 +194,11 @@
                                                                                         </button>
                                                                                         <button type="button"
                                                                                                 class="btn btn-success"
-                                                                                                (click)="isEditarContactoActive=true"
+                                                                                                (click)="isEditarContactoActive = true"
                                                                                                 [disabled]="isEditarContactoActive">
                                                                                                 <i class="fa fa-pencil"
                                                                                                         aria-hidden="true"></i>
                                                                                         </button>
-
-
                                                                                 </div>
                                                                         </div>
                                                                         <div class="row w-100">
@@ -207,18 +210,20 @@
                                                                                         class="col-12 col-sm-9 col-md-9 col-lg-9">
                                                                                         <p
                                                                                                 *ngIf="!isEditarContactoActive">
-                                                                                                {{informacionPersonal['correoElectronico']}}
+                                                                                                {{
+                                                                                                informacionPersonal["correoElectronico"]
+                                                                                                }}
                                                                                         </p>
                                                                                         <input *ngIf="isEditarContactoActive"
                                                                                                 type="text" name=""
                                                                                                 id=""
-                                                                                                value="{{informacionPersonal['correoElectronico']}}"
+                                                                                                value="{{ informacionPersonal['correoElectronico'] }}"
                                                                                                 formControlName="correoElectronico"
-                                                                                                trim="blur">
+                                                                                                trim="blur" />
                                                                                 </div>
                                                                         </div>
                                                                         <hr class="my-2"
-                                                                                style="width: 100%; color: rgb(143, 143, 143);">
+                                                                                style="width: 100%; color: rgb(143, 143, 143)" />
                                                                         <div class="row w-100">
                                                                                 <div
                                                                                         class="col-12 col-sm-3 col-md-3 col-lg-3">
@@ -233,9 +238,9 @@
                                                                                         <div class="input-group"
                                                                                                 *ngIf="isEditarContactoActive">
                                                                                                 <input [type]="isContrasenaVisible ? 'text' : 'password'"
-                                                                                                        value="{{informacionPersonal['contrasena']}}"
+                                                                                                        value="{{ informacionPersonal['contrasena'] }}"
                                                                                                         formControlName="contrasena"
-                                                                                                        trim="blur">
+                                                                                                        trim="blur" />
                                                                                                 <div
                                                                                                         class="input-group-append">
                                                                                                         <button id="boton-cadena-add-amb"
@@ -243,34 +248,33 @@
                                                                                                                 type="button"
                                                                                                                 ngbTooltip="Ver contraseña"
                                                                                                                 placement="top"
-                                                                                                                (click)="this.isContrasenaVisible = !this.isContrasenaVisible"><i
-                                                                                                                        class="far fa-eye"></i></button>
+                                                                                                                (click)="
+                              this.isContrasenaVisible =
+                                !this.isContrasenaVisible
+                            ">
+                                                                                                                <i
+                                                                                                                        class="far fa-eye"></i>
+                                                                                                        </button>
                                                                                                 </div>
                                                                                         </div>
                                                                                 </div>
                                                                         </div>
-
                                                                 </div>
-
                                                         </div>
                                                 </div>
                                         </form>
-
                                 </div>
                                 <div class="row">
                                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3 d-flex flex-column">
                                                 <div class="d-flex align-items-center">
                                                         <button class="btn-sec btn-cancel me-1 mb-3"
-                                                                style="margin-top: 0;"
-                                                                routerLink="/panel">Volver</button>
+                                                                style="margin-top: 0" routerLink="/panel">
+                                                                Volver
+                                                        </button>
                                                 </div>
                                         </div>
-
                                 </div>
                         </div>
                 </div>
-
-
         </div>
-
 </section>
