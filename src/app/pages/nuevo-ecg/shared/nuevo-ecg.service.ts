@@ -39,7 +39,7 @@ export class NuevoEcgService {
 
 	recuperarDatosUsuario(){
 		let httpParams = new HttpParams()
-		return this._httpClient.get(`${environment.apiUsuarios}/usuarios/usuario/datos-personales-analisis/${localStorage.getItem('idUsuario')}`,
+		return this._httpClient.get(`${environment.apiUsuarios}/usuarios/usuario/edad-sexo/${localStorage.getItem('idUsuario')}`,
 			{
 				headers: this.httpHeaders,
 				observe: 'response',
