@@ -10,7 +10,7 @@
         </div>
         <div class="hero hero-is-primary d-flex justify-content-start align-items-center"
             style="box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);">
-            <h3 class="p-3 m-0 text-white">Electrocardiograma de Jose Ricardo Flores Lima</h3>
+            <h3 class="p-3 m-0 text-white">Resultados de la clasificación</h3>
         </div>
 
 
@@ -25,13 +25,12 @@
             </div>
 
             <div class="card-body">
-                <div class="d-flex justify-content-between flex-wrap">
-                    <p><strong>Sexo: </strong> Masculino</p>
-                    <p><strong>Edad: </strong> 22</p>
-                    <p><strong>Resultados: </strong> <span class="text-danger">Taquicardia</span></p>
+                <div class="d-flex justify-content-start flex-wrap ms-3" *ngIf="!isDatosVacios">
+                    <p><strong>Sexo: </strong> {{sexo}}</p>
+                    <p class=" ms-3"><strong>Edad: </strong> {{edad}}</p>
                 </div>
                 <div class="row">
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3 d-flex">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3 d-flex ms-3">
                         <div class="d-flex align-items-center">
                             <button class="btn-sec btn-cancel me-1 mb-3" style="margin-top: 0;"
                                 routerLink="/panel">Volver</button>

@@ -12,6 +12,8 @@ export class DashboardComponent implements OnInit {
   datos = {}
   view: [number, number] = [700, 350];
   isDatosVacios = false
+  sexo = ''
+  edad = ''
 
   // options
   legend: boolean = true;
@@ -21,7 +23,7 @@ export class DashboardComponent implements OnInit {
   yAxis: boolean = true;
   showYAxisLabel: boolean = true;
   showXAxisLabel: boolean = true;
-  xAxisLabel: string = 'Mili segundos (ms)';
+  xAxisLabel: string = 'Segundos (s)';
   yAxisLabel: string = 'Amplitud (volts)';
   timeline: boolean = true;
 
@@ -36,6 +38,8 @@ export class DashboardComponent implements OnInit {
     }
     Object.assign(this, { multi: this.datos['ecg'] });
     this.view = [innerWidth / 1.4, 350];
+    this.edad = this.datos['edad']
+    this.sexo = this.datos['sexo']
   }
 
   onSelect(data: any): void {
