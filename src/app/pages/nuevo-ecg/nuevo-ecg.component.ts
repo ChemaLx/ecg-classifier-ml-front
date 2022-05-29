@@ -7,6 +7,7 @@ import { NuevoEcgService } from './shared/nuevo-ecg.service';
 import { Router } from '@angular/router';
 import { Options } from "@angular-slider/ngx-slider";
 import { DashboardService } from '../dashboard/shared/dashboard.service';
+import { BlockUI, NgBlockUI } from 'ng-block-ui';
 
 @Component({
   selector: 'app-nuevo-ecg',
@@ -15,6 +16,7 @@ import { DashboardService } from '../dashboard/shared/dashboard.service';
 })
 export class NuevoEcgComponent implements OnInit, DoCheck {
 
+  @BlockUI() blockUI: NgBlockUI;
   value: number = 0;
   highValue: number = 30;
   options: Options = {
@@ -298,6 +300,7 @@ export class NuevoEcgComponent implements OnInit, DoCheck {
 
  
   cargarNuevoEcg() {
+    this.blockUI.start('Procesando clasificación...');
     this.isClasificacionLista = false
     this.isCargando = true
     const parametros = []
@@ -367,9 +370,9 @@ export class NuevoEcgComponent implements OnInit, DoCheck {
       this._dashboardService.ecg = res.body
       this._router.navigate(['/dashboard'])
       this.recuperarDatosUsuario()
-      
+      this.blockUI.stop();
     }, err => {
-      //this.error = err.error.details
+      this.blockUI.stop();
       this.limpiarFormulario()
       this.isCargaError = true
       this.isCargando = false
