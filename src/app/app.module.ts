@@ -36,6 +36,7 @@ import { fakeRegistroinInterceptor } from './shared/fake-api/fake-api-registro.i
 import { AutGuard } from './shared/guards/aut.guard';
 import { AutLoggedGuard } from './shared/guards/aut-logged.guard';
 import { BlockUIModule } from 'ng-block-ui';
+import { ErrorComponent } from './pages/layout/error/error.component';
 
 const routes: Routes = [
 	{
@@ -81,6 +82,10 @@ const routes: Routes = [
 		component: NuevoEcgComponent,
 		canActivate: [AutGuard],
 	},
+	{
+		path: '**',
+		component: ErrorComponent
+	  }
 ]
 
 @NgModule({
@@ -97,7 +102,8 @@ const routes: Routes = [
     NavbarComercialComponent,
     PanelControlComponent,
     HistorialComponent,
-    NuevoEcgComponent
+    NuevoEcgComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

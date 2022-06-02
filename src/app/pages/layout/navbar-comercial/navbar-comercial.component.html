@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white navbar-fixed" style="box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);">
     <div class="container-fluid">
       
-      <a class="navbar-brand" href="#welcome-section">
+      <a class="navbar-brand" [routerLink]="['/']" fragment="welcome-section">
         <img src="assets\img\logo-ecg.png" style="height: 30px; width: 30px; margin-right: 0.3rem;" >
         Clasificador de ECG
       </a>
@@ -11,19 +11,19 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item" [routerLinkActive]="'active'">
-            <a class="nav-link" aria-current="page" href="#about-me-1">Sobre nosotros</a>
+            <a class="nav-link" aria-current="page" [routerLink]="['/']" fragment="about-me-1">Sobre nosotros</a>
           </li>
           <li class="nav-item" [routerLinkActive]="'active'">
-            <a class="nav-link" href="#services">Servicios</a>
+            <a class="nav-link" [routerLink]="['/']" fragment="services">Servicios</a>
           </li>
           <li class="nav-item" [routerLinkActive]="'active'">
-            <a class="nav-link" href="#perfil" >Perfiles sinteticos</a>
+            <a class="nav-link" [routerLink]="['/']" fragment="perfil">Perfiles sinteticos</a>
           </li>
           <li class="nav-item" [routerLinkActive]="'active'">
-            <a class="nav-link" href="#contacto" >Contacto</a>
+            <a class="nav-link" [routerLink]="['/']" fragment="contacto">Contacto</a>
           </li>
           <li class="nav-item" [routerLinkActive]="'active'" *ngIf="!isUsuarioIniciado">
-            <a class="nav-link" routerLink="/login" >Iniciar sesión</a>
+            <a class="nav-link" [routerLink]="['/login']">Iniciar sesión</a>
           </li>
           
         </ul>
