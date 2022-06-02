@@ -1,0 +1,6 @@
+.navbar-fixed{
+    position: fixed;
+    width: 100%;
+    z-index: 9999999999999999999999999999999999999999;
+    top: 0;
+}
