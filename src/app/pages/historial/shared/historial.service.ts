@@ -30,7 +30,7 @@ export class HistorialService {
 
 	recuperarClasificacion(idClasificacion): Observable<HttpResponse<any>> {
 		console.log('id de la class'+idClasificacion)
-		return this._httpClient.get(`${environment.apiProcesamiento}/procesamiento/historial/clasificacion/${idClasificacion}`,
+		return this._httpClient.get(`${environment.apiProcesamiento}/procesamiento/clasificacion/${idClasificacion}`,
 			{
 				headers: this.httpHeaders,
 				observe: 'response',
