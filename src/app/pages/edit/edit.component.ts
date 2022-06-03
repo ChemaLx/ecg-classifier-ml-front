@@ -3,6 +3,7 @@ import { EditService } from './shared/edit.service';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import ld from 'lodash'
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
+import dayjs from 'dayjs';
 
 @Component({
   selector: 'app-edit',
@@ -15,6 +16,7 @@ export class EditComponent implements OnInit, DoCheck {
   informacionPersonal = {}
   keys = []
   values = []
+  ultimoDia = dayjs().format('YYYY-MM-DD')
 
   formGroupEditarDatosUser: FormGroup
   formGroupEditarDatosMedico: FormGroup
