@@ -66,6 +66,7 @@ export class RegistryComponent implements OnInit {
     this._registryService.registrarUsuario(params).subscribe(res => {
       this.isCargando = false
       this.isRegistroCheck = true
+      console.log(res)
       setTimeout(() => {
         this._router.navigate(['/login'])
       }, 1200);

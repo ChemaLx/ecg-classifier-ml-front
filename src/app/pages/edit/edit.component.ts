@@ -98,13 +98,14 @@ export class EditComponent implements OnInit, DoCheck {
     this.isCargando = true
     this.editService.recuperarInformacionPersonal('oaaaa-eeee-uuu-uuuu').subscribe(res => {
       this.informacionPersonal = res.body
+      console.log(this.informacionPersonal)
       this.isCargando = false
       this.formGroupEditarDatosUser.setValue({
-        nombre: this.informacionPersonal['nombre'],
+        nombre: this.informacionPersonal['nombres'],
         apellidoPaterno: this.informacionPersonal['apellidoPaterno'],
         sexo: '',
         apellidoMaterno: this.informacionPersonal['apellidoMaterno'],
-        fechaNacimiento: this.informacionPersonal['edad'],
+        fechaNacimiento: this.informacionPersonal['fechaNacimiento'],
         correoElectronico: this.informacionPersonal['correoElectronico'],
         contrasena: this.informacionPersonal['contrasena'],
       });
@@ -114,6 +115,7 @@ export class EditComponent implements OnInit, DoCheck {
       else {
         this.formGroupEditarDatosUser.controls['sexo'].setValue('Femenino')
       }
+      console.log(this.f.nombre.value)
     })
   }
   guardarNuevaInfo() {
@@ -141,6 +143,8 @@ export class EditComponent implements OnInit, DoCheck {
       this.isEditarActive = false
       this.isEditarContactoActive = false
       this.isInfoActualizada = true
+      localStorage.removeItem('nombre')
+      localStorage.setItem('nombre', this.informacionPersonal['nombres'])
       this.recuperarInformacionPersonal()
       this.blockUI.stop();
       

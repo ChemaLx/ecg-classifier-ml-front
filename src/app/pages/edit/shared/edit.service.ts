@@ -17,9 +17,8 @@ export class EditService {
 
   constructor(private readonly _httpClient: HttpClient, private readonly _utilService: UtilsService) { }
 
-  //TODO: fallta este servicio
   recuperarInformacionPersonal(idUsuario): Observable<HttpResponse<any>> {
-		return this._httpClient.get(`${environment.apiUsuarios}/usuarios/usuario/recuperar/info/${localStorage.getItem('idUsuario')}`,
+		return this._httpClient.get(`${environment.apiUsuarios}/usuarios/usuario/referencia/${localStorage.getItem('idUsuario')}`,
 			{
 				headers: this.httpHeaders,
 				observe: 'response',

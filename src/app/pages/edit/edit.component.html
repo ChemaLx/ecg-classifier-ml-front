@@ -72,7 +72,7 @@
                                                                                         <p class="m-0"
                                                                                                 *ngIf="!isEditarActive">
                                                                                                 {{
-                                                                                                informacionPersonal["nombre"]
+                                                                                                informacionPersonal["nombres"]
                                                                                                 }}
                                                                                         </p>
                                                                                         <input *ngIf="isEditarActive"
@@ -143,13 +143,13 @@
                                                                                         <p class="m-0"
                                                                                                 *ngIf="!isEditarActive">
                                                                                                 {{
-                                                                                                informacionPersonal["edad"]
+                                                                                                informacionPersonal["fechaNacimiento"]
                                                                                                 }}
                                                                                         </p>
                                                                                         <input *ngIf="isEditarActive"
                                                                                                 type="text" name=""
                                                                                                 id=""
-                                                                                                value="{{ informacionPersonal['edad'] }}"
+                                                                                                value="{{ informacionPersonal['fechaNacimiento'] }}"
                                                                                                 formControlName="fechaNacimiento"
                                                                                                 trim="blur" digitOnly />
                                                                                         <p *ngIf="isEdadMal">

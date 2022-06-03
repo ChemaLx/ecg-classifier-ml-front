@@ -111,7 +111,9 @@ export class NuevoEcgComponent implements OnInit, DoCheck {
     this.isCargandoIngformacionUsuarioSuccess = false
     this._nuevoEcgService.recuperarDatosUsuario().subscribe(res => {
       this.isCargandoIngformacionUsuarioSuccess = true
-      this.datosUsuario = res.body/* ['body'] */
+      this.datosUsuario = res.body
+      console.log(this.datosUsuario)
+      //TODO: devuelve la edad negativa
       if (this.datosUsuario['sexo'] == 0) {
         this.formGroupNuevoEcg.controls['sexo'].setValue('Masculino');
       }

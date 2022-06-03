@@ -7,14 +7,14 @@ export const environment = {
   isMockEnabled: true,
   
 	apiProcesamiento: 'http://127.0.0.1:8082',
-	apiUsuarios: 'http://127.0.0.1:8081',
+	apiUsuarios: 'https://microservicio-usuarios-1654059817625.azurewebsites.net',
 
-	isMockApiPerfilSintetico: true,
-	isMockApiIniciarSesion: true,
-	isMockApiEditarDatosInterceptor: true,
-	isMockApiHistorialInterceptor: true,
-	isMockApiNuevoEcgInterceptor: true,
-	isMockApiRegistroInterceptor: true,
+	isMockApiPerfilSintetico: false,
+	isMockApiIniciarSesion: false,
+	isMockApiEditarDatosInterceptor: false,
+	isMockApiHistorialInterceptor: false,
+	isMockApiNuevoEcgInterceptor: false,
+	isMockApiRegistroInterceptor: false,
 };
 
 /*
