@@ -71,17 +71,22 @@
                         class="me-1 btn btn-success"
                         *ngIf="isEditarActive"
                         (click)="guardarNuevaInfo()"
-                        [disabled]="isEdadMal"
-                      >
+                        [disabled]="isEdadMal">
                         <i class="fa fa-floppy-o" aria-hidden="true"></i>
                       </button>
                       <button
                         type="button"
                         class="btn btn-success"
                         (click)="isEditarActive = true"
-                        [disabled]="isEditarActive"
-                      >
+                        *ngIf="!isEditarActive">
                         <i class="fa fa-pencil" aria-hidden="true"></i>
+                      </button>
+                      <button
+                        type="button"
+                        class="ms-1 btn btn-danger"
+                        *ngIf="isEditarActive"
+                        (click)="isEditarActive = false">
+                        <i class="fa fa-close" aria-hidden="true"></i>
                       </button>
                     </div>
                   </div>
@@ -215,13 +220,20 @@
                       >
                         <i class="fa fa-floppy-o" aria-hidden="true"></i>
                       </button>
+
                       <button
                         type="button"
                         class="btn btn-success"
                         (click)="isEditarContactoActive = true"
-                        [disabled]="isEditarContactoActive"
-                      >
+                        *ngIf="!isEditarContactoActive">
                         <i class="fa fa-pencil" aria-hidden="true"></i>
+                      </button>
+                      <button
+                        type="button"
+                        class="ms-1 btn btn-danger"
+                        *ngIf="isEditarContactoActive"
+                        (click)="isEditarContactoActive = false">
+                        <i class="fa fa-close" aria-hidden="true"></i>
                       </button>
                     </div>
                   </div>
