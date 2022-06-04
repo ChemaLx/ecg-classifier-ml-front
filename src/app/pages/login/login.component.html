@@ -2,21 +2,21 @@
 <div class="d-flex justify-content-center align-items-center flex-wrap pt-custom-login animated fadeIn" style="background-color: #c3d7ec; height: 100vh;">
     <div class="container-press text-white mx-4">
         <h3 class="text-black">Clasificador de ECG</h3>
-        <p class="m-0 text-black">Clasificador de ECG te ayuda a realizar clasificaciones de taquicardias y bradicardias a cualquier hora del dia.</p>
+        <p class="m-0 text-black">Clasificador de ECG te ayuda a realizar clasificaciones de taquicardias y bradicardias a cualquier hora del día.</p>
     </div>
     <div class="container-card mt-5">
         <div class="card container-login text-center sombra" style="margin: 0rem 0rem 5rem 0rem;">
             <div class="d-flex justify-content-center mb-3">
                 <img src="assets\img\logo-ecg.png" style="height: 100px; width: 100px;">
             </div>
-            <h1 class="heading-primary mb-3">Iniciar sesion<span class="span-blue">.</span></h1>
+            <h1 class="heading-primary mb-3">Iniciar sesión<span class="span-blue">.</span></h1>
             
             
             <div class="d-flex justify-content-center w-100">
                 <form class="signup-form" [formGroup]="formGroupLogin">
                   <label class="inp">
-                    <input type="text" class="input-text" placeholder="Correo electronico" formControlName="correoElectronico" trim="blur">
-                    <span class="label">Correo electronico</span>
+                    <input type="text" class="input-text" placeholder="Correo electrónico" formControlName="correoElectronico" trim="blur">
+                    <span class="label">Correo electrónico</span>
 
                   </label>
                   <label class="inp">
@@ -31,7 +31,7 @@
                     <i class="fas fa-spinner fa-spin fa-2x"></i>
                   </button>
                   <p class="text-danger mb-3" *ngIf="isLoginError">El usuario o contraseña que ingresaste son incorrectos.</p>
-                  <p class="text-mute">¿Aun no eres miembro? <a routerLink="/signup">Registrate</a></p>
+                  <p class="text-mute">¿Aún no eres miembro? <a routerLink="/signup">Regístrate</a></p>
                 </form>
                 
             </div>

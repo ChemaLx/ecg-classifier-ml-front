@@ -5,7 +5,7 @@
     <div class="container-box">
         <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="isCargaError">
             <div>
-                <h5><strong>Ups...!</strong> sucedio algo inesperado.</h5>
+                <h5><strong>Ups...!</strong> sucedió algo inesperado.</h5>
                 <p class="m-0">Descripción del error: 501 internal server error</p>
             </div>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -23,7 +23,7 @@
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
                                 value="true" (click)="cambiarForm(true)">
-                            <label class="form-check-label" for="inlineRadio1">Clasificacion propia</label>
+                            <label class="form-check-label" for="inlineRadio1">Clasificación propia</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
@@ -43,7 +43,7 @@
                         <div class="row" >
                             <!--  ! intervalo analisis -->
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-6">
-                                    <p class="form-label mt-3 mb-1">Medidas de intervalo de analisis</p>
+                                    <p class="form-label mt-3 mb-1">Medidas de intervalo de análisis</p>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="intervalo" id="intervalo1" (click)="cambiarMedidaIntervaloMinutos(true)" [checked]="isMinutosIntervalo">
                                         <label class="form-check-label" for="intervalo1">Minutos</label>
@@ -57,7 +57,7 @@
                             <!--  ! inicio fin analisis -->
                             
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-6">
-                                    <p class="form-label mb-1">Medidas de inicio y fin de analisis</p>
+                                    <p class="form-label mb-1">Medidas de inicio y fin de análisis</p>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="iniciofin" id="iniciofin1" (click)="cambiarMedidaInicioFinMinutos(true)" [checked]="isMinutosInicioFin">
                                         <label class="form-check-label" for="iniciofin1">Minutos</label>
@@ -100,12 +100,12 @@
                                 archivo</span>
                         </div>
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3" *ngIf="isMinutosInicioFin && isArchivoCargado">
-                            <label class="form-label mb-0">Inicio y fin de analisis (minutos)</label>
+                            <label class="form-label mb-0">Inicio y fin de análisis (minutos)</label>
                             <ngx-slider [(value)]="value" [(highValue)]="highValue" [options]="options"
                                 style="background-color: #2196f3;"></ngx-slider>
                         </div>
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3" *ngIf="!isMinutosInicioFin && isArchivoCargado">
-                            <label class="form-label mb-0" >Inicio y fin de analisis (segundos)</label>
+                            <label class="form-label mb-0" >Inicio y fin de análisis (segundos)</label>
                             <ngx-slider [(value)]="value" [(highValue)]="highValue" [options]="options"
                                 style="background-color: #2196f3;"></ngx-slider>
                         </div>
@@ -113,10 +113,10 @@
                             *ngIf="isMinutosIntervalo && isArchivoCargado">
                             <div class="signup-form mt-3">
                                 <label class="inp">
-                                    <input type="number" class="input-text" placeholder="Intervalo de analisis (minutos)" formControlName="intervaloAnalisis">
-                                    <span class="label">Intervalo de analisis (minutos)</span>
+                                    <input type="number" class="input-text" placeholder="Intervalo de análisis (minutos)" formControlName="intervaloAnalisis">
+                                    <span class="label">Intervalo de análisis (minutos)</span>
                                     <div class=" mt-1">
-                                        <span class="text-danger" *ngIf="isIntervaloMayorQueRangoAnalisis">El valor del intervalo  de analisis en mayor que el rango de analisis</span>
+                                        <span class="text-danger" *ngIf="isIntervaloMayorQueRangoAnalisis">El valor del intervalo  de análisis en mayor que el rango de análisis</span>
                                     </div>
                                 </label>
                             </div>
@@ -125,10 +125,10 @@
                             *ngIf="!isMinutosIntervalo && isArchivoCargado">
                             <div class="signup-form mt-3">
                                 <label class="inp">
-                                    <input type="number" class="input-text" placeholder="Intervalo de analisis (segundos)" formControlName="intervaloAnalisis">
-                                    <span class="label">Intervalo de analisis (segundos)</span>
+                                    <input type="number" class="input-text" placeholder="Intervalo de análisis (segundos)" formControlName="intervaloAnalisis">
+                                    <span class="label">Intervalo de análisis (segundos)</span>
                                     <div class=" mt-1">
-                                        <span class="text-danger" *ngIf="isIntervaloMayorQueRangoAnalisis">El valor del intervalo  de analisis en mayor que el rango de analisis</span>
+                                        <span class="text-danger" *ngIf="isIntervaloMayorQueRangoAnalisis">El valor del intervalo  de análisis en mayor que el rango de análisis</span>
                                     </div>
                                 </label>
                             </div>
@@ -161,7 +161,7 @@
                     <div class="row  mt-3">
                         <!--  ! intervalo analisis -->
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6">
-                                <p class="form-label mb-1">Medidas de intervalo de analisis</p>
+                                <p class="form-label mb-1">Medidas de intervalo de análisis</p>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="intervalo" id="intervalo1" (click)="cambiarMedidaIntervaloMinutos(true)" [checked]="isMinutosIntervalo">
                                     <label class="form-check-label" for="intervalo1">Minutos</label>
@@ -175,7 +175,7 @@
                         <!--  ! inicio fin analisis -->
                         
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6">
-                                <p class="form-label mb-1">Medidas de inicio y fin de analisis</p>
+                                <p class="form-label mb-1">Medidas de inicio y fin de análisis</p>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="iniciofin" id="iniciofin1" (click)="cambiarMedidaInicioFinMinutos(true)" [checked]="isMinutosInicioFin">
                                     <label class="form-check-label" for="iniciofin1">Minutos</label>
@@ -252,12 +252,12 @@
                                 archivo</span>
                         </div>
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3" *ngIf="isMinutosInicioFin && isArchivoCargado">
-                            <label class="form-label mb-0">Inicio y fin de analisis (minutos)</label>
+                            <label class="form-label mb-0"> Inicio y fin de análisis (minutos)</label>
                             <ngx-slider [(value)]="value" [(highValue)]="highValue" [options]="options"
                                 style="background-color: #2196f3;"></ngx-slider>
                         </div>
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3" *ngIf="!isMinutosInicioFin && isArchivoCargado">
-                            <label class="form-label mb-0" >Inicio y fin de analisis (segundos)</label>
+                            <label class="form-label mb-0" >Inicio y fin de análisis (segundos)</label>
                             <ngx-slider [(value)]="value" [(highValue)]="highValue" [options]="options"
                                 style="background-color: #2196f3;"></ngx-slider>
                         </div>
@@ -265,10 +265,10 @@
                             *ngIf="isMinutosIntervalo && isArchivoCargado">
                             <div class="signup-form mt-3">
                                 <label class="inp">
-                                    <input type="number" class="input-text" placeholder="Intervalo de analisis (minutos)" formControlName="intervaloAnalisis">
-                                    <span class="label">Intervalo de analisis (minutos)</span>
+                                    <input type="number" class="input-text" placeholder="Intervalo de análisis (minutos)" formControlName="intervaloAnalisis">
+                                    <span class="label">Intervalo de análisis (minutos)</span>
                                     <div class=" mt-1">
-                                        <span class="text-danger" *ngIf="isIntervaloMayorQueRangoAnalisis">El valor del intervalo  de analisis en mayor que el rango de analisis</span>
+                                        <span class="text-danger" *ngIf="isIntervaloMayorQueRangoAnalisis">El valor del intervalo de análisis en mayor que el rango de análisis</span>
                                     </div>
                                 </label>
                             </div>
@@ -277,10 +277,10 @@
                             *ngIf="!isMinutosIntervalo && isArchivoCargado">
                             <div class="signup-form mt-3">
                                 <label class="inp">
-                                    <input type="number" class="input-text" placeholder="Intervalo de analisis (segundos)" formControlName="intervaloAnalisis">
-                                    <span class="label">Intervalo de analisis (segundos)</span>
+                                    <input type="number" class="input-text" placeholder="Intervalo de análisis (segundos)" formControlName="intervaloAnalisis">
+                                    <span class="label">Intervalo de análisis (segundos)</span>
                                     <div class=" mt-1">
-                                        <span class="text-danger" *ngIf="isIntervaloMayorQueRangoAnalisis">El valor del intervalo  de analisis en mayor que el rango de analisis</span>
+                                        <span class="text-danger" *ngIf="isIntervaloMayorQueRangoAnalisis">El valor del intervalo de análisis en mayor que el rango de análisis</span>
                                     </div>
                                 </label>
                             </div>

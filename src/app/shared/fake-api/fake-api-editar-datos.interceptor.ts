@@ -15,7 +15,7 @@ export class FakeApiEditarDatosInterceptor implements HttpInterceptor {
 
     switch (true) {
       // lista
-      case url.match(/([/]usuarios[/]usuario[/]recuperar[/]info[/])[0-9]+$/) && method === 'GET':
+      case url.match(/([/]usuarios[/]usuario[/]referencia[/])[0-9]+$/) && method === 'GET':
         return recuperarInfoUsuario()
 
       case url.match(/([/]usuarios[/]usuario[/]actualizar[/])[0-9]+$/) && method === 'PUT':
@@ -31,10 +31,10 @@ export class FakeApiEditarDatosInterceptor implements HttpInterceptor {
         return of(new HttpResponse({
           status: 200,
           body: {
-            nombre: "Ricardo",
+            nombres: "Ricardo",
             apellido_paterno: "Flores",
             apellido_materno: "Lima",
-            edad: 25,
+            fecha_nacimiento: '1999-22-02',
             sexo: 0,
             pais: "Mexico",
             contraseña: "richardo69cool",

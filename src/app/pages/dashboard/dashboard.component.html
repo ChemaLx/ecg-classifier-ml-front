@@ -3,7 +3,7 @@
     <div class="container-box">
         <div class="alert alert-info alert-dismissible fade show" role="alert" *ngIf="isDatosVacios">
             <div>
-                <h5 class="m-0"><strong>No hay nada para ver aqui... por ahora.</strong></h5>
+                <h5 class="m-0"><strong>No hay nada para ver aquí... por ahora.</strong></h5>
                 <p class="m-0">Prueba ingresando un nuevo registro.</p>
             </div>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -26,7 +26,9 @@
 
             <div class="card-body">
                 <div class="d-flex justify-content-start flex-wrap ms-3" *ngIf="!isDatosVacios">
-                    <p><strong>Sexo: </strong> {{sexo}}</p>
+                    <p *ngIf="sexo == '0'"><strong>Sexo: </strong> Masculino</p>
+                    <p *ngIf="sexo == '1'"><strong>Sexo: </strong> Femenino</p>
+                    
                     <p class=" ms-3"><strong>Edad: </strong> {{edad}}</p>
                 </div>
                 <div class="row">

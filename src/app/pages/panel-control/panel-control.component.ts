@@ -16,7 +16,7 @@ export class PanelControlComponent implements OnInit {
   }
   ngOnInit(): void {
     if (dayjs().hour(0).minute(0).second(0)['$d'] <= this.horaActual['$d'] && this.horaActual['$d'] < dayjs().hour(12).minute(0).second(0)['$d']) {
-      this.mensaje = 'Buenos dias'
+      this.mensaje = 'Buenos días'
     }
     if (dayjs().hour(12).minute(0).second(0)['$d'] <= this.horaActual['$d'] && this.horaActual['$d'] < dayjs().hour(20).minute(0).second(0)['$d']) {
       this.mensaje = 'Buenas tardes'
