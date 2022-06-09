@@ -38,7 +38,9 @@ export class HistorialComponent implements OnInit {
     this.isCargandoClasificacion = true
     this.blockUI.start('Recuperando información...');
     this.historialService.recuperarClasificacion(idClasificacion).subscribe(res => {
+    
       this._dashboardService.ecg = res.body
+      console.log(this._dashboardService.ecg)
       this.blockUI.stop();
       this._router.navigate(['/dashboard'])
       this.isCargandoClasificacion = false

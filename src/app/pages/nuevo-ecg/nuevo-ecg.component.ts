@@ -370,6 +370,7 @@ export class NuevoEcgComponent implements OnInit, DoCheck {
       this.isCargando = false
       console.log(res)
       this._dashboardService.ecg = res.body
+      console.log(this._dashboardService.ecg)
       this._router.navigate(['/dashboard'])
       this.recuperarDatosUsuario()
       this.blockUI.stop();

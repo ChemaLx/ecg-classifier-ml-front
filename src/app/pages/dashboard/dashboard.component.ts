@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 //import { multi } from 'src/app/shared/data';
 import { DashboardService } from './shared/dashboard.service';
 
@@ -33,13 +33,23 @@ export class DashboardComponent implements OnInit {
 
   constructor(private readonly _dashboardService: DashboardService) {
     this.datos = this._dashboardService.ecg
-    if(!Boolean(this.datos['ecg'])){
-      this.isDatosVacios = true
+    if(typeof this.datos['resultado'] == 'string'){
+        console.log(JSON.parse(this.datos['resultado']))
+        Object.assign(this, { multi: JSON.parse(this.datos['resultado']) });
+        this.view = [innerWidth / 1.4, 350];
+        this.edad = this.datos['edad']
+        this.sexo = this.datos['sexo']
     }
-    Object.assign(this, { multi: this.datos['ecg'] });
-    this.view = [innerWidth / 1.4, 350];
-    this.edad = this.datos['edad']
-    this.sexo = this.datos['sexo']
+    else {
+      if(!Boolean(this.datos['ecg'])){
+        this.isDatosVacios = true
+      }
+      Object.assign(this, { multi: this.datos['ecg'] });
+      this.view = [innerWidth / 1.4, 350];
+      this.edad = this.datos['edad']
+      this.sexo = this.datos['sexo']
+
+    }
   }
 
   onSelect(data: any): void {

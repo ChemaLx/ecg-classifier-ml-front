@@ -5,8 +5,6 @@ import dayjs from 'dayjs';
 import { RegistryService } from './shared/registry.service';
 import { Router } from '@angular/router';
 import ld from 'lodash'
-import { snakeCase } from 'lodash';
-
 @Component({
   selector: 'app-registry',
   templateUrl: './registry.component.html',

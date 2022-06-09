@@ -7,7 +7,8 @@ export const environment = {
   isMockEnabled: true,
   
 	apiProcesamiento: 'http://127.0.0.1:8082',
-	apiUsuarios: 'https://microservicio-usuarios-1654059817625.azurewebsites.net',
+	apiUsuarios: 'http://127.0.0.1:8081',
+	//apiUsuarios: 'https://microservicio-usuarios-1654059817625.azurewebsites.net',
 
 	isMockApiPerfilSintetico: false,
 	isMockApiIniciarSesion: false,
