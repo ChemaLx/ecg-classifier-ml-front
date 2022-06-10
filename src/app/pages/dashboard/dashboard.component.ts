@@ -14,6 +14,8 @@ export class DashboardComponent implements OnInit {
   isDatosVacios = false
   sexo = ''
   edad = ''
+  yScaleMin = 800
+  yScaleMax = 1300
 
   // options
   legend: boolean = true;
@@ -23,7 +25,7 @@ export class DashboardComponent implements OnInit {
   yAxis: boolean = true;
   showYAxisLabel: boolean = true;
   showXAxisLabel: boolean = true;
-  xAxisLabel: string = 'Segundos (s)';
+  xAxisLabel: string = 'Muestras (1/360 s)';
   yAxisLabel: string = 'Amplitud (milivolts)';
   timeline: boolean = true;
 
