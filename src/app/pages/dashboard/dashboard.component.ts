@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
   showYAxisLabel: boolean = true;
   showXAxisLabel: boolean = true;
   xAxisLabel: string = 'Segundos (s)';
-  yAxisLabel: string = 'Amplitud (volts)';
+  yAxisLabel: string = 'Amplitud (milivolts)';
   timeline: boolean = true;
 
   colorScheme = {
