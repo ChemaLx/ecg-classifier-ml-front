@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
@@ -12,6 +12,9 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { NgxTrimDirectiveModule } from 'ngx-trim-directive';
 import { DigitOnlyModule } from '@uiowa/digit-only';
+import localeEs from '@angular/common/locales/es'
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localeEs, 'es')
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -127,7 +130,8 @@ const routes: Routes = [
 	  environment.isMockApiNuevoEcgInterceptor ? [fakeApiNuevoEcgInterceptor] : [],
 	  environment.isMockApiRegistroInterceptor ? [fakeRegistroinInterceptor] : [],
 	  AutGuard,
-	  AutLoggedGuard
+	  AutLoggedGuard,
+	  {provide: LOCALE_ID, useValue: 'es'}
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

@@ -28,7 +28,7 @@
                                 <table class="table table-striped table-hover text-center">
                                         <thead>
                                                 <tr>
-                                                        <th>Duración (minutos)</th>
+                                                        <th>Duración (segundos)</th>
                                                         <th>Fecha</th>
                                                         <th>Ver</th>
                                                 </tr>
@@ -39,8 +39,8 @@
                                                                 <p class="m-0 mt-2">{{informacion['duracion']}}</p>
                                                         </td>
                                                         <td>
-                                                                <p class="m-0 mt-2">{{informacion['fecha'] | date :
-                                                                        'mediumDate'}}</p>
+                                                                <p class="m-0 mt-2">{{informacion['fechaAnalisis'] | date :
+                                                                        'longDate'}}</p>
                                                         </td>
                                                         <td>
                                                                 <p class="m-0">
