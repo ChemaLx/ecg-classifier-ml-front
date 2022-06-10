@@ -76,16 +76,17 @@
             </div>
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
               <div class="signup-form mt-3">
-                <label class="inp">
-                  <input type="text" class="input-text" placeholder="Contraseña" formControlName="contrasena"
-                    trim="blur">
+                <label class="inp d-flex align-items-center">
+                  <input [type]="isContrasenaVisible ? 'text' : 'password'" class="input-text" placeholder="Contraseña"
+                    formControlName="contrasena" trim="blur">
+                  <i class="far fa-eye fa-2x" (click)="this.isContrasenaVisible = !this.isContrasenaVisible"></i>
                   <span class="label">Contraseña</span>
 
                 </label>
               </div>
             </div>
 
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">  
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
               <div class="signup-form mt-3">
                 <label class="inp">
                   <input class="input-text" type="date" id="start" name="trip-start" value="" min="1922-01-01"
@@ -127,7 +128,8 @@
                 <i class="fa fa-check fa-2x" aria-hidden="true"></i>
               </button>
             </div>
-            <p class="text-mute mt-3 text-center">¿Ya tienes una cuenta? <a routerLink="/login" class="text-blue">Inicia sesión</a></p>
+            <p class="text-mute mt-3 text-center">¿Ya tienes una cuenta? <a routerLink="/login" class="text-blue">Inicia
+                sesión</a></p>
           </div>
 
         </form>

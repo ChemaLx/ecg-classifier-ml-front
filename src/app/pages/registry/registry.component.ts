@@ -23,6 +23,7 @@ export class RegistryComponent implements OnInit {
   isCargando = false
   isRegistroFailed = false
   isRegistroCheck = false
+  isContrasenaVisible = false
   
   constructor(private _formBuilder: FormBuilder,
               private _util: UtilsService,

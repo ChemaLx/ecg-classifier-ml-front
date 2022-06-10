@@ -2,6 +2,7 @@ a {
   color: #2196f3;
   text-decoration: none;
 }
+i:hover { cursor: pointer; } 
 .h-100-cu{
   min-height: 100vh;
 }
