@@ -18,16 +18,16 @@
             <div class="m-4 d-flex justify-content-center">
                 <ngx-charts-line-chart (window:resize)="onResize($event)" [view]="view" [legend]="legend" [legendPosition]="'below'"
                     [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxis]="xAxis" [yAxis]="yAxis"
-                    [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [timeline]="timeline" [results]="multi" [yScaleMin]="yScaleMin" [yScaleMax]="yScaleMax"
+                    [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [timeline]="timeline" [results]="multi"
                     (select)="onSelect($event)" (activate)="onActivate($event)" (deactivate)="onDeactivate($event)" class="mt-5">
                 </ngx-charts-line-chart>
-            </div>
+            </div>S
 
             <div class="card-body">
                 <div class="d-flex justify-content-start flex-wrap ms-3" *ngIf="!isDatosVacios">
                     <p *ngIf="sexo == '0'"><strong>Sexo: </strong> Masculino</p>
                     <p *ngIf="sexo == '1'"><strong>Sexo: </strong> Femenino</p>
-                    
+
                     <p class=" ms-3"><strong>Edad: </strong> {{edad}}</p>
                 </div>
                 <div class="row">
@@ -38,7 +38,7 @@
                             <button class="btn btn-cancel me-1 mb-3" style="margin-top: 0;"
                                     routerLink="/nueva-clasificacion">Nuevo registro</button>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -57,7 +57,7 @@
     <div class="container-box">
         <div class="hero hero-is-primary d-flex justify-content-start align-items-center" style="box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);">
             <h3 class="p-3 m-0 text-white">Electrocardiograma de Jose Ricardo Flores Lima</h3>
-        </div> 
+        </div>
         <div class="card" style="box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);">
             <div class="m-4">
                 <div class="chart-card d-flex flex-column justify-content-center">
@@ -87,7 +87,7 @@
                 </div>
             </div>
         </div>
-       
+
 
 
     </div>

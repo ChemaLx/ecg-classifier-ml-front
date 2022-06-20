@@ -14,8 +14,8 @@ export class DashboardComponent implements OnInit {
   isDatosVacios = false
   sexo = ''
   edad = ''
-  yScaleMin = 2
-  yScaleMax = 5
+//  yScaleMin = 2
+//  yScaleMax = 5
 
   // options
   legend: boolean = true;
